@@ -47,7 +47,6 @@ export class ParallaxSliderComponent implements AfterViewInit {
 
   @HostListener("window:scroll", ["$event"])
   onWindowScroll() {
-    // console.log(this.isIntersecting, this.animationFinished)
     if (this.isIntersecting && this.animationFinished) requestAnimationFrame(this.animate.bind(this))
   }
 
@@ -80,7 +79,6 @@ export class ParallaxSliderComponent implements AfterViewInit {
     const parentEl = this.container.parentElement
     // @ts-ignore
     const scrollRatio = -parentEl.getBoundingClientRect().top / this.scrollHeight
-    console.log(scrollRatio)
     return scrollRatio * (this.sliderWidth - window.innerWidth)
   }
 

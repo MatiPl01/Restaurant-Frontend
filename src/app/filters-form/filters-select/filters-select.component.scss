@@ -3,6 +3,14 @@
 
 ::ng-deep {
     .multiselect-dropdown {
+        user-select: none !important;
+        
+        .dropdown-btn {
+            border-radius: 10rem !important;
+            background-color: c.$white !important;
+            box-shadow: 0 0 1rem rgba(c.$black, .15) !important;
+        }
+
         .filter-textbox {
             input::placeholder {
                 font-size: 1.6rem !important;

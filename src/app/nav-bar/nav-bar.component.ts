@@ -12,7 +12,7 @@ export class NavBarComponent implements OnInit {
   constructor(private visualizationService: VisualizationService, public orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.visualizationService.headerVisibilityChanged.subscribe((isVisible: boolean) => {
+    this.visualizationService.headerVisibilityChangedEvent.subscribe((isVisible: boolean) => {
       this.isHeaderVisible = isVisible
     })
   }

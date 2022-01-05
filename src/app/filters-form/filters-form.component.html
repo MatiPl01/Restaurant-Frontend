@@ -1,40 +1,42 @@
-<div class="filters">
-  <app-filters-select
-    class="filters__dropdown"
-    [filterAttr]="categoryFilterAttr"
-    [filterName]="'kategorie'"
-    [settings]="settings"
-    [dropDownList]="categoriesList"
-    (itemSelectedEvent)="onItemSelected($event)"
-    (itemDeSelectedEvent)="onItemDeSelected($event)"
-    (selectedAllEvent)="onSelectedAll($event)"
-    (deSelectedAllEvent)="onDeSelectedAll($event)"
-  ></app-filters-select>
-  <app-filters-select
-    class="filters__dropdown"
-    [filterAttr]="cuisineFilterAttr"
-    [filterName]="'kuchnie'"
-    [settings]="settings"
-    [dropDownList]="cuisinesList"
-    (itemSelectedEvent)="onItemSelected($event)"
-    (itemDeSelectedEvent)="onItemDeSelected($event)"
-    (selectedAllEvent)="onSelectedAll($event)"
-    (deSelectedAllEvent)="onDeSelectedAll($event)"
-  ></app-filters-select>
-  <app-filters-range
-    class="filters__range"
-    [filterAttr]="priceFilterAttr"
-    [minSet]="0"
-    [maxSet]="priceSteps"
-    [options]="priceOptions"
-    (rangeChangedEvent)="onRangeChanged($event)"
-  ></app-filters-range>
-  <app-filters-range
-    class="filters__range"
-    [filterAttr]="ratingFilterAttr"
-    [minSet]="0"
-    [maxSet]="ratingSteps"
-    [options]="ratingOptions"
-    (rangeChangedEvent)="onRangeChanged($event)"
-  ></app-filters-range>
-</div>
+<form action="#" class="filters">
+  <ul class="filters__list">
+    <li class="filters__item">
+      <p class="filters__text">
+        Kategorie
+      </p>
+      <app-filters-select class="filters__dropdown" [filterAttr]="categoryFilterAttr" [filterName]="'kategorie'"
+        [settings]="settings" [dropDownList]="categoriesList" (itemSelectedEvent)="onItemSelected($event)"
+        (itemDeSelectedEvent)="onItemDeSelected($event)" (selectedAllEvent)="onSelectedAll($event)"
+        (deSelectedAllEvent)="onDeSelectedAll($event)"></app-filters-select>
+    </li>
+    <li class="filters__item">
+      <p class="filters__text">
+        Kuchnie
+      </p>
+      <app-filters-select class="filters__dropdown" [filterAttr]="cuisineFilterAttr" [filterName]="'kuchnie'"
+        [settings]="settings" [dropDownList]="cuisinesList" (itemSelectedEvent)="onItemSelected($event)"
+        (itemDeSelectedEvent)="onItemDeSelected($event)" (selectedAllEvent)="onSelectedAll($event)"
+        (deSelectedAllEvent)="onDeSelectedAll($event)"></app-filters-select>
+    </li>
+    <li class="filters__item">
+      <p class="filters__text">
+        Ceny
+      </p>
+      <app-filters-range class="filters__range" [filterAttr]="priceFilterAttr" [minSet]="0" [maxSet]="priceSteps"
+        [options]="priceOptions" (rangeChangedEvent)="onRangeChanged($event)"></app-filters-range>
+    </li>
+    <li class="filters__item">
+      <p class="filters__text">
+        Oceny
+      </p>
+      <app-filters-range class="filters__range" [filterAttr]="ratingFilterAttr" [minSet]="0" [maxSet]="ratingSteps"
+        [options]="ratingOptions" (rangeChangedEvent)="onRangeChanged($event)"></app-filters-range>
+    </li>
+    <li class="filters__item">
+      <p class="filters__text">
+        Liczba pozycji na stronie
+      </p>
+      <app-filters-pages class="filter__pages"></app-filters-pages>
+    </li>
+  </ul>
+</form>

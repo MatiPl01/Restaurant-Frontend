@@ -75,7 +75,7 @@ export class FiltersService implements OnInit {
         }
         this.filtersChangedEvent.emit(filterAttr)
     }
-
+    
     getFilters(filterAttr: string): any {
         return this.filtersFunctions[filterAttr]
     }

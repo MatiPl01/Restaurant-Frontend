@@ -25,8 +25,8 @@
 
       <li class="nav-bar__item nav-bar__item--cart">
         <a routerLink="/cart" class="nav-bar__button nav-bar__button--cart" title="Pokaż potrawy dodane do koszyka"
-          (click)="onBtnCartClick()" [attr.data-items-count]="this.orderService.totalQuantity"
-          [ngClass]="{'big-quantity': this.orderService.totalQuantity >= 10}">
+          (click)="onBtnCartClick()" [attr.data-items-count]="orderService.totalQuantity"
+          [ngClass]="{'big-quantity': orderService.totalQuantity >= 10}">
           <svg class="nav-bar__button-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-basket"
             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
             <path

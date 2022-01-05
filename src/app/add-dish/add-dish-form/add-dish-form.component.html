@@ -52,7 +52,7 @@
     </li>
     <li class="form__item">
       <div class="form__column form__column--left"><label class="form__label" for="price">Cena ({{
-          this.currencyService }})</label></div>
+          currencyService.getCurrentCurrencySymbol() }})</label></div>
       <div div class="form__column form__column--right">
         <div class="form__wrapper">
           <input class="form__input" type="text" name="price" id="price" placeholder="cena pojedynczej porcji"

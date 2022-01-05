@@ -11,7 +11,7 @@ export class ScrollTopBtnComponent implements OnInit {
   constructor(private visualizationService: VisualizationService) {}
 
   ngOnInit() {
-    this.visualizationService.headerVisibilityChanged.subscribe((isVisible: boolean) => {
+    this.visualizationService.headerVisibilityChangedEvent.subscribe((isVisible: boolean) => {
       this.isHeaderVisible = isVisible
     })
   }

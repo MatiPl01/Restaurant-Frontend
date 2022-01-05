@@ -30,12 +30,15 @@ import { CartComponent } from './cart/cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { AddDishComponent } from './add-dish/add-dish.component';
-
-import { AppRoutingModule } from './app-routing.module';
-
-import { FiltersPipe } from '../app/pipes/filters.pipe';
 import { AddDishFormComponent } from './add-dish/add-dish-form/add-dish-form.component';
 import { ScrollTopBtnComponent } from './scroll-top-btn/scroll-top-btn.component';
+import { FiltersPagesComponent } from './filters-form/filters-pages/filters-pages.component';
+import { DishesPaginationComponent } from './dishes/dishes-pagination/dishes-pagination.component';
+
+import { FiltersPipe } from '../app/pipes/filters.pipe';
+import { PaginationPipe } from '../app/pipes/pagination.pipe';
+
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -61,12 +64,15 @@ import { ScrollTopBtnComponent } from './scroll-top-btn/scroll-top-btn.component
     FiltersSelectComponent,
     FiltersRangeComponent,
     FiltersPipe,
+    PaginationPipe,
     CartComponent,
     NotFoundComponent,
     AboutComponent,
     AddDishComponent,
     AddDishFormComponent,
-    ScrollTopBtnComponent
+    ScrollTopBtnComponent,
+    FiltersPagesComponent,
+    DishesPaginationComponent
   ],
   imports: [
     BrowserModule,

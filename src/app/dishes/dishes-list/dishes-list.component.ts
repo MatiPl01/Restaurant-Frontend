@@ -3,6 +3,7 @@ import { Dish } from 'src/app/shared/models/dish.model';
 import { DishesService } from 'src/app/services/dishes.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { FiltersService } from 'src/app/services/filters.service';
+import { PaginationService } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-dishes-list',
@@ -10,20 +11,27 @@ import { FiltersService } from 'src/app/services/filters.service';
 })
 export class DishesListComponent implements OnInit {
   dishes: Dish[] = []
-
-  filtersFunctions: any = {
-    category: () => true,
-    cuisine: () => true,
-    unitPrice: () => true,
-    rating: () => true
-  }
+  
+  filteringTrigger: number = 0
+  paginationTrigger: number = 0
  
-  constructor(public dishesService: DishesService, private currencyService: CurrencyService, public filtersService: FiltersService) {}
+  constructor(public paginationService: PaginationService,
+              private currencyService: CurrencyService, 
+              public dishesService: DishesService, 
+              public filtersService: FiltersService) {}
 
   ngOnInit(): void {
     this.dishes = this.dishesService.getDishes()
-    this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => this.dishes = dishes)
-    this.filtersService.filtersChangedEvent.subscribe((filterAttr: string) => this.updateFilters(filterAttr))
+    this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
+      this.dishes = dishes
+      this.paginationService.updateDisplayedDishesCount(dishes.length)
+    })
+    this.filtersService.filtersChangedEvent.subscribe(() => {
+      // Refilter dishes if filtering criteria changed and
+      // go to the first page of the dishes list
+      this.refilterDishes()
+    })
+    this.paginationService.pagesChanged.subscribe(this.updatePages.bind(this))
   }
 
   onRemoveDish(dish: Dish) {
@@ -38,7 +46,11 @@ export class DishesListComponent implements OnInit {
     }
   }
 
-  updateFilters(filterAttr: string) {
-    this.filtersFunctions[filterAttr] = this.filtersService.getFilters(filterAttr)
+  refilterDishes() {
+    this.filteringTrigger = (this.filteringTrigger + 1) % 2
+  }
+
+  updatePages() {
+    this.paginationTrigger = (this.paginationTrigger + 1) % 2
   }
 }

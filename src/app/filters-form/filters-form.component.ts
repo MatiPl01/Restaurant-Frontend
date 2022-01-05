@@ -32,6 +32,7 @@ export class FiltersFormComponent implements OnInit {
     textField: 'filterValue',
     allowSearchFilter: true,
     singleSelection: false,
+    enableCheckAll: true,
     itemsShowLimit: 2,
     selectAllText: 'Zaznacz wszystkie',
     unSelectAllText: 'Odznacz wszystkie',
@@ -78,15 +79,14 @@ export class FiltersFormComponent implements OnInit {
   onRangeChanged(eventObj: {filterAttr: string, min: number, max: number}) {
     let min, max
     if (eventObj.filterAttr === this.priceFilterAttr) {
-      min = this.stepToValue(eventObj.min, this.priceSteps, this.minPrice, this.maxPrice)
-      max = this.stepToValue(eventObj.max, this.priceSteps, this.minPrice, this.maxPrice)
+      // Convert to the reference currency
+      min = this.currencyService.fromCurrentToReference(this.stepToValue(eventObj.min, this.priceSteps, this.minPrice, this.maxPrice))
+      max = this.currencyService.fromCurrentToReference(this.stepToValue(eventObj.max, this.priceSteps, this.minPrice, this.maxPrice))
     } else {
       min = this.stepToValue(eventObj.min, this.ratingSteps, this.minRating, this.maxRating)
       max = this.stepToValue(eventObj.max, this.ratingSteps, this.minRating, this.maxRating)
     }
-    // Convert to the reference currency
-    min = this.currencyService.fromCurrentToReference(min)
-    max = this.currencyService.fromCurrentToReference(max)
+    
     this.filtersService.setRangeFilter(eventObj.filterAttr, min, max);
   }
 
@@ -97,7 +97,7 @@ export class FiltersFormComponent implements OnInit {
       ceil: this.priceSteps,
       translate: (value: number, label: LabelType): string => {
         value = this.stepToValue(value, this.priceSteps, this.minPrice, this.maxPrice)
-        return currency + value.toFixed(2);
+        return value ? currency + value.toFixed(2) : ''
       }
     }
   }
@@ -108,7 +108,7 @@ export class FiltersFormComponent implements OnInit {
       ceil: this.ratingSteps,
       translate: (value: number, label: LabelType): string => {
         value = this.stepToValue(value, this.ratingSteps, this.minRating, this.maxRating)
-        return value.toFixed(2);
+        return value ? value.toFixed(2) : ''
       }
     }
   }

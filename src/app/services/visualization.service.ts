@@ -4,9 +4,9 @@ import { Injectable, EventEmitter } from '@angular/core'
     providedIn: 'root'
 })
 export class VisualizationService {
-    headerVisibilityChanged = new EventEmitter<boolean>();
+    headerVisibilityChangedEvent = new EventEmitter<boolean>();
 
     notifyHeaderVisible(isVisible: boolean) {
-        this.headerVisibilityChanged.emit(isVisible);
+        this.headerVisibilityChangedEvent.emit(isVisible)
     }
 }

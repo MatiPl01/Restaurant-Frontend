@@ -3,6 +3,10 @@
 @use '../helpers/gradients' as g;
 @use '../helpers/mixins' as *;
 
+.section-dishes {
+    padding-bottom: 6rem;
+}
+
 .dishes {
     width: s.$content-width;
     margin: 0 auto;
@@ -48,5 +52,9 @@
     &__item {
         list-style: none;
     }
-}
 
+    &__pagination {
+        margin-top: 4rem;
+        @include flex-center;
+    }
+}
