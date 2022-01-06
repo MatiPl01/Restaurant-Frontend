@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'menu', component: DishesComponent },
   { path: 'about', component: AboutComponent },
   { path: 'add-dish', component: AddDishComponent },
-  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent },
 ]
 
 @NgModule({

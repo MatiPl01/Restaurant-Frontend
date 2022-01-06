@@ -16,8 +16,4 @@ export class NavBarComponent implements OnInit {
       this.isHeaderVisible = isVisible
     })
   }
-
-  onBtnCartClick() {
-    this.orderService.onBtnCartClick()
-  }
 }

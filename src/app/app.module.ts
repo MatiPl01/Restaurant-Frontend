@@ -39,6 +39,9 @@ import { FiltersPipe } from '../app/pipes/filters.pipe';
 import { PaginationPipe } from '../app/pipes/pagination.pipe';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { CartItemsListComponent } from './cart/cart-items-list/cart-items-list.component';
 
 
 @NgModule({
@@ -72,7 +75,10 @@ import { AppRoutingModule } from './app-routing.module';
     AddDishFormComponent,
     ScrollTopBtnComponent,
     FiltersPagesComponent,
-    DishesPaginationComponent
+    DishesPaginationComponent,
+    CartSummaryComponent,
+    CartItemComponent,
+    CartItemsListComponent
   ],
   imports: [
     BrowserModule,

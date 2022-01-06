@@ -38,7 +38,7 @@ export class DishOrderComponent implements OnInit {
 
   private emitEvents(quantity: number) {
     this.changeQuantity.emit(quantity)
-    this.orderService.updateBasket(this.dish, quantity)
+    this.orderService.updateCart(this.dish, quantity)
   }
 
   private updateQuantity(dish: Dish, quantity: number) {

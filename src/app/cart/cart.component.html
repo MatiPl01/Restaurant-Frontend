@@ -1,1 +1,19 @@
-<p>cart works!</p>
+<section class="section-cart">
+  <article class="cart">
+    <section class="cart__contents">
+      <h3 class="cart__heading heading-primary">
+        Koszyk
+      </h3>
+  
+      <app-cart-items-list></app-cart-items-list>
+  
+      <a routerLink="/menu" class="cart__button cart__button--back">
+        &larr; Kontynuuj zakupy
+      </a>
+    </section>
+  
+    <section class="cart__summary">
+      <app-cart-summary></app-cart-summary>
+    </section>
+  </article>
+</section>
