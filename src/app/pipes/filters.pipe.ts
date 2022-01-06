@@ -1,7 +1,7 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Dish } from 'src/app/shared/models/dish.model';
-import { FiltersService } from '../services/filters.service';
-import { PaginationService } from '../services/pagination.service';
+import { Pipe, PipeTransform } from '@angular/core'
+import { Dish } from 'src/app/shared/models/dish.model'
+import { FiltersService } from '../services/filters.service'
+import { PaginationService } from '../services/pagination.service'
 
 @Pipe({
   name: 'filter'

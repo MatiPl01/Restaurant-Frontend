@@ -115,6 +115,7 @@ $card-width: 35rem;
         left: 0;
         right: 0;
         background-color: c.$gray-light-1;
+        backface-visibility: hidden;
         height: 30%;
         @include flex-center;
         font-size: 1.6rem;

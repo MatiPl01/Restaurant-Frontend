@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Dish } from 'src/app/shared/models/dish.model';
+import { Component, Input } from '@angular/core'
+import { Dish } from 'src/app/shared/models/dish.model'
 
 @Component({
   selector: 'app-dish-details',

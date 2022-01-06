@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { HttpClient } from '@angular/common/http';
-import { Dish } from 'src/app/shared/models/dish.model';
-import { DishesService } from './dishes.service';
+import { HttpClient } from '@angular/common/http'
+import { Dish } from 'src/app/shared/models/dish.model'
 
 @Injectable({
     providedIn: 'root'
@@ -53,7 +52,7 @@ export class CurrencyService {
     }
 
     notifyCurrencyChanged() {
-        this.currencyChangedEvent.emit(this.currentCurrency);
+        this.currencyChangedEvent.emit(this.currentCurrency)
     }
 
     private loadCurrencies(data: any) {

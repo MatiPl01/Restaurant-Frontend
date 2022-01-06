@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { DropdownSettings } from '../../shared/models/dropdown-settings.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core'
+import { DropdownSettings } from '../../shared/models/dropdown-settings.model'
 
 type eventObj = {filterAttr: string, value: any}
 
@@ -9,10 +9,10 @@ type eventObj = {filterAttr: string, value: any}
   styleUrls: ['./filters-select.component.scss']
 })
 export class FiltersSelectComponent {
-  @Output() itemSelectedEvent = new EventEmitter<eventObj>();
-  @Output() itemDeSelectedEvent = new EventEmitter<eventObj>();
-  @Output() selectedAllEvent = new EventEmitter<eventObj>();
-  @Output() deSelectedAllEvent = new EventEmitter<eventObj>();
+  @Output() itemSelectedEvent = new EventEmitter<eventObj>()
+  @Output() itemDeSelectedEvent = new EventEmitter<eventObj>()
+  @Output() selectedAllEvent = new EventEmitter<eventObj>()
+  @Output() deSelectedAllEvent = new EventEmitter<eventObj>()
   @Input() filterName!: string
   @Input() settings!: DropdownSettings
   @Input() dropDownList: any = []
@@ -22,19 +22,19 @@ export class FiltersSelectComponent {
   constructor() {}
 
   onItemSelect(filterValue: any) {
-    this.itemSelectedEvent.emit(this.createEventObj(filterValue));
+    this.itemSelectedEvent.emit(this.createEventObj(filterValue))
   }
 
   onSelectAll(filterValues: any) {
-    this.selectedAllEvent.emit(this.createEventObj(filterValues));
+    this.selectedAllEvent.emit(this.createEventObj(filterValues))
   }
 
   onItemDeSelect(filterValue: any) {
-    this.itemDeSelectedEvent.emit(this.createEventObj(filterValue));
+    this.itemDeSelectedEvent.emit(this.createEventObj(filterValue))
   }
 
   onDeSelectAll(filterValues: any) {
-    this.deSelectedAllEvent.emit(this.createEventObj(filterValues));
+    this.deSelectedAllEvent.emit(this.createEventObj(filterValues))
   }
 
   private createEventObj(value: any): eventObj {

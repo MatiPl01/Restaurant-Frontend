@@ -1,11 +1,10 @@
-import { Injectable, EventEmitter, OnInit } from '@angular/core'
+import { Injectable, EventEmitter } from '@angular/core'
 import { Dish } from 'src/app/shared/models/dish.model'
-import { DishesService } from './dishes.service'
 
 @Injectable({
   providedIn: 'root'
 })
-export class FiltersService implements OnInit {
+export class FiltersService {
     filtersChangedEvent = new EventEmitter<string>()
 
     private appliedFilters: any = {
@@ -40,14 +39,6 @@ export class FiltersService implements OnInit {
         }
     }
 
-    constructor(private dishesService: DishesService) {}
-
-    ngOnInit() {
-        this.dishesService.ratingChangedEvent.subscribe((dish: Dish) => {
-            this.filtersChangedEvent.emit('rating')
-        })
-    }
-
     addFilter(filterAttr: string, filterValue: any) {
         this.appliedFilters[filterAttr].add(filterValue)
         this.filtersChangedEvent.emit(filterAttr)
@@ -78,5 +69,16 @@ export class FiltersService implements OnInit {
     
     getFilters(filterAttr: string): any {
         return this.filtersFunctions[filterAttr]
+    }
+
+    resetFilters() {
+        this.appliedFilters.category.clear()
+        this.appliedFilters.cuisine.clear()
+        this.appliedFilters.unitPrice.min = this.appliedFilters.rating.min = 0
+        this.appliedFilters.unitPrice.max = this.appliedFilters.rating.max = Infinity
+    }
+
+    notifyRatingChanged() {
+        this.filtersChangedEvent.emit('rating')
     }
 }

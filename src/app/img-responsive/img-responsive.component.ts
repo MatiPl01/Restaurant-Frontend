@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-img-responsive',
@@ -17,7 +17,7 @@ export class ImgResponsiveComponent implements OnInit {
     this.src = this.paths.length > 0 ? this.paths[this.paths.length - 1] : ''
   }
 
-  createSrcset(): string {
+  private createSrcset(): string {
     return this.paths
       .map((path, idx) => `${path} ${this.breakpoints[idx]}w`)
       .join(',')

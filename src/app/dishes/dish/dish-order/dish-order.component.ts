@@ -1,24 +1,30 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Dish } from 'src/app/shared/models/dish.model';
-import { OrderService } from 'src/app/services/order.service';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core'
+import { Dish } from 'src/app/shared/models/dish.model'
+import { OrderService } from 'src/app/services/order.service'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-dish-order',
   templateUrl: './dish-order.component.html'
 })
-export class DishOrderComponent implements OnInit {
+export class DishOrderComponent implements OnInit, OnDestroy {
   @Input() dish!: Dish
   @Output() changeQuantity = new EventEmitter<number>()
   quantity!: number
+  subscription!: Subscription
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.quantity = this.orderService.getQuantity(this.dish)
-    this.orderService.updateDishQuantityEvent.subscribe(data => {
+    this.subscription = this.orderService.updateDishQuantityEvent.subscribe(data => {
       this.updateQuantity(data.dish, data.quantity)
     })
     this.emitEvents(this.quantity)
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
   onIncrement(event: Event) {

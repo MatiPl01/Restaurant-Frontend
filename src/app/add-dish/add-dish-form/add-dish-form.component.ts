@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { DishesService } from '../../services/dishes.service';
-import { CurrencyService } from '../../services/currency.service';
-import { Dish } from '../../shared/models/dish.model';
+import { Component } from '@angular/core'
+import { NgForm } from '@angular/forms'
+import { DishesService } from '../../services/dishes.service'
+import { CurrencyService } from '../../services/currency.service'
+import { Dish } from '../../shared/models/dish.model'
 
 @Component({
   selector: 'app-add-dish-form',
@@ -10,7 +10,7 @@ import { Dish } from '../../shared/models/dish.model';
 })
 export class AddDishFormComponent {
 
-  constructor(public currencyService: CurrencyService, private dishesService: DishesService) { }
+  constructor(public currencyService: CurrencyService, private dishesService: DishesService) {}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -20,7 +20,7 @@ export class AddDishFormComponent {
     }
   }
 
-  createDishObject(form: NgForm): Dish {
+  private createDishObject(form: NgForm): Dish {
     const id = this.dishesService.maxDishID + 1
     const imagesPaths = form.value.images.split(',').map((path: string) => path.trim())
     const newDish: Dish = {

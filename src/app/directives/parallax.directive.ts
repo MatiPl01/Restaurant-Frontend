@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, HostListener } from '@angular/core';
+import { Directive, Input, ElementRef, HostListener } from '@angular/core'
 
 @Directive({
     selector: '[parallax]'
@@ -19,19 +19,18 @@ export class ParallaxDirective {
         this.observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 this.isIntersecting = entry.isIntersecting
-                if (entry.isIntersecting) {
-                    this.target = this.current = this.getScrollFromCenter();
-                }
+                if (entry.isIntersecting) this.target = this.current = this.getScrollFromCenter()
             })
         })
         this.targetEl = elRef.nativeElement
         this.observer.observe(this.targetEl);
     }
 
-      @HostListener("window:scroll", ["$event"])
-      onWindowScroll() {
+    @HostListener("window:scroll", ["$event"])
+    onWindowScroll() {
         if (this.isIntersecting && this.animationFinished) requestAnimationFrame(this.animate.bind(this))
-      }
+    }
+
     private lerp(start: number, end: number, t: number): number {
         return start * (1 - t) + end * t
     }

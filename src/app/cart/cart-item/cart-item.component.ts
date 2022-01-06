@@ -1,15 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Dish } from 'src/app/shared/models/dish.model';
-import { CurrencyService } from 'src/app/services/currency.service';
-import { OrderService } from 'src/app/services/order.service';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core'
+import { Dish } from 'src/app/shared/models/dish.model'
+import { CurrencyService } from 'src/app/services/currency.service'
+import { OrderService } from 'src/app/services/order.service'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html'
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent implements OnInit, OnDestroy {
   @Input() dish!: Dish
   quantity: number = 1
+  subscription!: Subscription
 
   constructor(public currencyService: CurrencyService,
               private orderService: OrderService) {}
@@ -19,9 +21,14 @@ export class CartItemComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    this.orderService.updateDishQuantityEvent.subscribe(data => {
+    if (this.subscription) return
+    this.subscription = this.orderService.updateDishQuantityEvent.subscribe(data => {
       if (this.dish.id === data.dish.id) this.quantity = data.quantity
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
   onRemoveClick() {

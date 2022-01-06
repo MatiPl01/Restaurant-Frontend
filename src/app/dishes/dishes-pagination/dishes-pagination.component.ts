@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { PaginationService } from '../../services/pagination.service'
 
 
@@ -6,21 +7,31 @@ import { PaginationService } from '../../services/pagination.service'
   selector: 'app-dishes-pagination',
   templateUrl: './dishes-pagination.component.html'
 })
-export class DishesPaginationComponent implements OnInit {
+export class DishesPaginationComponent implements OnInit, OnDestroy {
   pagesCount: number = 1
   currentPage: number = 1
   @Input('maxDisplayed') maxDisplayedNumbersCount: number = 5
 
   pagesNumbers: number[] = []
 
+  subscription!: Subscription
+
   constructor(private paginationService: PaginationService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.update(this.paginationService.getDataObject())
-    this.paginationService.pagesChanged.subscribe(this.update.bind(this))
+    this.subscription = this.paginationService.pagesChanged.subscribe(this.update.bind(this))
   }
 
-  updateMiddlePagesNumbers() {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
+
+  changeCurrentPage(clickedPageNum: number) {
+    this.paginationService.setCurrentPage(clickedPageNum)
+  }
+
+  private updateMiddlePagesNumbers() {
     if (this.pagesCount < 3) this.pagesNumbers = []
     const middleCount = this.maxDisplayedNumbersCount - 2
     let startNum = this.currentPage - Math.floor(middleCount / 2)
@@ -40,11 +51,7 @@ export class DishesPaginationComponent implements OnInit {
     this.pagesNumbers = arr
   }
 
-  changeCurrentPage(clickedPageNum: number) {
-    this.paginationService.setCurrentPage(clickedPageNum)
-  }
-
-  update(data: any) {
+  private update(data: any) {
     this.pagesCount = data.pagesCount
     this.currentPage = data.currentPageNum
     this.updateMiddlePagesNumbers()

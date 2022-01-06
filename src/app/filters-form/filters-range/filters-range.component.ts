@@ -1,5 +1,5 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { Options } from '@angular-slider/ngx-slider';
+import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { Options } from '@angular-slider/ngx-slider'
 
 @Component({
   selector: 'app-filters-range',

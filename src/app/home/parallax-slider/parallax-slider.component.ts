@@ -1,5 +1,4 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, AfterViewInit, Input, HostListener } from '@angular/core';
+import { Component, AfterViewInit, Input, HostListener } from '@angular/core'
 
 @Component({
   selector: 'app-parallax-slider',
@@ -28,7 +27,7 @@ export class ParallaxSliderComponent implements AfterViewInit {
       entries.forEach(entry => {
         this.isIntersecting = entry.isIntersecting
         if (entry.isIntersecting) {
-          this.target = this.current = this.getTranslate();
+          this.target = this.current = this.getTranslate()
         }
       })
     })
@@ -41,7 +40,7 @@ export class ParallaxSliderComponent implements AfterViewInit {
     this.slider = document.querySelector('.slider__list')
     // @ts-ignore
     this.container = document.querySelector('.slider-container')
-    this.init();
+    this.init()
     this.observer.observe(this.container)
   }
 

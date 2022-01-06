@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PaginationService } from 'src/app/services/pagination.service';
+import { Component, OnInit } from '@angular/core'
+import { PaginationService } from 'src/app/services/pagination.service'
 
 @Component({
   selector: 'app-filters-pages',
@@ -12,7 +12,9 @@ export class FiltersPagesComponent implements OnInit {
   constructor(private paginationService: PaginationService) {}
 
   ngOnInit() {
-    this.paginationService.setDishesPerPageCount(+this.dishesPerPage)
+    const savedDishesPerPage = this.paginationService.getDataObject().dishesPerPage
+    if (savedDishesPerPage === 1) this.paginationService.setDishesPerPageCount(+this.dishesPerPage)
+    else this.dishesPerPage = savedDishesPerPage
   }
 
   onCountChange() {

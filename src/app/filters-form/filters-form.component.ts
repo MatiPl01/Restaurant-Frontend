@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { DishesService } from '../services/dishes.service';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { DishesService } from '../services/dishes.service'
 import { FiltersService } from '../services/filters.service'
-import { CurrencyService } from '../services/currency.service';
-import { Dish } from 'src/app/shared/models/dish.model'
-import { LabelType, Options } from '@angular-slider/ngx-slider';
+import { CurrencyService } from '../services/currency.service'
+import { LabelType, Options } from '@angular-slider/ngx-slider'
+import { Subscription } from 'rxjs'
 
 type dropdownEventObj = { filterAttr: string, value: any }
 
@@ -11,7 +11,7 @@ type dropdownEventObj = { filterAttr: string, value: any }
   selector: 'app-filters-form',
   templateUrl: './filters-form.component.html'
 })
-export class FiltersFormComponent implements OnInit {
+export class FiltersFormComponent implements OnInit, OnDestroy {
   categoryFilterAttr: string = 'category'
   cuisineFilterAttr:  string = 'cuisine'
   priceFilterAttr: string = 'unitPrice'
@@ -46,14 +46,23 @@ export class FiltersFormComponent implements OnInit {
   priceOptions:  Options = Object.assign({}, this.placeholderOptions)
   ratingOptions: Options = Object.assign({}, this.placeholderOptions)
 
+  subscriptions: Subscription[] = []
+
   constructor(private filtersService: FiltersService, private dishesService: DishesService, private currencyService: CurrencyService) { }
 
   ngOnInit(): void {
     this.update()
-    this.dishesService.dishesChangedEvent.subscribe(this.update.bind(this))
-    this.currencyService.currencyChangedEvent.subscribe(() => {
-      this.updatePriceSlider()
-    })
+
+    this.subscriptions.push(
+      this.dishesService.dishesChangedEvent.subscribe(this.update.bind(this)),
+      this.currencyService.currencyChangedEvent.subscribe(() => {
+        this.updatePriceSlider()
+      })
+    )
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe())
   }
 
   getDropdownList(filterAttr: string) {

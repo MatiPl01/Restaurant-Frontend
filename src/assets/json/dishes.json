@@ -20,8 +20,8 @@
       "stock": 2,
       "currency": "EUR",
       "unitPrice": 20,
-      "rating": 4.3392857142857135,
-      "ratesCount": 28,
+      "rating": 4.61,
+      "ratesCount": 39,
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
       "images": {
         "breakpoints": [
@@ -87,8 +87,8 @@
       "stock": 43,
       "currency": "USD",
       "unitPrice": 39,
-      "rating": 4.499999999999998,
-      "ratesCount": 18,
+      "rating": 4.78,
+      "ratesCount": 19,
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
       "images": {
         "breakpoints": [
@@ -289,8 +289,8 @@
       "stock": 112,
       "currency": "USD",
       "unitPrice": 18,
-      "rating": 4.65,
-      "ratesCount": 102,
+      "rating": 4.653398058252427,
+      "ratesCount": 103,
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
       "images": {
         "breakpoints": [
@@ -943,8 +943,8 @@
       "stock": 124,
       "currency": "USD",
       "unitPrice": 24,
-      "rating": 4.59,
-      "ratesCount": 56,
+      "rating": 4.66,
+      "ratesCount": 63,
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
       "images": {
         "breakpoints": [

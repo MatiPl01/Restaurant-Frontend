@@ -1,5 +1,5 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { VisualizationService } from '../../services/visualization.service';
+import { Component, AfterViewInit } from '@angular/core'
+import { VisualizationService } from '../../services/visualization.service'
 
 @Component({
   selector: 'app-header',

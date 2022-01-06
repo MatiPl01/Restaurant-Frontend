@@ -31,7 +31,7 @@ export class PaginationService {
     }
    
     updatePagination() {
-        const prevPagesDishesCount = this.pageIdx * this.prevDishesPerPage
+        const prevPagesDishesCount = Math.min(this.pageIdx * this.prevDishesPerPage, this.pagesCount)
         this.pageIdx = Math.floor(prevPagesDishesCount / this.dishesPerPage)
         this.pagesCount = Math.ceil(this.displayedDishesCount / this.dishesPerPage)
     }
