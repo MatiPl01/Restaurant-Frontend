@@ -10,9 +10,11 @@
   </figure>
 
   <section class="cart-item__details">
-    <h3 class="cart-item__heading">
-      {{ dish.name }}
-    </h3>
+    <a [routerLink]="['/dishes', dish.id]" class="cart-item__link">
+      <h3 class="cart-item__heading">
+          {{ dish.name }}
+      </h3>
+    </a>
     <ul class="cart-item__details-list">
       <li class="cart-item__detail">
         <span class="cart-item__detail-name">Kuchnia</span>

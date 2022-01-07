@@ -114,7 +114,7 @@ export class DishesService {
     const updatedDish = this.dishesMap.get(dish.id)
     updatedDish!.ratesCount = dish.ratesCount
     updatedDish!.rating = dish.rating
-    this.filtersService.notifyRatingChanged()
+    this.filtersService.notifyChanges()
   }
   
   getMaxReferencePrice() {

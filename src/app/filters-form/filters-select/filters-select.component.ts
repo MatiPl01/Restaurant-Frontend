@@ -9,6 +9,7 @@ type eventObj = {filterAttr: string, value: any}
   styleUrls: ['./filters-select.component.scss']
 })
 export class FiltersSelectComponent {
+  @Output() selectedItemsChange = new EventEmitter<never[]>()
   @Output() itemSelectedEvent = new EventEmitter<eventObj>()
   @Output() itemDeSelectedEvent = new EventEmitter<eventObj>()
   @Output() selectedAllEvent = new EventEmitter<eventObj>()
@@ -17,7 +18,7 @@ export class FiltersSelectComponent {
   @Input() settings!: DropdownSettings
   @Input() dropDownList: any = []
   @Input() filterAttr!: string
-  selectedItems = []
+  @Input() selectedItems!: never[]
   
   constructor() {}
 

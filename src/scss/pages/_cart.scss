@@ -150,6 +150,10 @@
         flex: 1 1 0;
     }
 
+    &__link {
+        text-decoration: none;
+    }
+
     &__heading {
         font-size: 1.6rem;
         color: c.$gray-dark-1;

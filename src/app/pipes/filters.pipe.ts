@@ -13,6 +13,7 @@ export class FiltersPipe implements PipeTransform {
                 private paginationService: PaginationService) {}
 
     transform(dishes: Dish[], filterAttr: string, triggerFiltering: any = 0) {
+        if (!dishes.length) return []
         // console.log("in filtering pipe", filterAttr, triggerFiltering)
         this.filteredDishes = dishes.filter((dish: Dish) => {
             // @ts-ignore

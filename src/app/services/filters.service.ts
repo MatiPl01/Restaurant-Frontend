@@ -1,11 +1,24 @@
 import { Injectable, EventEmitter } from '@angular/core'
 import { Dish } from 'src/app/shared/models/dish.model'
 
+type FiltersObject = {
+    category: Set<string>,
+    cuisine: Set<string>,
+    unitPrice: {
+        min: number,
+        max: number
+    },
+    rating: {
+        min: number,
+        max: number
+    }
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class FiltersService {
-    filtersChangedEvent = new EventEmitter<string>()
+    filtersChangedEvent = new EventEmitter<FiltersObject>()
 
     private appliedFilters: any = {
         category: new Set(),
@@ -41,22 +54,22 @@ export class FiltersService {
 
     addFilter(filterAttr: string, filterValue: any) {
         this.appliedFilters[filterAttr].add(filterValue)
-        this.filtersChangedEvent.emit(filterAttr)
+        this.notifyChanges()
     }
 
     addAllFilters(filterAttr: string, filterValues: any) {
         this.appliedFilters[filterAttr] = new Set(filterValues)
-        this.filtersChangedEvent.emit(filterAttr)
+        this.notifyChanges()
     }
 
     removeFilter(filterAttr: string, filterValue: any) {
         this.appliedFilters[filterAttr].delete(filterValue)
-        this.filtersChangedEvent.emit(filterAttr)
+        this.notifyChanges()
     }
 
     removeAllFilters(filterAttr: string) {
         this.appliedFilters[filterAttr].clear()
-        this.filtersChangedEvent.emit(filterAttr)
+        this.notifyChanges()
     }
 
     setRangeFilter(filterAttr: string, minValue: number, maxValue: number) {
@@ -64,21 +77,22 @@ export class FiltersService {
             min: minValue,
             max: maxValue
         }
-        this.filtersChangedEvent.emit(filterAttr)
+        this.notifyChanges()
     }
     
     getFilters(filterAttr: string): any {
         return this.filtersFunctions[filterAttr]
     }
 
-    resetFilters() {
+    resetFilters(notifyChanges: boolean = true) {
         this.appliedFilters.category.clear()
         this.appliedFilters.cuisine.clear()
         this.appliedFilters.unitPrice.min = this.appliedFilters.rating.min = 0
         this.appliedFilters.unitPrice.max = this.appliedFilters.rating.max = Infinity
+        if (notifyChanges) this.notifyChanges()
     }
 
-    notifyRatingChanged() {
-        this.filtersChangedEvent.emit('rating')
+    notifyChanges() {
+        this.filtersChangedEvent.emit(this.appliedFilters)
     }
 }

@@ -4,4 +4,6 @@ import { Component } from '@angular/core'
   selector: 'app-dishes',
   templateUrl: './dishes.component.html'
 })
-export class DishesComponent {}
+export class DishesComponent {
+  constructor() {}
+}

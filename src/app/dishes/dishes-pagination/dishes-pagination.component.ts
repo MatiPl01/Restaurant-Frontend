@@ -17,7 +17,7 @@ export class DishesPaginationComponent implements OnInit, OnDestroy {
   constructor(private paginationService: PaginationService) {}
 
   ngOnInit(): void {
-    this.update(this.paginationService.getDataObject())
+    // this.update(this.paginationService.getDataObject())
     this.subscription = this.paginationService.pagesChangedEvent.subscribe(this.update.bind(this))
   }
 

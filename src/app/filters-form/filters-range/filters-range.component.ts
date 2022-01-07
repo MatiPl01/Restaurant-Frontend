@@ -1,4 +1,5 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { Component, Input, EventEmitter, Output, SimpleChange } from '@angular/core';
+import { Subject } from 'rxjs'
 import { Options } from '@angular-slider/ngx-slider'
 
 @Component({
@@ -7,17 +8,15 @@ import { Options } from '@angular-slider/ngx-slider'
   styleUrls: ['./filters-range.component.scss']
 })
 export class FiltersRangeComponent {
-  @Output() rangeChangedEvent = new EventEmitter<{filterAttr: string, min: number, max: number}>()
+  @Output() valuesChange = new EventEmitter<{filterAttr: string, min: number, max: number}>()
   @Input() filterAttr!: string
-  @Input('minSet') minSetValue!: number
-  @Input('maxSet') maxSetValue!: number
+  @Input() values!: { min: number, max: number }
   @Input() options!: Options
 
   onChange() {
-    this.rangeChangedEvent.emit({
+    this.valuesChange.emit({
       filterAttr: this.filterAttr,
-      min: this.minSetValue,
-      max: this.maxSetValue
+      ...this.values
     })
   }
 }

@@ -25,6 +25,10 @@ export class PaginationService {
         return this.currPossibleDishesPerPage
     }
 
+    getDefaultDishesPerPage(): number {
+        return this.defaultDishesPerPage
+    }
+
     getDataObject(): PagesData {
         return {
             pageNum: this.pageNum,
@@ -33,9 +37,25 @@ export class PaginationService {
         }
     }
 
+    getDefaultQueryParams(): { page: number, limit: number } {
+        console.log('defaultQueryParams')
+        return {
+            page: 1,
+            limit: this.defaultDishesPerPage
+        }
+    }
+
+    getCurrentQueryParams(): {page: number, limit: number} {
+        console.log('getCurrentQueryParams')
+        return {
+            page: this.pageNum,
+            limit: this.dishesPerPage
+        }
+    }
+
     setQueryParams(params: Params): void {
         const pageNum = parseInt(params['page'])
-        const dishesPerPage = parseInt(params['per-page'])
+        const dishesPerPage = parseInt(params['limit'])
         console.log('setting query data', pageNum, dishesPerPage, this.displayedDishesCount)
         if (this.allPossibleDishesPerPage.includes(dishesPerPage)) {
             this.dishesPerPage = dishesPerPage
@@ -43,22 +63,22 @@ export class PaginationService {
         if (pageNum > 0 && (pageNum - 1) * this.dishesPerPage < this.displayedDishesCount) {
             this.pageNum = +pageNum  
         } 
-        this.updateQueryParams()
         this.updatePagination(false)
     }
 
-    setDishesPerPageCount(count: number): void {
+    setDishesPerPageCount(count: number, updatePagination: boolean = true): void {
         this.prevDishesPerPage = this.dishesPerPage
         this.dishesPerPage = count
-        this.updateQueryParams()
-        this.updatePagination()
+        // this.updateQueryParams()
+        if (updatePagination) this.updatePagination()
     }
 
-    setDisplayedDishesCount(count: number): void {
-        console.log('displayed count', count)
+    setDisplayedDishesCount(count: number, updatePagination: boolean = true): void {
+        console.log('--->', count, this.displayedDishesCount)
+        if (count === this.displayedDishesCount) return
         this.displayedDishesCount = count
         this.setPossibleDishesPerPage()
-        this.updatePagination()
+        if (updatePagination) this.updatePagination()
     }
 
     setCurrentPage(pageNum: number): void {
@@ -67,15 +87,16 @@ export class PaginationService {
         this.notifyChange()
     }
 
-    private updatePagination(calcCurrPage = true): void {
+    private updatePagination(calcCurrPage: boolean = true): void {
         const prevPagesDishesCount = Math.min((this.pageNum - 1) * this.prevDishesPerPage, this.displayedDishesCount)
         let pageNum
-        // @ts-ignore
-        if (calcCurrPage) pageNum = Math.min(Math.ceil(prevPagesDishesCount / this.dishesPerPage) + (prevPagesDishesCount !== this.displayedDishesCount), this.pagesCount)
-        else pageNum = this.pageNum
-        this.setCurrentPage(pageNum)
+        console.log('prev dishes', prevPagesDishesCount)
         this.pagesCount = Math.ceil(this.displayedDishesCount / this.dishesPerPage)
-        this.notifyChange()
+        // @ts-ignore
+        if (calcCurrPage) pageNum = Math.max(Math.min(Math.ceil(prevPagesDishesCount / this.dishesPerPage) + (prevPagesDishesCount !== this.displayedDishesCount), this.pagesCount), 1)
+        else pageNum = this.pageNum
+        console.log('after update count', this.pagesCount, 'pagenum', this.pageNum)
+        this.setCurrentPage(pageNum)
     }
 
     private setPossibleDishesPerPage(): void {
@@ -84,7 +105,7 @@ export class PaginationService {
     }
 
     private notifyChange(): void {
-        console.log('notify changes')
+        console.log('notify called')
         this.pagesChangedEvent.emit(this.getDataObject())
     }
 
@@ -93,7 +114,7 @@ export class PaginationService {
             relativeTo: this.activatedRoute,
             queryParams: {
                 page: this.pageNum,
-                'per-page': this.dishesPerPage   
+                limit: this.dishesPerPage   
             }
         })
     }

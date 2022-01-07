@@ -43,6 +43,20 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     ceil: 0
   }
 
+  // Current filters values
+  priceValues = {
+    min: 0,
+    max: 0
+  }
+
+  ratingValues = {
+    min: 0,
+    max: 0
+  }
+
+  selectedCategories = []
+  selectedCuisines = []
+
   priceOptions:  Options = Object.assign({}, this.placeholderOptions)
   ratingOptions: Options = Object.assign({}, this.placeholderOptions)
 
@@ -96,11 +110,18 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
       max = this.stepToValue(eventObj.max, this.ratingSteps, this.minRating, this.maxRating)
     }
     
-    this.filtersService.setRangeFilter(eventObj.filterAttr, min, max);
+    this.filtersService.setRangeFilter(eventObj.filterAttr, min, max)
+  }
+
+  onFiltersReset(): void {
+    this.selectedCategories = []
+    this.selectedCuisines = []
+    this.filtersService.resetFilters()
+    this.update()
   }
 
   private updatePriceOptions() {
-    const currency = this.currencyService.getCurrentCurrencySymbol();
+    const currency = this.currencyService.getCurrentCurrencySymbol()
     this.priceOptions = {
       floor: 0,
       ceil: this.priceSteps,
@@ -134,6 +155,9 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.minPrice = Math.floor(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinReferencePrice()))
     this.maxPrice = Math.ceil(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxReferencePrice()))
     this.priceSteps = this.calcStepsCount(this.minPrice, this.maxPrice, this.priceStep)
+    this.priceValues.min = 0
+    this.priceValues.max = this.priceSteps
+    console.log(this.priceValues)
     this.updatePriceOptions()
   }
 
@@ -142,6 +166,9 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.minRating = Math.floor(Math.min(...ratings))
     this.maxRating = Math.ceil(Math.max(...ratings))
     this.ratingSteps = this.calcStepsCount(this.minRating, this.maxRating, this.ratingStep)
+    this.ratingValues.min = 0
+    this.ratingValues.max = this.ratingSteps
+    console.log(this.ratingValues)
     this.updateRatingOptions()
   }
 

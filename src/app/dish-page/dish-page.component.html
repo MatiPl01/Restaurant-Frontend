@@ -8,6 +8,64 @@
   </section>
 
   <section class="dish-page__right">
+    <a class="dish-page__button dish-page__button--back"
+      routerLink="..">
+      Powrót do listy dań
+    </a>
+    
+    <section class="dish-page__rating">
+      <a class="dish-page__link" fragment="reviews">
+        <div class="dish-page__rating-item">
+          <app-rating class="dish-page__rating-component" [value]="dish.rating"></app-rating>
+        </div>
+        <div class="dish-page__rating-item">
+          <p class="dish-page__rating-count">{{ dish?.ratesCount || 0 }}</p>
+          <p class="dish-page__rating-text">ocen</p>
+        </div>
+      </a>
+    </section>
 
+    <h3 class="dish-page__heading">{{ dish.name }}</h3>
+
+    <section class="dish-page__details">
+      <ul class="dish-page__details-list">
+        <li class="dish-page__detail">
+          <p class="dish-page__detail-name">Kuchnia</p>
+          <p class="dish-page__detail-value">{{ dish.cuisine | uppercase }}</p>
+        </li>
+        <li class="dish-page__detail">
+          <p class="dish-page__detail-name">Typ</p>
+          <p class="dish-page__detail-value">{{ dish.type }}</p>
+        </li>
+        <li class="dish-page__detail">
+          <p class="dish-page__detail-name">Kategoria</p>
+          <p class="dish-page__detail-value">{{ dish.category }}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="dish-page__order">
+      <app-dish-order
+        [dish]="dish"
+      ></app-dish-order>
+    </section>
+
+    <section class="dish-page__ingredients">
+      <h4 class="dish-page__heading dish-page__heading--ingredients">Składniki</h4>
+      <ul class="dish-page__ingredients-list">
+        <li class="dish-page__ingredient" *ngFor="let ingredient of dish.ingredients">
+          {{ ingredient }}
+        </li>
+      </ul>
+    </section>
+    
+    <section class="dish-page__description">
+      <h4 class="dish-page__heading dish-page__heading--description">Opis</h4>
+      <p class="dish-page__description-text">{{ dish.description }}</p>
+    </section>
+
+    <section class="dish-page__reviews">
+      <h4 class="dish-page__heading dish-page__heading--reviews">Recenzje</h4>
+    </section>
   </section>
 </main>

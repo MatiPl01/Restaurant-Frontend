@@ -15,7 +15,9 @@ export class FiltersPagesComponent implements OnInit, OnDestroy {
   constructor(public paginationService: PaginationService) {}
 
   ngOnInit() {
+    console.log('PAGES COMPONENT INIT', this.subscription, this.paginationService.pagesChangedEvent)
     this.subscription = this.paginationService.pagesChangedEvent.subscribe((data: any) => {
+      console.log('PAGES CHANGED')
       setTimeout(() => {
         this.selectedCount = this.dishesPerPage = data.dishesPerPage
         const possibleCounts = this.paginationService.getPossibleDishesPerPage()

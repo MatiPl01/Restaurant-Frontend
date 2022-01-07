@@ -6,7 +6,8 @@
     </svg>
   </button>
 
-  <figure class="dish__figure">
+  <figure class="dish__figure"
+    [routerLink]="[dish.id]">
     <app-responsive-image class="dish__image"
       [breakpoints]="dish.images.breakpoints"
       [paths]="dish.images.cover"

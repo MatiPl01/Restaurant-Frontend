@@ -32,6 +32,7 @@
         overflow: hidden;
         border-top-left-radius: .3rem;
         border-top-right-radius: .3rem;
+        cursor: pointer;
         
         // Use a trick with ::before pseudo element to ensure that all
         // images keep the same aspect ratio

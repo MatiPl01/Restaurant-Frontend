@@ -9,6 +9,7 @@ import { PaginationService } from '../services/pagination.service'
   templateUrl: './nav-bar.component.html'
 })
 export class NavBarComponent implements OnInit, OnDestroy {
+  defaultPaginationQueryParams: Object = {}
   isHeaderVisible: boolean = false
 
   subscription!: Subscription
@@ -18,6 +19,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
               private visualizationService: VisualizationService) {}
 
   ngOnInit(): void {
+    this.defaultPaginationQueryParams = this.paginationService.getDefaultQueryParams()
     this.subscription = this.visualizationService.headerVisibilityChangedEvent.subscribe((isVisible: boolean) => {
       this.isHeaderVisible = isVisible
     })

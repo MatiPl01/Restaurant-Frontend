@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { VisualizationService } from '../services/visualization.service'
 
@@ -8,6 +8,8 @@ import { VisualizationService } from '../services/visualization.service'
 })
 export class ScrollTopBtnComponent implements OnInit, OnDestroy {
   isHeaderVisible: boolean = false
+  scrolledFarEnough: boolean = false
+  minScrollY: number = 500
 
   subscription!: Subscription
   
@@ -21,6 +23,11 @@ export class ScrollTopBtnComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+  }
+
+  @HostListener("window:scroll", ["$event"])
+  onWindowScroll() {
+    this.scrolledFarEnough = window.scrollY > this.minScrollY
   }
 
   onClick() {

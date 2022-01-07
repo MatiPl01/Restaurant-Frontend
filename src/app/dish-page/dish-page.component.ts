@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DishesService } from '../services/dishes.service';
+import { PaginationService } from '../services/pagination.service';
 import { Dish } from '../shared/models/dish.model';
 
 @Component({
@@ -15,7 +16,8 @@ export class DishPageComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private dishesService: DishesService) {}
+              private dishesService: DishesService,
+              public paginationService: PaginationService) {}
 
   ngOnInit(): void {
     this.dishID = this.activatedRoute.snapshot.params['id']

@@ -20,6 +20,7 @@ export class DishesListComponent implements OnInit, OnDestroy {
   paginationTrigger: number = 0
 
   subscriptions: Subscription[] = []
+  queryParamsSubscription!: Subscription
  
   constructor(private activatedRoute: ActivatedRoute,
               public paginationService: PaginationService,
@@ -28,28 +29,36 @@ export class DishesListComponent implements OnInit, OnDestroy {
               public filtersService: FiltersService) {}
 
   ngOnInit(): void {
-    // Try to load saved data
-    this.filtersService.resetFilters()
-    this.dishes = this.dishesService.getDishes()
-    if (this.dishes.length) {
-      this.paginationService.setDisplayedDishesCount(this.dishes.length)
-      this.paginationService.setQueryParams(this.activatedRoute.snapshot.queryParams)
-    }
-
     // Setup event observers
     this.subscriptions.push(
       this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
         this.dishes = dishes
-        this.paginationService.setDisplayedDishesCount(dishes.length)
-        this.subscriptions.push(
-          this.activatedRoute.queryParams.subscribe((params: Params) => {
-            this.paginationService.setQueryParams(params)
-          })
-        )
+        this.paginationService.setDisplayedDishesCount(dishes.length, false)
+        if (!this.queryParamsSubscription) this.subscribeQueryParams()
       }),
       this.filtersService.filtersChangedEvent.subscribe(this.refilterDishes.bind(this)),
       this.paginationService.pagesChangedEvent.subscribe(this.updatePages.bind(this))
     )
+  }
+
+  ngAfterViewInit() { // Try to load stored data
+    // IMPORTANT - is dishes are stored in a DishesService, they
+    // will be loaded from this service after this component is
+    // initialized. This ensures that all sub-components are
+    // loaded, thus a proper number of dishes per page and a proper
+    // page number can be displayed (subscriptions to pagesChangedEvent
+    // in these component aren't too late). We also need to setTimeout
+    // as changing DOM isn't allowed immediately after element was
+    // rendered
+    setTimeout(() => {
+      this.filtersService.resetFilters()
+      this.dishes = this.dishesService.getDishes()
+      if (this.dishes.length) {
+        this.paginationService.setDisplayedDishesCount(this.dishes.length, false)
+        this.paginationService.setQueryParams(this.activatedRoute.snapshot.queryParams)
+        if (!this.queryParamsSubscription) this.subscribeQueryParams()
+      }
+    }, 0)
   }
 
   ngOnDestroy(): void {
@@ -79,5 +88,12 @@ export class DishesListComponent implements OnInit, OnDestroy {
   private updatePages(data: any): void {
     this.dishesPerPage = data.dishesPerPage
     this.pageIdx = data.pageNum - 1
+  }
+
+  private subscribeQueryParams(): void {
+    this.queryParamsSubscription = this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.paginationService.setQueryParams(params)
+    })
+    this.subscriptions.push(this.queryParamsSubscription)
   }
 }

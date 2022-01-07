@@ -22,7 +22,6 @@ import { ResponsiveImageComponent } from './responsive-image/responsive-image.co
 import { DishDetailsComponent } from './dishes/dish/dish-details/dish-details.component'
 import { DishQuantityComponent } from './dishes/dish/dish-quantity/dish-quantity.component'
 import { DishOrderComponent } from './dishes/dish/dish-order/dish-order.component'
-// import { RatingComponent } from './dishes/dish/dish-rating/dish-rating.component'
 import { FiltersFormComponent } from './filters-form/filters-form.component'
 import { FiltersSelectComponent } from './filters-form/filters-select/filters-select.component'
 import { FiltersRangeComponent } from './filters-form/filters-range/filters-range.component'
@@ -39,12 +38,13 @@ import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component
 import { CartItemComponent } from './cart/cart-item/cart-item.component'
 import { CartItemsListComponent } from './cart/cart-items-list/cart-items-list.component'
 import { RatingComponent } from './rating/rating.component'
-
-import { FiltersPipe } from '../app/pipes/filters.pipe'
-import { PaginationPipe } from '../app/pipes/pagination.pipe';
 import { DishPageComponent } from './dish-page/dish-page.component';
 import { ResponsiveGalleryComponent } from './responsive-gallery/responsive-gallery.component';
 import { GallerySliderComponent } from './responsive-gallery/gallery-slider/gallery-slider.component';
+
+import { FiltersPipe } from '../app/pipes/filters.pipe'
+import { PaginationPipe } from '../app/pipes/pagination.pipe';
+
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 <button class="scroll-top-btn"
-        [ngClass]="{hidden: isHeaderVisible}"
+        [ngClass]="{hidden: isHeaderVisible || !scrolledFarEnough}"
         (click)="onClick()">
   <span></span>
 </button>

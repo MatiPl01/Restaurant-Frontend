@@ -5,6 +5,7 @@
 .dish-page {
     height: 200vh;
     position: relative;
+    display: flex;
     
     &__left {
         width: 40vw;
@@ -13,6 +14,6 @@
     }
 
     &__right {
-
+        margin-top: 18rem;
     }
 }
