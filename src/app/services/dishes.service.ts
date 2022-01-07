@@ -22,9 +22,9 @@ export class DishesService {
 
   // json-server --watch -p 3000 src/assets/json/dishes.json
   private dishesJsonUrl: string = 'http://localhost:3000/dishes' 
-  private dishes: Dish[] = []
-  private minUnitPrice: number = Infinity
-  private maxUnitPrice: number = 0
+  private dishesMap: Map<number, Dish> = new Map()
+  private minDishPrice: number = Infinity
+  private maxDishPrice: number = 0
   maxDishID: number = 0
 
   // For now I will store information if an user rated a particular
@@ -41,27 +41,31 @@ export class DishesService {
         this.loadDishesData(data)
         this.updateMaxUnitPrice()
         this.updateMinUnitPrice()
-        this.dishesChangedEvent.emit(this.dishes)
+        this.dishesChangedEvent.emit(this.getDishes())
       })
   }
 
   loadDishesData(data: any) {
     data.forEach((dish: Dish) => {
-      this.dishes.push(dish)
+      this.dishesMap.set(dish.id, dish)
       this.maxDishID = Math.max(this.maxDishID, dish.id)
     })
   }
 
   getDishes(): Dish[] {
-    return this.dishes.slice()
+    return [...this.dishesMap.values()]
+  }
+
+  getDishWithID(id: number): Dish {
+    // @ts-ignore
+    return this.dishesMap.get(id)
   }
 
   removeDish(dish: Dish) {
     this.http
       .delete<Dish>(`${this.dishesJsonUrl}/${dish.id}`)
       .subscribe(() => {
-        const idx = this.dishes.findIndex((d: Dish) => d.id === dish.id)
-        this.dishes.splice(idx, 1)
+        this.dishesMap.delete(dish.id)
         this.dishesChangedEvent.emit(this.getDishes())
         this.updateMinUnitPrice()
         this.updateMaxUnitPrice()
@@ -72,24 +76,28 @@ export class DishesService {
   addDish(dish: Dish) {
     this.maxDishID++
     this.http.post<Dish>(this.dishesJsonUrl, dish, headers).subscribe()
-    this.dishes.push(dish)
+    this.dishesMap.set(dish.id, dish)
     this.dishesChangedEvent.emit(this.getDishes())
+    
+    const dishPrice = this.currencyService.calcDishReferencePrice(dish)
+    if (dishPrice > this.maxDishPrice) this.maxDishPrice = dishPrice
+    if (dishPrice < this.minDishPrice) this.minDishPrice = dishPrice
   }
 
   updateMinUnitPrice() {
-    this.minUnitPrice = Infinity
-    this.dishes.forEach((dish: Dish) => {
-      const dishPrice = this.currencyService.exchangeAmount(dish.unitPrice, dish.currency, this.currencyService.getReferenceCurrency())
-      if (dishPrice < this.minUnitPrice) this.minUnitPrice = dishPrice
-    })
+    this.minDishPrice = Infinity
+    for (let dish of this.dishesMap.values()) {
+      const dishPrice = this.currencyService.calcDishReferencePrice(dish)
+      if (dishPrice < this.minDishPrice) this.minDishPrice = dishPrice
+    }
   }
 
   updateMaxUnitPrice() {
-    this.maxUnitPrice = 0
-    this.dishes.forEach((dish: Dish) => {
-      const dishPrice = this.currencyService.exchangeAmount(dish.unitPrice, dish.currency, this.currencyService.getReferenceCurrency())
-      if (dishPrice > this.maxUnitPrice) this.maxUnitPrice = dishPrice
-    })
+    this.maxDishPrice = 0
+    for (let dish of this.dishesMap.values()) {
+      const dishPrice = this.currencyService.calcDishReferencePrice(dish)
+      if (dishPrice > this.maxDishPrice) this.maxDishPrice = dishPrice
+    }
   }
 
   updateRating(dish: Dish, currRate: number) {
@@ -103,24 +111,24 @@ export class DishesService {
     this.userRates.set(dish.id, currRate)
     this.http.put<Dish>(`${this.dishesJsonUrl}/${dish.id}`, dish, headers).subscribe()
   
-    const updatedDish = this.dishes.find(d => dish.id === d.id)
+    const updatedDish = this.dishesMap.get(dish.id)
     updatedDish!.ratesCount = dish.ratesCount
     updatedDish!.rating = dish.rating
     this.filtersService.notifyRatingChanged()
   }
   
-  getMaxUnitPrice() {
-    return this.maxUnitPrice
+  getMaxReferencePrice() {
+    return this.maxDishPrice
   }
 
-  getMinUnitPrice() {
-    return this.minUnitPrice
+  getMinReferencePrice() {
+    return this.minDishPrice
   }
 
   getValuesSet(attr: string): any {
     const result = new Set()
     // @ts-ignore
-    this.dishes.forEach((dish: Dish) => result.add(dish[attr]))
+    for (let dish of this.dishesMap.values()) result.add(dish[attr])
     return result
   }
 

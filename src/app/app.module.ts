@@ -18,11 +18,11 @@ import { DishesListComponent } from './dishes/dishes-list/dishes-list.component'
 import { DishComponent } from './dishes/dish/dish.component'
 import { DishesComponent } from './dishes/dishes.component'
 import { PriceComponent } from './price/price.component'
-import { ImgResponsiveComponent } from './img-responsive/img-responsive.component'
+import { ResponsiveImageComponent } from './responsive-image/responsive-image.component'
 import { DishDetailsComponent } from './dishes/dish/dish-details/dish-details.component'
 import { DishQuantityComponent } from './dishes/dish/dish-quantity/dish-quantity.component'
 import { DishOrderComponent } from './dishes/dish/dish-order/dish-order.component'
-import { RatingComponent } from './dishes/dish/dish-rating/dish-rating.component'
+// import { RatingComponent } from './dishes/dish/dish-rating/dish-rating.component'
 import { FiltersFormComponent } from './filters-form/filters-form.component'
 import { FiltersSelectComponent } from './filters-form/filters-select/filters-select.component'
 import { FiltersRangeComponent } from './filters-form/filters-range/filters-range.component'
@@ -34,15 +34,17 @@ import { AddDishFormComponent } from './add-dish/add-dish-form/add-dish-form.com
 import { ScrollTopBtnComponent } from './scroll-top-btn/scroll-top-btn.component'
 import { FiltersPagesComponent } from './filters-form/filters-pages/filters-pages.component'
 import { DishesPaginationComponent } from './dishes/dishes-pagination/dishes-pagination.component'
-
-import { FiltersPipe } from '../app/pipes/filters.pipe'
-import { PaginationPipe } from '../app/pipes/pagination.pipe'
-
 import { AppRoutingModule } from './app-routing.module'
 import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component'
 import { CartItemComponent } from './cart/cart-item/cart-item.component'
 import { CartItemsListComponent } from './cart/cart-items-list/cart-items-list.component'
+import { RatingComponent } from './rating/rating.component'
 
+import { FiltersPipe } from '../app/pipes/filters.pipe'
+import { PaginationPipe } from '../app/pipes/pagination.pipe';
+import { DishPageComponent } from './dish-page/dish-page.component';
+import { ResponsiveGalleryComponent } from './responsive-gallery/responsive-gallery.component';
+import { GallerySliderComponent } from './responsive-gallery/gallery-slider/gallery-slider.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,7 @@ import { CartItemsListComponent } from './cart/cart-items-list/cart-items-list.c
     DishOrderComponent,
     DishQuantityComponent,
     PriceComponent,
-    ImgResponsiveComponent,
+    ResponsiveImageComponent,
     RatingComponent,
     FiltersFormComponent,
     FiltersSelectComponent,
@@ -78,7 +80,10 @@ import { CartItemsListComponent } from './cart/cart-items-list/cart-items-list.c
     DishesPaginationComponent,
     CartSummaryComponent,
     CartItemComponent,
-    CartItemsListComponent
+    CartItemsListComponent,
+    DishPageComponent,
+    ResponsiveGalleryComponent,
+    GallerySliderComponent,
   ],
   imports: [
     BrowserModule,

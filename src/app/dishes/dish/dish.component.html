@@ -7,12 +7,12 @@
   </button>
 
   <figure class="dish__figure">
-    <app-img-responsive class="dish__image"
+    <app-responsive-image class="dish__image"
       [breakpoints]="dish.images.breakpoints"
       [paths]="dish.images.cover"
       [sizes]="'(max-width: 28em) calc(100vw - 1.875em), (max-width: 56.25em) 25em, (max-width: 75em) calc((100vw - 14.625em) / 2), (min-width: 135em) 37em, (min-width: 112.5em) calc((100vw - 24em) / 3), calc((100vw - 20em) / 3)'"
       [alt]="dish.name">
-    </app-img-responsive>
+    </app-responsive-image>
     <figcaption class="dish__caption">
       <h3 class="dish__heading"    
           [title]="dish.name">
@@ -23,7 +23,16 @@
 
   <section class="dish__body">
     <app-dish-details class="dish__details" [dish]="dish">
-      <app-dish-rating [dish]="dish"></app-dish-rating>
+      <div class="dish__rating">
+        <div class="dish__rating-row">
+          <app-rating class="dish__rating-component" [value]="dish.rating"></app-rating>
+        </div>
+        <div class="dish__rating-row">
+          <p class="dish__rating-text">Liczba ocen</p>
+          <p class="dish__rating-count">{{ dish?.ratesCount || 0 }}</p>
+        </div>
+      </div>
+      <!-- <app-dish-rating [dish]="dish"></app-dish-rating> -->
     </app-dish-details>
     <app-dish-quantity class="dish__quantity" [dish]="dish"></app-dish-quantity>
   </section>

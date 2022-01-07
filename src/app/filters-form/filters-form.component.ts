@@ -131,8 +131,8 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   }
 
   private updatePriceSlider() {
-    this.minPrice = Math.floor(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinUnitPrice()))
-    this.maxPrice = Math.ceil(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxUnitPrice()))
+    this.minPrice = Math.floor(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinReferencePrice()))
+    this.maxPrice = Math.ceil(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxReferencePrice()))
     this.priceSteps = this.calcStepsCount(this.minPrice, this.maxPrice, this.priceStep)
     this.updatePriceOptions()
   }

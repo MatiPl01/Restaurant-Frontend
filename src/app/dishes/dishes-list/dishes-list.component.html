@@ -5,7 +5,7 @@
               | filter:  'cuisine'  : filteringTrigger
               | filter:  'unitPrice': filteringTrigger
               | filter:  'rating'   : filteringTrigger
-              | paginate: paginationService.pageIdx : paginationService.dishesPerPage : paginationTrigger
+              | paginate: pageIdx   : dishesPerPage : paginationTrigger
   ">
     <app-dish 
       [dish]="dish"

@@ -2,7 +2,6 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { PaginationService } from '../../services/pagination.service'
 
-
 @Component({
   selector: 'app-dishes-pagination',
   templateUrl: './dishes-pagination.component.html'
@@ -13,14 +12,13 @@ export class DishesPaginationComponent implements OnInit, OnDestroy {
   @Input('maxDisplayed') maxDisplayedNumbersCount: number = 5
 
   pagesNumbers: number[] = []
-
   subscription!: Subscription
 
   constructor(private paginationService: PaginationService) {}
 
   ngOnInit(): void {
     this.update(this.paginationService.getDataObject())
-    this.subscription = this.paginationService.pagesChanged.subscribe(this.update.bind(this))
+    this.subscription = this.paginationService.pagesChangedEvent.subscribe(this.update.bind(this))
   }
 
   ngOnDestroy(): void {
@@ -51,9 +49,19 @@ export class DishesPaginationComponent implements OnInit, OnDestroy {
     this.pagesNumbers = arr
   }
 
-  private update(data: any) {
+  // private updateCurrentPage(pageNum: number) {
+  //   this.currentPage = +pageNum
+  //   this.updateMiddlePagesNumbers()
+  // }
+
+  // private updatePagesCount(data: any) {
+  //   this.pagesCount = data.pagesCount
+  //   this.updateMiddlePagesNumbers()
+  // }
+  private update(data: any): void {
+    console.log('update', data.pagesCount, data.pageNum)
     this.pagesCount = data.pagesCount
-    this.currentPage = data.currentPageNum
+    this.currentPage = data.pageNum
     this.updateMiddlePagesNumbers()
   }
 }

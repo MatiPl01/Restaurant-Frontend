@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { VisualizationService } from '../services/visualization.service'
 import { OrderService } from '../services/order.service'
 import { Subscription } from 'rxjs'
+import { PaginationService } from '../services/pagination.service'
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription
 
-  constructor(private visualizationService: VisualizationService, public orderService: OrderService) {}
+  constructor(public orderService: OrderService,
+              public paginationService: PaginationService,
+              private visualizationService: VisualizationService) {}
 
   ngOnInit(): void {
     this.subscription = this.visualizationService.headerVisibilityChangedEvent.subscribe((isVisible: boolean) => {

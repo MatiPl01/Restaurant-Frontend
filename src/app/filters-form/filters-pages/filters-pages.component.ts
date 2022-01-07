@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { PaginationService } from 'src/app/services/pagination.service'
 
 @Component({
   selector: 'app-filters-pages',
   templateUrl: './filters-pages.component.html'
 })
-export class FiltersPagesComponent implements OnInit {
-  possibleDishesPerPage: number[] = [2, 3, 6, 15, 30, 45] // TODO -change me to normal values
-  dishesPerPage = this.possibleDishesPerPage[0]
+export class FiltersPagesComponent implements OnInit, OnDestroy {
+  dishesPerPage: number = 0
+  selectedCount: number = 0
+  subscription!: Subscription
+  possibleDishesPerPage: number[] = []
 
-  constructor(private paginationService: PaginationService) {}
+  constructor(public paginationService: PaginationService) {}
 
   ngOnInit() {
-    const savedDishesPerPage = this.paginationService.getDataObject().dishesPerPage
-    if (savedDishesPerPage === 1) this.paginationService.setDishesPerPageCount(+this.dishesPerPage)
-    else this.dishesPerPage = savedDishesPerPage
+    this.subscription = this.paginationService.pagesChangedEvent.subscribe((data: any) => {
+      setTimeout(() => {
+        this.selectedCount = this.dishesPerPage = data.dishesPerPage
+        const possibleCounts = this.paginationService.getPossibleDishesPerPage()
+        const maxCount = this.possibleDishesPerPage[this.possibleDishesPerPage.length - 1]
+        this.selectedCount = Math.min(maxCount, this.dishesPerPage) 
+        this.possibleDishesPerPage = possibleCounts
+      }, 0)
+    })
   }
 
   onCountChange() {
     this.paginationService.setDishesPerPageCount(+this.dishesPerPage)
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 }

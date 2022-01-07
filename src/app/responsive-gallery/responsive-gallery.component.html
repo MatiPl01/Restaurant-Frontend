@@ -1,0 +1,19 @@
+<article class="gallery">
+  <ul class="gallery__images-list">
+    <li class="gallery__images-item"
+      *ngFor="let paths of imagesPaths; let i = index">
+      <app-responsive-image
+        [breakpoints]="breakpoints"
+        [paths]="paths"
+        [sizes]="sizes"
+        [alt]="alts[i]"
+      ></app-responsive-image>
+    </li>
+  </ul>
+
+  <app-gallery-slider
+    [imagesCount]="imagesPaths.length"
+    [currentIdx]="currentIdx"
+    (currentImageChanged)="setCurrentImage($event)"
+  ></app-gallery-slider>
+</article>

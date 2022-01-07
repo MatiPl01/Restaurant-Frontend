@@ -1,0 +1,13 @@
+<main class="dish-page" *ngIf="this.dish">
+  <section class="dish-page__left">
+    <app-responsive-gallery
+      [breakpoints]="dish.images.breakpoints" 
+      [imagesPaths]="dish.images.gallery" [sizes]="'40vw'"
+      [alts]="getImagesAlts()"
+    ></app-responsive-gallery>
+  </section>
+
+  <section class="dish-page__right">
+
+  </section>
+</main>

@@ -39,6 +39,10 @@ export class CurrencyService {
         return this.exchangeAmount(dish.unitPrice, dish.currency, this.currentCurrency)
     }
 
+    calcDishReferencePrice(dish: Dish): number {
+        return this.exchangeAmount(dish.unitPrice, dish.currency, this.referenceCurrency)
+    }
+
     exchangeAmount(amount: number, initialCurrency: string, targetCurrency: string): number {
         return amount * this.getExchangeRatio(initialCurrency, targetCurrency)
     }

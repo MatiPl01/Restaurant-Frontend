@@ -103,6 +103,33 @@
         margin-bottom: 2rem;
     }
 
+    &__rating {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        &-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &-component,
+        &-text {    
+            font-size: 1.2rem;
+        }
+
+        &-text {
+            padding-left: .3rem;
+            font-family: Poppins, Arial, Helvetica, sans-serif;
+        }
+
+        &-count {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: c.$gray-dark-2;
+        }
+    }
+
     &__quantity {
         position: absolute;
         bottom: 2rem;

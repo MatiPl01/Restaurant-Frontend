@@ -1,0 +1,17 @@
+<article class="rating"
+  [ngClass]="{disabled: !allowUserRating, 'user-rating': hasUserRated}">
+  <form class="rating__form">
+    <input class="rating__radio" type="radio" name="rate" value="10" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="9" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="8" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="7" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="6" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="5" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="4" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="3" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="2" (change)="onRatingChange($event)">
+    <input class="rating__radio" type="radio" name="rate" value="1" (change)="onRatingChange($event)">
+  </form>
+
+  <p class="rating__value">{{ currentRating.toFixed(2) }}</p>
+</article>

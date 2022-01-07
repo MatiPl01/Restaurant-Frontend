@@ -3,32 +3,11 @@
 @use '../helpers/mixins' as *;
 
 .rating {
-    font-size: .75rem; // Use this to control the size of stars
+    font-size: inherit; // Use this to control the size of stars and text
 
     display: flex;
-    flex-direction: column;
-    gap: .25rem;
-
-    &__row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: .75em;
-    }
-
-    &__text {
-        font-size: 1.5em;
-        color: c.$gray-dark-2;
-    }
-
-    &__average,
-    &__count {
-        font-size: 1.3em;
-        font-family: Poppins, Arial, Helvetica, sans-serif;
-        font-weight: 600;
-        width: 6rem;
-        text-align: right;
-    }
+    align-items: center;
+    gap: .5em;
 
     &__form {
         list-style: none;
@@ -39,8 +18,8 @@
 
     &__radio {
         font-size: inherit;
-        width: 1em;
-        height: 2em;
+        width: .75em;
+        height: 1.5em;
         position: relative;
         display: block;
         -webkit-appearance: none;
@@ -73,11 +52,30 @@
         }
 
         &:hover::after, &:hover ~ .rating__radio::after {
-            background: g.$primary !important;
+            background: g.$blue !important;
         }
     }
 
     &__form:hover &__radio::after {
         background: c.$gray-light-2;
+    }
+
+    // When rating is disabled
+    &.disabled {
+        pointer-events: none;
+    }
+
+    // When user left their own rating
+    &.user-rating {
+        .rating__radio {
+            &:checked::after, &:checked ~ .rating__radio::after {
+                background: g.$blue;
+            }
+        }
+    }
+
+    &__value {
+        font-weight: 600;
+        color: c.$gray-dark-2;
     }
 }

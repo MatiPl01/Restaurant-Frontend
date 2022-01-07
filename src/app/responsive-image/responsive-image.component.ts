@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-img-responsive',
-  templateUrl: './img-responsive.component.html'
+  selector: 'app-responsive-image',
+  templateUrl: './responsive-image.component.html'
 })
-export class ImgResponsiveComponent implements OnInit {
+export class ResponsiveImageComponent implements OnInit {
   @Input() breakpoints!: number[]
   @Input() paths!: string[]
   @Input() sizes!: string
