@@ -25,9 +25,6 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   onScroll() {
-    window.scrollTo({
-      top: this.headerEl.clientHeight + 1,
-      behavior: 'smooth'
-    })
+    this.visualizationService.scrollY(this.headerEl.clientHeight + 1)
   }
 }

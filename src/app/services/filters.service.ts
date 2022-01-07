@@ -1,16 +1,27 @@
 import { Injectable, EventEmitter } from '@angular/core'
 import { Dish } from 'src/app/shared/models/dish.model'
+import { CurrencyService } from './currency.service'
+import { PaginationService } from './pagination.service'
 
-type FiltersObject = {
-    category: Set<string>,
-    cuisine: Set<string>,
-    unitPrice: {
-        min: number,
-        max: number
-    },
-    rating: {
-        min: number,
-        max: number
+class FiltersObject {
+    category = new Set()
+    cuisine = new Set()
+    unitPrice = {
+        min: 0,
+        max: Infinity
+    }
+    rating = {
+        min: 0,
+        max: Infinity
+    }
+
+    clone(): FiltersObject {
+        const newObj = new FiltersObject()
+        newObj.category = new Set(this.category)
+        newObj.cuisine = new Set(this.cuisine)
+        newObj.unitPrice = Object.assign({}, this.unitPrice)
+        newObj.rating = Object.assign({}, this.rating)
+        return newObj
     }
 }
 
@@ -20,18 +31,8 @@ type FiltersObject = {
 export class FiltersService {
     filtersChangedEvent = new EventEmitter<FiltersObject>()
 
-    private appliedFilters: any = {
-        category: new Set(),
-        cuisine: new Set(),
-        unitPrice: {
-            min: 0,
-            max: Infinity
-        },
-        rating: {
-            min: 0,
-            max: Infinity
-        }
-    }
+    private initialFilters: FiltersObject = new FiltersObject()
+    private appliedFilters: FiltersObject = new FiltersObject()
 
     private filtersFunctions: any = {
         category: (dish: Dish) => {
@@ -43,7 +44,8 @@ export class FiltersService {
         unitPrice: (dish: Dish) => {
             const min = this.appliedFilters.unitPrice.min
             const max = this.appliedFilters.unitPrice.max
-            return min <= dish.unitPrice && dish.unitPrice <= max
+            const price = +this.currencyService.calcDishReferencePrice(dish).toFixed(2)
+            return min <= price && price <= max
         },
         rating: (dish: Dish) => {
             const min = this.appliedFilters.rating.min
@@ -52,47 +54,65 @@ export class FiltersService {
         }
     }
 
-    addFilter(filterAttr: string, filterValue: any) {
+    constructor(private paginationService: PaginationService,
+                private currencyService: CurrencyService) {
+        this.loadInitialFilters()
+    }
+
+    setInitialFilters(filterAttr: string, filters: any): void {
+        // @ts-ignore
+        this.initialFilters[filterAttr] = filters
+    }
+
+    getInitialFilters(filterAttr: string): any {
+        // @ts-ignore
+        return this.initialFilters[filterAttr]
+    }
+
+    addFilter(filterAttr: string, filterValue: any, notifyChanges: boolean = true): void {
+        // @ts-ignore
         this.appliedFilters[filterAttr].add(filterValue)
-        this.notifyChanges()
+        if (notifyChanges) this.notifyChanges()
     }
 
-    addAllFilters(filterAttr: string, filterValues: any) {
+    addAllFilters(filterAttr: string, filterValues: any, notifyChanges: boolean = true): void {
+        // @ts-ignore
         this.appliedFilters[filterAttr] = new Set(filterValues)
-        this.notifyChanges()
+        if (notifyChanges) this.notifyChanges()
     }
 
-    removeFilter(filterAttr: string, filterValue: any) {
+    removeFilter(filterAttr: string, filterValue: any, notifyChanges: boolean = true): void {
+        // @ts-ignore
         this.appliedFilters[filterAttr].delete(filterValue)
-        this.notifyChanges()
+        if (notifyChanges) this.notifyChanges()
     }
 
-    removeAllFilters(filterAttr: string) {
+    removeAllFilters(filterAttr: string, notifyChanges: boolean = true): void {
+        // @ts-ignore
         this.appliedFilters[filterAttr].clear()
-        this.notifyChanges()
+        if (notifyChanges) this.notifyChanges()
     }
 
-    setRangeFilter(filterAttr: string, minValue: number, maxValue: number) {
+    setRangeFilter(filterAttr: string, minValue: number, maxValue: number, notifyChanges: boolean = true): void {
+        // @ts-ignore
         this.appliedFilters[filterAttr] = {
             min: minValue,
             max: maxValue
         }
-        this.notifyChanges()
+        if (notifyChanges) this.notifyChanges()
     }
     
     getFilters(filterAttr: string): any {
         return this.filtersFunctions[filterAttr]
     }
 
-    resetFilters(notifyChanges: boolean = true) {
-        this.appliedFilters.category.clear()
-        this.appliedFilters.cuisine.clear()
-        this.appliedFilters.unitPrice.min = this.appliedFilters.rating.min = 0
-        this.appliedFilters.unitPrice.max = this.appliedFilters.rating.max = Infinity
-        if (notifyChanges) this.notifyChanges()
+    loadInitialFilters(): void {
+        this.appliedFilters = this.initialFilters.clone()
+        this.notifyChanges()
+        this.paginationService.notifyChanges()
     }
 
-    notifyChanges() {
+    notifyChanges(): void {
         this.filtersChangedEvent.emit(this.appliedFilters)
     }
 }

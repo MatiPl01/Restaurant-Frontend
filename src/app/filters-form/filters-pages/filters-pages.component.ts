@@ -21,9 +21,9 @@ export class FiltersPagesComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.selectedCount = this.dishesPerPage = data.dishesPerPage
         const possibleCounts = this.paginationService.getPossibleDishesPerPage()
+        this.possibleDishesPerPage = possibleCounts
         const maxCount = this.possibleDishesPerPage[this.possibleDishesPerPage.length - 1]
         this.selectedCount = Math.min(maxCount, this.dishesPerPage) 
-        this.possibleDishesPerPage = possibleCounts
       }, 0)
     })
   }

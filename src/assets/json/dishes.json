@@ -22,58 +22,94 @@
       "unitPrice": 20,
       "rating": 4.61,
       "ratesCount": 39,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/bruna-branco-t8hTmte4O_g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/bruna-branco-t8hTmte4O_g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/bruna-branco-t8hTmte4O_g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/bruna-branco-t8hTmte4O_g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/bruna-branco-t8hTmte4O_g-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/bruna-branco-t8hTmte4O_g-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/rob-wicks-_slDBXdJCdE-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/karolina-kolodziejczak-dvgjof0_TP8-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/pexels-polina-tankilevitch-4518839.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr-w:1920/restaurant/dishes/pexels-polina-tankilevitch-4518835.jpg"
+            ]
+          }
         ]
       }
     },
@@ -96,58 +132,94 @@
       "unitPrice": 39,
       "rating": 4.78,
       "ratesCount": 19,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/vinicius-benedit_-_1GEAA8q3wk-unsplash_1_.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/derek-duran-Jz4QMhLvGgw-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/riccardo-bergamini-O2yNzXdqOu0-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mahmoud-fawzy-n1DePkKznLY-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mahmoud-fawzy-MgvByrhYz24-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -170,51 +242,78 @@
       "unitPrice": 18,
       "rating": 3.62,
       "ratesCount": 5,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/homescreenify-sA3wymYqyaI-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/homescreenify-sA3wymYqyaI-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/homescreenify-sA3wymYqyaI-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/homescreenify-sA3wymYqyaI-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/homescreenify-sA3wymYqyaI-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/homescreenify-sA3wymYqyaI-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/danijela-prijovic-qits91IZv1o-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-OMp3XpMiqGU-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-klaus-nielsen-6287554.jpg"
+            ]
+          }
         ]
       }
     },
@@ -238,44 +337,62 @@
       "unitPrice": 26,
       "rating": 4.239999999999999,
       "ratesCount": 36,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/karolina-kolodziejczak-OSMAK8b74ls-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/karolina-kolodziejczak-OSMAK8b74ls-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/karolina-kolodziejczak-OSMAK8b74ls-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/karolina-kolodziejczak-OSMAK8b74ls-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/karolina-kolodziejczak-OSMAK8b74ls-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-benjamin-4764588.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-benjamin-4764588.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-benjamin-4764588.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-benjamin-4764588.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-benjamin-4764588.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-anna-guerrero-4078163.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-OSMAK8b74ls-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-benjamin-4764588.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-benjamin-4764588.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-benjamin-4764588.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-benjamin-4764588.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-benjamin-4764588.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-anna-guerrero-4078163.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-anna-guerrero-4078163.jpg"
+            ]
+          }
         ]
       }
     },
@@ -298,51 +415,78 @@
       "unitPrice": 18,
       "rating": 4.653398058252427,
       "ratesCount": 103,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/monika-grabkowska-jsgJtBOR6jY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/monika-grabkowska-jsgJtBOR6jY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/monika-grabkowska-jsgJtBOR6jY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/monika-grabkowska-jsgJtBOR6jY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/monika-grabkowska-jsgJtBOR6jY-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/monika-grabkowska-jsgJtBOR6jY-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/delaney-van-s_aGnOcfCq0-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/jacinto-diego-i2LaTOYpc5c-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/austin-p-1ZTccDpF71k-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -366,65 +510,110 @@
       "unitPrice": 22,
       "rating": 4.87,
       "ratesCount": 97,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/mae-mu-TkzdkVn1AyA-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/mae-mu-TkzdkVn1AyA-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/mae-mu-TkzdkVn1AyA-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/mae-mu-TkzdkVn1AyA-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/mae-mu-TkzdkVn1AyA-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mae-mu-TkzdkVn1AyA-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/chad-montano-gf9777gaYjs-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/tatiana-rodriguez-iuKj0rRRddA-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/jaqueline-pelzer-Zt-0gWKodXk-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/joshua-ryder-y4K7Ydp2z3Y-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/nikldn-qp7WA8AV2x0-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -448,44 +637,62 @@
       "unitPrice": 16,
       "rating": 4.78,
       "ratesCount": 76,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/marianna-ole-4El3DUkQs2g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/marianna-ole-4El3DUkQs2g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/marianna-ole-4El3DUkQs2g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/marianna-ole-4El3DUkQs2g-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/marianna-ole-4El3DUkQs2g-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/marianna-ole-4El3DUkQs2g-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/victoria-alexandrova-XKzfIg-LVcU-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/victoria-alexandrova-MabMpt0roPE-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -507,58 +714,94 @@
       "unitPrice": 10,
       "rating": 4.98,
       "ratesCount": 251,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/dana-devolk-5-RS_ScO3X4-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/dana-devolk-5-RS_ScO3X4-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/dana-devolk-5-RS_ScO3X4-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/dana-devolk-5-RS_ScO3X4-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/dana-devolk-5-RS_ScO3X4-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-sittisak-c-1739347.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/dana-devolk-5-RS_ScO3X4-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/slashio-photography-uMYxldWYSZk-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/mark-cruz-Ov0u44CyGdM-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/lama-roscu-Wpg3Qm0zaGk-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-sittisak-c-1739347.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-sittisak-c-1739347.jpg"
+            ]
+          }
         ]
       }
     },
@@ -581,37 +824,46 @@
       "unitPrice": 8,
       "rating": 3.6666666666666665,
       "ratesCount": 3,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/slashio-photography-iMsCe-rlDaY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/slashio-photography-iMsCe-rlDaY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/slashio-photography-iMsCe-rlDaY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/slashio-photography-iMsCe-rlDaY-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/slashio-photography-iMsCe-rlDaY-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/slashio-photography-iMsCe-rlDaY-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/slashio-photography-z3PMynE3SEo-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -635,44 +887,62 @@
       "unitPrice": 12,
       "rating": 4.817142857142857,
       "ratesCount": 7,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/anshu-a-DfOSCJcmvEU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/anshu-a-DfOSCJcmvEU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/anshu-a-DfOSCJcmvEU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/anshu-a-DfOSCJcmvEU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/anshu-a-DfOSCJcmvEU-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/anshu-a-DfOSCJcmvEU-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/max-nayman-NkGhmwAw7hQ-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/hamide-jafari-kmwtxSOkQPc-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -694,51 +964,78 @@
       "unitPrice": 12,
       "rating": 4.63,
       "ratesCount": 23,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/cala-w6ftFbPCs9I-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/cala-w6ftFbPCs9I-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/cala-w6ftFbPCs9I-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/cala-w6ftFbPCs9I-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/cala-w6ftFbPCs9I-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/cala-w6ftFbPCs9I-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/monika-grabkowska-_y6A9bhILkM-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/tina-vanhove-GrG7QH4utak-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/ruth-georgiev-TvEyo2WEzVE-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -763,51 +1060,78 @@
       "unitPrice": 12,
       "rating": 3.5,
       "ratesCount": 1,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/jenn-kosar-k5VGs9qQubc-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/jenn-kosar-k5VGs9qQubc-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/jenn-kosar-k5VGs9qQubc-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/jenn-kosar-k5VGs9qQubc-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/jenn-kosar-k5VGs9qQubc-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/jenn-kosar-k5VGs9qQubc-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-x7hMzWxZa78-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/karolina-kolodziejczak-bvLE5xZDj0w-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/sara-dubler-M6baxXgSos8-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -832,51 +1156,78 @@
       "unitPrice": 42,
       "rating": 3.869846153846154,
       "ratesCount": 65,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/chad-montano-MqT0asuoIcU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/chad-montano-MqT0asuoIcU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/chad-montano-MqT0asuoIcU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/chad-montano-MqT0asuoIcU-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/chad-montano-MqT0asuoIcU-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/chad-montano-MqT0asuoIcU-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/sahand-hoseini-BMVAYjPf6mU-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/kelvin-t-AcA8moIiD3g-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/quin-engle-lHUdfk5WGXc-unsplash.jpg"
+            ]
+          }
         ]
       }
     },
@@ -898,44 +1249,62 @@
       "unitPrice": 13.5,
       "rating": 4.260000000000001,
       "ratesCount": 9,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/pexels-karolina-grabowska-4198015_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/pexels-karolina-grabowska-4198015_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/pexels-karolina-grabowska-4198015_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/pexels-karolina-grabowska-4198015_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/pexels-karolina-grabowska-4198015_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-lisa-4989069.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-lisa-4989069.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-lisa-4989069.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-lisa-4989069.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-lisa-4989069.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-karolina-grabowska-4198015.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-karolina-grabowska-4198023.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/pexels-lisa-4989069.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-lisa-4989069.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/pexels-lisa-4989069.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/pexels-lisa-4989069.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/pexels-lisa-4989069.jpg"
+            ]
+          }
         ]
       }
     },
@@ -959,46 +1328,128 @@
       "unitPrice": 24,
       "rating": 4.66,
       "ratesCount": 63,
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+      "description": [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia velit aspernatur alias voluptas non, odio corporis asperiores beatae numquam, quidem facilis ea sunt dignissimos cumque."
+      ],
       "images": {
-        "breakpoints": [
-          400,
-          600,
-          1000,
-          1400,
-          1920
-        ],
-        "cover": [
-          "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/covers/lucas-lobak-neves-Gdb1BOuIwbk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/covers/lucas-lobak-neves-Gdb1BOuIwbk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/covers/lucas-lobak-neves-Gdb1BOuIwbk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/covers/lucas-lobak-neves-Gdb1BOuIwbk-unsplash_1_.jpg",
-          "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/covers/lucas-lobak-neves-Gdb1BOuIwbk-unsplash_1_.jpg"
-        ],
+        "coverIdx": 0,
         "gallery": [
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg"
-          ],
-          [
-            "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
-            "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg"
-          ]
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/lucas-lobak-neves-Gdb1BOuIwbk-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/max-griss-D9fAmtjC284-unsplash.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              400,
+              600,
+              1000,
+              1400,
+              1920
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/dishes/yalamber-limbu-708OpfCW4H8-unsplash.jpg"
+            ]
+          }
         ]
       }
+    },
+    {
+      "id": 16,
+      "name": "Muffiny czekolafowe",
+      "cuisine": "międzynarodowa",
+      "type": "słodycze",
+      "category": "ciasta",
+      "ingredients": [
+        "mąka",
+        "kakao",
+        "czekolada",
+        "cukier",
+        "mleko",
+        "jaja",
+        "olej",
+        "śmietana"
+      ],
+      "stock": 68,
+      "currency": "EUR",
+      "unitPrice": 7,
+      "rating": 0,
+      "ratesCount": 0,
+      "description": [
+        "Lorem ipsum.",
+        "",
+        "Lorem ipsum.",
+        "",
+        "",
+        "Lorem.ipsum."
+      ],
+      "images": {
+        "coverIdx": 0,
+        "gallery": [
+          {
+            "breakpoints": [
+              300,
+              600,
+              1200,
+              1800
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-300/restaurant/dishes/pexels-darko-trajkovic-10563880.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/dishes/pexels-darko-trajkovic-10563880.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1200/restaurant/dishes/pexels-darko-trajkovic-10563880.jpg",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1800/restaurant/dishes/pexels-darko-trajkovic-10563880.jpg"
+            ]
+          },
+          {
+            "breakpoints": [
+              350,
+              800,
+              1200,
+              1200
+            ],
+            "paths": [
+              "https://ik.imagekit.io/MatiPl01/tr:w-350/restaurant/dishes/pexels-darko-trajkovic-10538803.jpg?updatedAt=1641592595352",
+              "https://ik.imagekit.io/MatiPl01/tr:w-800/restaurant/dishes/pexels-darko-trajkovic-10538803.jpg?updatedAt=1641592595352",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1200/restaurant/dishes/pexels-darko-trajkovic-10538803.jpg?updatedAt=1641592595352",
+              "https://ik.imagekit.io/MatiPl01/tr:w-1600/restaurant/dishes/pexels-darko-trajkovic-10538803.jpg?updatedAt=1641592595352"
+            ]
+          }
+        ]
+      },
+      "reviews": []
     }
   ]
 }

@@ -1,29 +1,68 @@
-import { Component } from '@angular/core'
+import { Component, HostListener, Output, ViewChild, EventEmitter, Input } from '@angular/core'
 import { NgForm } from '@angular/forms'
 import { DishesService } from '../../services/dishes.service'
 import { CurrencyService } from '../../services/currency.service'
 import { Dish } from '../../shared/models/dish.model'
+import { AddedImage } from 'src/app/shared/models/added-image.model'
+import { ImageEntry } from 'src/app/shared/models/image-entry.model'
 
 @Component({
   selector: 'app-add-dish-form',
   templateUrl: './add-dish-form.component.html'
 })
 export class AddDishFormComponent {
+  @Output() imagesChangedEvent = new EventEmitter<AddedImage[]>()
+  @ViewChild('f') mainForm!: NgForm;
+  @ViewChild('g') imageForm!: NgForm;
+  @Input() images: AddedImage[] = []
+  isImageValid: boolean = true
+  isWidthValid: boolean = true
+  isGroupValid: boolean = true
 
   constructor(public currencyService: CurrencyService, private dishesService: DishesService) {}
+
+  @HostListener('reset')
+  onReset() {
+    this.imageForm.resetForm()
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
       const dish = this.createDishObject(form)
       this.dishesService.addDish(dish)
+      this.images = []
+      this.imagesChangedEvent.emit(this.images)
       form.reset()
     }
   }
 
+  onImageAdd(form: NgForm): void {
+    const path = form.value.image?.trim()
+    const width = +form.value.width
+    const group = +form.value.group
+    this.isImageValid = path !== ''
+    // @ts-ignore
+    this.isWidthValid = width >= 20 && width <= 4000
+    this.isGroupValid = form.value.group.length && (group >= 0 && group <= 99)
+    
+    if (this.isImageValid && this.isWidthValid && this.isGroupValid) {
+      this.images.push({ path, width, group })
+      this.imageForm.resetForm()
+      this.images.sort((a: AddedImage, b: AddedImage) => {
+        console.log(10 * Math.sign(a.group - b.group) + Math.sign(a.width - b.width))
+        return 10 * Math.sign(a.group - b.group) + Math.sign(a.width - b.width)
+      })
+      this.imagesChangedEvent.emit(this.images)
+    }
+  }
+
+  onImageSubmit(form: NgForm): void {
+    console.log(form)
+  }
+
   private createDishObject(form: NgForm): Dish {
     const id = this.dishesService.maxDishID + 1
-    const imagesPaths = form.value.images.split(',').map((path: string) => path.trim())
-    const newDish: Dish = {
+    return {
       id,
       name: form.value.name,
       cuisine: form.value?.cuisine || 'międzynarodowa',
@@ -35,13 +74,33 @@ export class AddDishFormComponent {
       unitPrice: +form.value.price.replace(',', '.'),
       rating: 0,
       ratesCount: 0,
-      description: form.value.description,
+      description: form.value.description.split('\n').map((p: string) => p.trim()),
       images: {
-        breakpoints: [1920],
-        cover: [imagesPaths[0]],
-        gallery: [imagesPaths.slice(1)]
-      }
+        coverIdx: 0,
+        gallery: this.getImagesData()
+      },
+      reviews: []
     }
-    return newDish;
+  }
+
+  private getImagesData(): ImageEntry[] {
+    if (!this.images.length) return []
+    let currEntry = { breakpoints: [this.images[0].width], paths: [this.images[0].path] }
+    if (this.images.length === 1) return [currEntry]
+    const emptyEntry = { breakpoints: [], paths: [] }
+    const entries: ImageEntry[] = []
+
+    for (let i = 1; i < this.images.length; i++) {
+      const currImage = this.images[i]
+      if (currImage.group !== this.images[i - 1].group) {
+        entries.push(currEntry)
+        currEntry = JSON.parse(JSON.stringify(emptyEntry))
+      }
+      currEntry.breakpoints.push(currImage.width)
+      currEntry.paths.push(currImage.path)
+    }
+    entries.push(currEntry)
+
+    return entries
   }
 }

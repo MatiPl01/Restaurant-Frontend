@@ -84,7 +84,12 @@ export class PaginationService {
     setCurrentPage(pageNum: number): void {
         this.pageNum = pageNum
         this.updateQueryParams()
-        this.notifyChange()
+        this.notifyChanges()
+    }
+
+    notifyChanges(): void {
+        console.log('notify called')
+        this.pagesChangedEvent.emit(this.getDataObject())
     }
 
     private updatePagination(calcCurrPage: boolean = true): void {
@@ -102,11 +107,6 @@ export class PaginationService {
     private setPossibleDishesPerPage(): void {
         const idx = this.allPossibleDishesPerPage.findIndex(v => v >= this.displayedDishesCount)
         this.currPossibleDishesPerPage = this.allPossibleDishesPerPage.slice(0, idx + 1)
-    }
-
-    private notifyChange(): void {
-        console.log('notify called')
-        this.pagesChangedEvent.emit(this.getDataObject())
     }
 
     private updateQueryParams() {

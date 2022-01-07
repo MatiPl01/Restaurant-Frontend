@@ -11,6 +11,7 @@
     &__images {
         &-list {
             height: 100%;
+            list-style: none;
             display: inline-flex;
             transition: transform .3s ease-out;
             cursor: grab;

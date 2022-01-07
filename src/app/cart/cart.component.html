@@ -4,12 +4,11 @@
       <h3 class="cart__heading heading-primary">
         Koszyk
       </h3>
+
+      <a class="cart__button cart__button--back" routerLink="/dishes"
+        [queryParams]="paginationService.getCurrentQueryParams()">&larr; Powrót do listy dań</a>
   
       <app-cart-items-list></app-cart-items-list>
-  
-      <a class="cart__button cart__button--back"
-        routerLink="/dishes"
-        [queryParams]="paginationService.getCurrentQueryParams()">&larr; Kontynuuj zakupy</a>
     </section>
   
     <section class="cart__summary">

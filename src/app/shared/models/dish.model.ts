@@ -1,3 +1,6 @@
+import { ImageEntry } from "./image-entry.model";
+import { Review } from "./review.model";
+
 export interface Dish {
     id: number,
     name: string,
@@ -12,8 +15,8 @@ export interface Dish {
     ratesCount: number,
     description: string,
     images: {
-        breakpoints: number[],
-        cover: string[],
-        gallery: string[][]
-    }
+        coverIdx: 0,
+        gallery: ImageEntry[]
+    },
+    reviews: Review[]
 }

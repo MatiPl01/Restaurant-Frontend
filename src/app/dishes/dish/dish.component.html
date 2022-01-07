@@ -9,8 +9,8 @@
   <figure class="dish__figure"
     [routerLink]="[dish.id]">
     <app-responsive-image class="dish__image"
-      [breakpoints]="dish.images.breakpoints"
-      [paths]="dish.images.cover"
+      [breakpoints]="dish.images.gallery[dish.images.coverIdx].breakpoints"
+      [paths]="dish.images.gallery[dish.images.coverIdx].paths"
       [sizes]="'(max-width: 28em) calc(100vw - 1.875em), (max-width: 56.25em) 25em, (max-width: 75em) calc((100vw - 14.625em) / 2), (min-width: 135em) 37em, (min-width: 112.5em) calc((100vw - 24em) / 3), calc((100vw - 20em) / 3)'"
       [alt]="dish.name">
     </app-responsive-image>
@@ -33,7 +33,6 @@
           <p class="dish__rating-count">{{ dish?.ratesCount || 0 }}</p>
         </div>
       </div>
-      <!-- <app-dish-rating [dish]="dish"></app-dish-rating> -->
     </app-dish-details>
     <app-dish-quantity class="dish__quantity" [dish]="dish"></app-dish-quantity>
   </section>
@@ -43,7 +42,7 @@
       [amount]="currencyService.calcDishCurrentPrice(dish)"
       [currency]="currencyService.getCurrentCurrencySymbol()"
     ></app-price>
-    <app-dish-order
+    <app-dish-order class="order--white"
       [dish]="dish"
       (changeQuantity)="onQuantityChange($event)"
     ></app-dish-order>

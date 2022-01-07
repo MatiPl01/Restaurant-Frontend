@@ -23,12 +23,12 @@
 
         &--left {
             text-align: right;
-            width: 37.5%;
+            width: 28%;
         }
 
         &--right {
             text-align: left;
-            width: 62.5%;
+            width: 72%;
         }
     }
 
@@ -53,12 +53,6 @@
         max-width: 95%;
     }
 
-    &__wrapper {
-        padding-right: 2rem;
-        display: flex;
-        gap: 1rem
-    }
-
     &__textarea,
     &__input {
         border-radius: 10rem;
@@ -74,6 +68,51 @@
 
     &__textarea {
         border-radius: 1rem;
+        resize: vertical;
+        max-height: 25rem;
+        min-height: 5rem;
+    }
+
+    &__group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__input-wrapper {
+        position: relative;
+        flex: 1 1 0;
+
+        &--currency {
+            flex: 0 0 0;
+            margin-left: -2rem;
+            margin-right: 2rem;
+        }
+
+        &--image {
+            flex: 5 5 0;
+        }
+
+        &--width {
+            flex: 3 3 0;
+        }
+
+        &--add {
+            margin-right: 2rem;
+            margin-left: -2rem;
+            flex: 0 0 0;
+        }
+
+        &--group {
+            flex: 2 2 0;
+        }
+    }
+
+    &__image-form {
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
     }
 
     &__buttons {
@@ -93,21 +132,8 @@
         &-icon {
             fill: c.$white;
             filter: drop-shadow(0 0 .5rem rgba(c.$black, .3));
-            height: 3rem;
-            width: 3rem;
-        }
-
-        &--close {
-            display: block;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1;
-            border-radius: 50%;
-            width: 4rem;
-            height: 4rem;
-            background: g.$primary;
-            @include flex-center;
+            height: 2rem;
+            width: 2rem;
         }
 
         &--save,
@@ -127,15 +153,31 @@
             background: g.$red;
         }
 
+        &--add {
+            background: g.$primary;
+            border-radius: 10rem;
+            width: 3rem;
+            height: 3rem;
+            @include flex-center;
+        }
+
         &[disabled] {
             background: g.$gray;
             cursor: not-allowed;
         }
     }
-}
 
-input.ng-invalid.ng-touched,
-textarea.ng-invalid.ng-touched,
-select.ng-invalid.ng-touched {
-    border: 2px solid c.$red !important;
+    input.ng-invalid.ng-touched,
+    textarea.ng-invalid.ng-touched,
+    select.ng-invalid.ng-touched {
+        border: 2px solid c.$red;
+    }
+
+    &__input--sub {
+        border: 2px solid transparent !important;
+
+        &.invalid {
+            border: 2px solid c.$red !important;
+        }
+    }
 }

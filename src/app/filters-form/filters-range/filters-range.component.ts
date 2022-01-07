@@ -1,5 +1,4 @@
-import { Component, Input, EventEmitter, Output, SimpleChange } from '@angular/core';
-import { Subject } from 'rxjs'
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider'
 
 @Component({
@@ -12,7 +11,7 @@ export class FiltersRangeComponent {
   @Input() filterAttr!: string
   @Input() values!: { min: number, max: number }
   @Input() options!: Options
-
+  
   onChange() {
     this.valuesChange.emit({
       filterAttr: this.filterAttr,

@@ -13,9 +13,9 @@ type dropdownEventObj = { filterAttr: string, value: any }
 })
 export class FiltersFormComponent implements OnInit, OnDestroy {
   categoryFilterAttr: string = 'category'
-  cuisineFilterAttr:  string = 'cuisine'
+  cuisineFilterAttr: string = 'cuisine'
   priceFilterAttr: string = 'unitPrice'
-  ratingFilterAttr:  string = 'rating'
+  ratingFilterAttr: string = 'rating'
   priceStep = .5
   ratingStep = .05
   categoriesList: string[] = []
@@ -65,14 +65,25 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   constructor(private filtersService: FiltersService, private dishesService: DishesService, private currencyService: CurrencyService) { }
 
   ngOnInit(): void {
-    this.update()
-
     this.subscriptions.push(
-      this.dishesService.dishesChangedEvent.subscribe(this.update.bind(this)),
+      this.dishesService.dishesChangedEvent.subscribe(() => {
+        this.setServiceInitialFilters()
+        this.filtersService.loadInitialFilters()
+        this.update()
+      }),
       this.currencyService.currencyChangedEvent.subscribe(() => {
         this.updatePriceSlider()
+        console.log(this.priceValues, this.ratingValues)
       })
     )
+  }
+
+  ngAfterViewInit(): void {
+    if (this.dishesService.areDishesLoaded) {
+      setTimeout(() => {
+        this.update()
+      }, 0)
+    }
   }
 
   ngOnDestroy() {
@@ -116,29 +127,42 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   onFiltersReset(): void {
     this.selectedCategories = []
     this.selectedCuisines = []
-    this.filtersService.resetFilters()
+    this.filtersService.loadInitialFilters()
     this.update()
   }
 
-  private updatePriceOptions() {
+  private setServiceInitialFilters(): void {
+    const ratings = this.dishesService.getValuesSet('rating')
+
+    this.filtersService.setInitialFilters('unitPrice', {
+      min: this.dishesService.getMinReferencePrice(), 
+      max: this.dishesService.getMaxReferencePrice()
+    })
+    this.filtersService.setInitialFilters('rating', {
+      min: +Math.min(...ratings).toFixed(1),
+      max: +Math.max(...ratings).toFixed(1)
+    })
+  }
+
+  private updatePriceOptions(): void  {
     const currency = this.currencyService.getCurrentCurrencySymbol()
     this.priceOptions = {
       floor: 0,
       ceil: this.priceSteps,
       translate: (value: number, label: LabelType): string => {
         value = this.stepToValue(value, this.priceSteps, this.minPrice, this.maxPrice)
-        return value ? currency + value.toFixed(2) : ''
+        return currency + (value || 0).toFixed(2)
       }
     }
   }
 
-  private updateRatingOptions() {
+  private updateRatingOptions(): void  {
     this.ratingOptions = {
       floor: 0,
       ceil: this.ratingSteps,
       translate: (value: number, label: LabelType): string => {
         value = this.stepToValue(value, this.ratingSteps, this.minRating, this.maxRating)
-        return value ? value.toFixed(2) : ''
+        return (value || 0).toFixed(2)
       }
     }
   }
@@ -161,10 +185,10 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.updatePriceOptions()
   }
 
-  private updateRatingsSlider() {
-    const ratings = this.dishesService.getValuesSet('rating')
-    this.minRating = Math.floor(Math.min(...ratings))
-    this.maxRating = Math.ceil(Math.max(...ratings))
+  private updateRatingsSlider(): void  {
+    const ratings = this.filtersService.getInitialFilters('rating')
+    this.minRating = ratings.min
+    this.maxRating = ratings.max
     this.ratingSteps = this.calcStepsCount(this.minRating, this.maxRating, this.ratingStep)
     this.ratingValues.min = 0
     this.ratingValues.max = this.ratingSteps
@@ -172,7 +196,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.updateRatingOptions()
   }
 
-  private update() {
+  private update(): void  {
     this.categoriesList = [...this.dishesService.getValuesSet(this.categoryFilterAttr)]
     this.cuisinesList = [...this.dishesService.getValuesSet(this.cuisineFilterAttr)]
     this.updatePriceSlider()

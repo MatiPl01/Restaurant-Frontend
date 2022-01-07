@@ -1,8 +1,7 @@
 <main class="dish-page" *ngIf="this.dish">
   <section class="dish-page__left">
     <app-responsive-gallery
-      [breakpoints]="dish.images.breakpoints" 
-      [imagesPaths]="dish.images.gallery" [sizes]="'40vw'"
+      [images]="dish.images.gallery" [sizes]="'40vw'"
       [alts]="getImagesAlts()"
     ></app-responsive-gallery>
   </section>
@@ -10,22 +9,23 @@
   <section class="dish-page__right">
     <a class="dish-page__button dish-page__button--back"
       routerLink="..">
-      Powrót do listy dań
+      &larr; Powrót do listy dań
     </a>
+
+    <h3 class="dish-page__heading dish-page__heading--main heading-primary">{{ dish.name }}</h3>
     
     <section class="dish-page__rating">
-      <a class="dish-page__link" fragment="reviews">
+      <a class="dish-page__rating-link"
+        (click)="onReviewsClick()">
         <div class="dish-page__rating-item">
           <app-rating class="dish-page__rating-component" [value]="dish.rating"></app-rating>
         </div>
-        <div class="dish-page__rating-item">
-          <p class="dish-page__rating-count">{{ dish?.ratesCount || 0 }}</p>
-          <p class="dish-page__rating-text">ocen</p>
-        </div>
       </a>
+      <div class="dish-page__rating-item">
+        <p class="dish-page__rating-count">{{ dish?.ratesCount || 0 }}</p>
+        <p class="dish-page__rating-text">{{ getRatingText() }}</p>
+      </div>
     </section>
-
-    <h3 class="dish-page__heading">{{ dish.name }}</h3>
 
     <section class="dish-page__details">
       <ul class="dish-page__details-list">
@@ -43,11 +43,18 @@
         </li>
       </ul>
     </section>
+    
+    <!-- TODO -->
+    <!-- <app-dish-quantity [dish]="dish"></app-dish-quantity> -->
 
     <section class="dish-page__order">
-      <app-dish-order
-        [dish]="dish"
-      ></app-dish-order>
+      <p class="dish-page__order-text">
+        Liczba porcji
+      </p>
+      <app-dish-order class="dish-page__order-component" [dish]="dish"></app-dish-order>
+      <a class="dish-page__button dish-page__button--order" routerLink="/cart">
+        Pokaż koszyk
+      </a>
     </section>
 
     <section class="dish-page__ingredients">
@@ -61,11 +68,15 @@
     
     <section class="dish-page__description">
       <h4 class="dish-page__heading dish-page__heading--description">Opis</h4>
-      <p class="dish-page__description-text">{{ dish.description }}</p>
+      <div class="dish-page__description-text">
+        <p class="dish-page__description-paragraph" *ngFor="let paragraph of dish.description">{{ paragraph }}</p>
+      </div>
     </section>
 
     <section class="dish-page__reviews">
       <h4 class="dish-page__heading dish-page__heading--reviews">Recenzje</h4>
+
+      <app-reviews [reviews]="dish.reviews"></app-reviews>
     </section>
   </section>
 </main>

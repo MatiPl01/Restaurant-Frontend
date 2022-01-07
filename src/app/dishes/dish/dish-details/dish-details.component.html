@@ -17,20 +17,6 @@
     <ng-content></ng-content>
   </div>
 
-  <!-- <div class="details__ingredients">
-    <h4 class="details__heading details__heading--ingredients">Składniki</h4>
-    <ul class="details__ingredients-list">
-      <li class="details__ingredient" *ngFor="let ingredient of dish.ingredients">
-        {{ ingredient }}
-      </li>
-    </ul> -->
-  <!-- </div> -->
-
-  <!-- <div class="details__description">
-    <h4 class="details__heading details__heading--description">Opis</h4>
-    <p class="details__description-text">{{ dish.description }}</p>
-  </div> -->
-
   <div class="details__more">
     <a [routerLink]="[dish.id]" routerLinkActive="router-link-active"  class="details__button" role="button" title="Zobacz więcej szczegółów">Więcej szczegółów
       &rarr;</a>

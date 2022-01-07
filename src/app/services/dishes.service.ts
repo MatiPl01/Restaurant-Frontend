@@ -31,6 +31,7 @@ export class DishesService {
   // dish in a Set below. After implementing database, I will be able
   // to distinguish users
   userRates: Map<number, number> = new Map()
+  areDishesLoaded: boolean = false
 
   constructor(private http: HttpClient, 
               private currencyService: CurrencyService,
@@ -41,6 +42,7 @@ export class DishesService {
         this.loadDishesData(data)
         this.updateMaxUnitPrice()
         this.updateMinUnitPrice()
+        this.areDishesLoaded = true
         this.dishesChangedEvent.emit(this.getDishes())
       })
   }
@@ -80,14 +82,15 @@ export class DishesService {
     this.dishesChangedEvent.emit(this.getDishes())
     
     const dishPrice = this.currencyService.calcDishReferencePrice(dish)
-    if (dishPrice > this.maxDishPrice) this.maxDishPrice = dishPrice
-    if (dishPrice < this.minDishPrice) this.minDishPrice = dishPrice
+    if (dishPrice > this.maxDishPrice) this.maxDishPrice = +dishPrice.toFixed(2)
+    if (dishPrice < this.minDishPrice) this.minDishPrice = +dishPrice.toFixed(2)
   }
 
   updateMinUnitPrice() {
     this.minDishPrice = Infinity
     for (let dish of this.dishesMap.values()) {
-      const dishPrice = this.currencyService.calcDishReferencePrice(dish)
+      const dishPrice = +this.currencyService.calcDishReferencePrice(dish).toFixed(2)
+      console.log('min price', dishPrice, this.minDishPrice)
       if (dishPrice < this.minDishPrice) this.minDishPrice = dishPrice
     }
   }
@@ -95,7 +98,7 @@ export class DishesService {
   updateMaxUnitPrice() {
     this.maxDishPrice = 0
     for (let dish of this.dishesMap.values()) {
-      const dishPrice = this.currencyService.calcDishReferencePrice(dish)
+      const dishPrice = +this.currencyService.calcDishReferencePrice(dish).toFixed(2)
       if (dishPrice > this.maxDishPrice) this.maxDishPrice = dishPrice
     }
   }

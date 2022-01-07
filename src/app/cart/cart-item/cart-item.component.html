@@ -1,13 +1,15 @@
 <li class="cart-item">
+  <a [routerLink]="['/dishes', dish.id]" class="cart-item__link">
   <figure class="cart-item__figure">
     <app-responsive-image
     class="dish__image" 
-    [breakpoints]="dish.images.breakpoints"
-    [paths]="dish.images.cover"
+    [breakpoints]="dish.images.gallery[dish.images.coverIdx].breakpoints"
+    [paths]="dish.images.gallery[dish.images.coverIdx].paths"
       [sizes]="'30px'"
       [alt]="dish.name">
     </app-responsive-image>
   </figure>
+  </a>
 
   <section class="cart-item__details">
     <a [routerLink]="['/dishes', dish.id]" class="cart-item__link">
@@ -34,14 +36,12 @@
   <section class="cart-item__order">
     <ul class="cart-item__order-list">
       <li class="cart-item__order-item">
-        <app-dish-order 
-          class="cart-item__order-component"
+        <app-dish-order class="cart-item__order-component"
           [dish]="dish"
         ></app-dish-order>
       </li>
       <li class="cart-item__order-item">
-        <button 
-          class="cart-item__order-button"
+        <button class="cart-item__order-button"
           (click)="onRemoveClick()"  
         >Usuń</button>
       </li>

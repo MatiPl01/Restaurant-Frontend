@@ -1,12 +1,12 @@
-import { Component, AfterViewInit, OnDestroy, Input, ElementRef, HostListener } from '@angular/core';
+import { Component, AfterViewInit, Input, ElementRef, HostListener } from '@angular/core';
+import { ImageEntry } from '../shared/models/image-entry.model';
 
 @Component({
   selector: 'app-responsive-gallery',
   templateUrl: './responsive-gallery.component.html'
 })
-export class ResponsiveGalleryComponent implements AfterViewInit, OnDestroy {
-  @Input() breakpoints!: number[]
-  @Input() imagesPaths!: string[][]
+export class ResponsiveGalleryComponent implements AfterViewInit {
+  @Input() images!: ImageEntry[]
   @Input() sizes!: string
   @Input() alts!: string[]
   
@@ -21,19 +21,14 @@ export class ResponsiveGalleryComponent implements AfterViewInit, OnDestroy {
   animationID: number = 0
   currentIdx: number = 0
 
-  constructor(private elRef: ElementRef) { console.log('CREATED NEW !!!')}
+  constructor(private elRef: ElementRef) {}
 
   ngAfterViewInit(): void {
-    console.log('VIEW INIT !!!')
     this.galleryEl = this.elRef.nativeElement.querySelector('.gallery')
     this.itemsEls = Array.from(this.galleryEl.querySelectorAll('.gallery__images-item'))
     // @ts-ignore
     this.itemsListEl = this.galleryEl.querySelector('.gallery__images-list')
     this.addEventListeners()
-  }
-
-  ngOnDestroy(): void {
-    // TODO - remove event listeners (not sure if necessary?)
   }
 
   setCurrentImage(newIdx: number): void {

@@ -39,15 +39,7 @@
         &::before {
             content: '';
             display: block;
-            padding-bottom: 50%; // Aspect ratio: 2 / 1
-
-            @include respond(tab-port) {
-                padding-bottom: 60%; // Aspect ratio: 5 / 3
-            }
-
-            @include respond(big-desktop) {
-                padding-bottom: 60%; // Aspect ratio: 5 / 3
-            }
+            padding-bottom: 100%; // Aspect ratio: 1 / 1
         }
     }
 
@@ -166,48 +158,6 @@
         fill: c.$white;
         filter: drop-shadow(0 0 .3rem rgba(c.$black, .35));
     }
-    
-    .quantity {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        &__stock {
-            margin: -.5rem 0;
-            padding: .5rem 1rem;
-            position: relative;
-
-            div {
-                display: flex;
-                align-items: flex-end;
-                gap: .5rem;
-            }
-
-            &-text {
-                font-size: 1.4rem;
-            }
-
-            &-units {
-                font-size: 1.6rem;
-            }
-
-            &.sold-out,
-            &.low-quantity {
-                color: c.$white;
-                font-weight: bold;
-                z-index: 1;
-            }
-
-            &.sold-out { 
-                text-shadow: 0 0 .5rem rgba(c.$black, .3);
-                background: g.$red;
-            }
-            &.low-quantity { 
-                text-shadow: 0 0 .3rem rgba(c.$black, .5);
-                background: g.$primary;
-            }
-        }
-    }
 
     .details {
         display: flex;
@@ -250,44 +200,6 @@
                 font-size: 1.2rem;
                 color: c.$gray-dark-2;
                 font-weight: 600;
-            }
-        }
-
-        &__ingredients {
-            margin-top: 1rem;
-            border-top: 1px solid c.$gray-dark-3;
-            padding-bottom: 1rem;
-
-            &-list {
-                list-style: none;
-                display: flex;
-                flex-wrap: wrap;
-                column-gap: 1rem;
-                row-gap: .5rem;
-            }
-        }
-
-        &__ingredient {
-            white-space: nowrap;
-            font-size: 1rem;
-            padding: .5rem 1rem;
-            border-top-right-radius: 1rem;
-            border-bottom-left-radius: 1rem;
-            color: c.$white;
-            font-weight: 600;
-            text-shadow: 0 0 .3rem rgba(c.$black, .3);
-            background: g.$primary;
-        }
-
-        &__description {
-            border-top: 1px solid c.$gray-dark-3;
-            margin-top: 1rem;
-            flex-grow: 1;
-            
-            &-text {
-                color: c.$gray-dark-3;
-                line-height: 1.4;
-                font-size: 1.2rem;
             }
         }
 

@@ -31,9 +31,6 @@ export class ScrollTopBtnComponent implements OnInit, OnDestroy {
   }
 
   onClick() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    this.visualizationService.scrollY(0)
   }
 }

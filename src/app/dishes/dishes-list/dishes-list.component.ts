@@ -32,6 +32,7 @@ export class DishesListComponent implements OnInit, OnDestroy {
     // Setup event observers
     this.subscriptions.push(
       this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
+        console.log(dishes)
         this.dishes = dishes
         this.paginationService.setDisplayedDishesCount(dishes.length, false)
         if (!this.queryParamsSubscription) this.subscribeQueryParams()
@@ -51,7 +52,7 @@ export class DishesListComponent implements OnInit, OnDestroy {
     // as changing DOM isn't allowed immediately after element was
     // rendered
     setTimeout(() => {
-      this.filtersService.resetFilters()
+      this.filtersService.loadInitialFilters()
       this.dishes = this.dishesService.getDishes()
       if (this.dishes.length) {
         this.paginationService.setDisplayedDishesCount(this.dishes.length, false)
@@ -70,7 +71,7 @@ export class DishesListComponent implements OnInit, OnDestroy {
   }
 
   getClassObj(dish: Dish) {
-    const dishPrice = this.currencyService.exchangeAmount(dish.unitPrice, dish.currency, this.currencyService.getReferenceCurrency())
+    const dishPrice = +this.currencyService.calcDishCurrentPrice(dish).toFixed(2)
     return {
       cheap: dishPrice === this.dishesService.getMinReferencePrice(),
       expensive: dishPrice === this.dishesService.getMaxReferencePrice()

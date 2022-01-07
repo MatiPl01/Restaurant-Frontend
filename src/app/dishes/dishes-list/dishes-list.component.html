@@ -1,11 +1,11 @@
 <ul class="dishes__list">
   <li class="dishes__item" 
       *ngFor="let dish of dishes
-              | filter:  'category' : filteringTrigger
-              | filter:  'cuisine'  : filteringTrigger
-              | filter:  'unitPrice': filteringTrigger
-              | filter:  'rating'   : filteringTrigger
-              | paginate: pageIdx   : dishesPerPage : paginationTrigger
+          | filter:  'category' : filteringTrigger
+          | filter:  'cuisine'  : filteringTrigger
+          | filter:  'unitPrice': filteringTrigger
+          | filter:  'rating'   : filteringTrigger
+          | paginate: pageIdx   : dishesPerPage : paginationTrigger
   ">
     <app-dish 
       [dish]="dish"
