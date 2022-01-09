@@ -48,6 +48,6 @@ export class DishOrderComponent implements OnInit, OnDestroy {
   }
 
   private updateQuantity(dish: Dish, quantity: number) {
-    if (dish.id === this.dish.id) this.quantity = quantity
+    if (dish._id === this.dish._id) this.quantity = quantity
   }
 }

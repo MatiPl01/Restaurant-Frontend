@@ -134,17 +134,20 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   private setServiceInitialFilters(): void {
     const ratings = this.dishesService.getValuesSet('rating')
 
+    console.log('>>>> rating options', ratings)
+
     this.filtersService.setInitialFilters('unitPrice', {
       min: this.dishesService.getMinReferencePrice(), 
       max: this.dishesService.getMaxReferencePrice()
     })
     this.filtersService.setInitialFilters('rating', {
-      min: +Math.min(...ratings).toFixed(1),
-      max: +Math.max(...ratings).toFixed(1)
+      min: +Math.min(...ratings).toFixed(2),
+      max: +Math.max(...ratings).toFixed(2)
     })
   }
 
   private updatePriceOptions(): void  {
+    console.log('>>>> price options', this.minPrice, this.maxPrice)
     const currency = this.currencyService.getCurrentCurrencySymbol()
     this.priceOptions = {
       floor: 0,
@@ -176,8 +179,8 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   }
 
   private updatePriceSlider() {
-    this.minPrice = Math.floor(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinReferencePrice()))
-    this.maxPrice = Math.ceil(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxReferencePrice()))
+    this.minPrice = +(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinReferencePrice())).toFixed(2)
+    this.maxPrice = +(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxReferencePrice())).toFixed(2)
     this.priceSteps = this.calcStepsCount(this.minPrice, this.maxPrice, this.priceStep)
     this.priceValues.min = 0
     this.priceValues.max = this.priceSteps

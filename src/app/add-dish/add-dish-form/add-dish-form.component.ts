@@ -27,7 +27,7 @@ export class AddDishFormComponent {
   }
 
   onSubmit(form: NgForm) {
-    if (form.valid) {
+    if (form.valid && this.images.length) {
       const dish = this.createDishObject(form)
       this.dishesService.addDish(dish)
       this.images = []
@@ -56,14 +56,9 @@ export class AddDishFormComponent {
     }
   }
 
-  onImageSubmit(form: NgForm): void {
-    console.log(form)
-  }
-
   private createDishObject(form: NgForm): Dish {
-    const id = this.dishesService.maxDishID + 1
     return {
-      id,
+      _id: '',
       name: form.value.name,
       cuisine: form.value?.cuisine || 'międzynarodowa',
       type: form.value?.type || 'pozostałe',

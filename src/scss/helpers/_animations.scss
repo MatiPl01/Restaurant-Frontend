@@ -1,3 +1,5 @@
+@use '../helpers/colors' as c;
+
 @keyframes fade-in-top {
     from {
         transform: translateY(7.5rem);
@@ -54,5 +56,19 @@
     }
     52% {
         transform: translateY(200%);
+    }
+}
+
+@keyframes animate-popup-wrapper {
+    to {
+        background-color: rgba(c.$black, .8);
+        pointer-events: all;
+    }
+}
+
+@keyframes animate-popup {
+    from {
+        transform: scale(.2);
+        opacity: 0;
     }
 }

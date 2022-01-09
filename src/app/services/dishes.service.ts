@@ -20,42 +20,43 @@ export class DishesService {
   dishRemovedEvent = new EventEmitter<Dish>()
   ratingChangedEvent = new EventEmitter<Dish>()
 
-  // json-server --watch -p 3000 src/assets/json/dishes.json
-  private dishesJsonUrl: string = 'http://localhost:3000/dishes' 
-  private dishesMap: Map<number, Dish> = new Map()
+  private dishesApiUrl: string = 'http://localhost:3000/v1/dishes' 
+  private dishesMap: Map<string, Dish> = new Map()
+  private dishesArray: Dish[] = []
   private minDishPrice: number = Infinity
   private maxDishPrice: number = 0
-  maxDishID: number = 0
 
   // For now I will store information if an user rated a particular
   // dish in a Set below. After implementing database, I will be able
   // to distinguish users
-  userRates: Map<number, number> = new Map()
+  userRates: Map<string, number> = new Map()
   areDishesLoaded: boolean = false
 
   constructor(private http: HttpClient, 
               private currencyService: CurrencyService,
               private filtersService: FiltersService) {
     this.http
-      .get<Dish>(this.dishesJsonUrl)
-      .subscribe(data => {
-        this.loadDishesData(data)
-        this.updateMaxUnitPrice()
-        this.updateMinUnitPrice()
-        this.areDishesLoaded = true
-        this.dishesChangedEvent.emit(this.getDishes())
-      })
+      .get<Dish>(this.dishesApiUrl)
+      .subscribe((res: any) => this.loadDishesData(res.data))
   }
 
   loadDishesData(data: any) {
     data.forEach((dish: Dish) => {
-      this.dishesMap.set(dish.id, dish)
-      this.maxDishID = Math.max(this.maxDishID, dish.id)
+      this.dishesMap.set(dish._id, dish)
+      this.dishesArray.push(dish)
     })
+
+    const sortBy = 'name'
+    console.log(this.dishesArray.sort((d1: Dish, d2: Dish) => d1[sortBy] > d2[sortBy] ? 1 : -1)) 
+
+    this.updateMaxUnitPrice()
+    this.updateMinUnitPrice()
+    this.areDishesLoaded = true
+    this.dishesChangedEvent.emit(this.getDishes())
   }
 
   getDishes(): Dish[] {
-    return [...this.dishesMap.values()]
+    return [...this.dishesArray]
   }
 
   getDishWithID(id: number): Dish {
@@ -65,20 +66,21 @@ export class DishesService {
 
   removeDish(dish: Dish) {
     this.http
-      .delete<Dish>(`${this.dishesJsonUrl}/${dish.id}`)
+      .delete<Dish>(`${this.dishesApiUrl}/${dish._id}`)
       .subscribe(() => {
-        this.dishesMap.delete(dish.id)
+        this.dishesMap.delete(dish._id)
+        this.dishesArray.splice(this.dishesArray.findIndex((d: Dish) => d._id === dish._id), 1)
         this.dishesChangedEvent.emit(this.getDishes())
         this.updateMinUnitPrice()
         this.updateMaxUnitPrice()
       })
-    this.userRates.delete(dish.id)
+    this.userRates.delete(dish._id)
   }
 
   addDish(dish: Dish) {
-    this.maxDishID++
-    this.http.post<Dish>(this.dishesJsonUrl, dish, headers).subscribe()
-    this.dishesMap.set(dish.id, dish)
+    this.http.post<Dish>(this.dishesApiUrl, dish, headers).subscribe()
+    this.dishesMap.set(dish._id, dish)
+    this.insertSorted(dish)
     this.dishesChangedEvent.emit(this.getDishes())
     
     const dishPrice = this.currencyService.calcDishReferencePrice(dish)
@@ -88,7 +90,7 @@ export class DishesService {
 
   updateMinUnitPrice() {
     this.minDishPrice = Infinity
-    for (let dish of this.dishesMap.values()) {
+    for (let dish of this.dishesArray) {
       const dishPrice = +this.currencyService.calcDishReferencePrice(dish).toFixed(2)
       console.log('min price', dishPrice, this.minDishPrice)
       if (dishPrice < this.minDishPrice) this.minDishPrice = dishPrice
@@ -97,24 +99,24 @@ export class DishesService {
 
   updateMaxUnitPrice() {
     this.maxDishPrice = 0
-    for (let dish of this.dishesMap.values()) {
+    for (let dish of this.dishesArray) {
       const dishPrice = +this.currencyService.calcDishReferencePrice(dish).toFixed(2)
       if (dishPrice > this.maxDishPrice) this.maxDishPrice = dishPrice
     }
   }
 
   updateRating(dish: Dish, currRate: number) {
-    if (!this.userRates.has(dish.id)) {
+    if (!this.userRates.has(dish._id)) {
       dish.rating = +((dish.rating * dish.ratesCount + currRate) / (dish.ratesCount + 1)).toFixed(2)
       dish.ratesCount++
     } else {
       // @ts-ignore
-      dish.rating = +((dish.rating * dish.ratesCount - this.userRates.get(dish.id) + currRate) / dish.ratesCount).toFixed(2)
+      dish.rating = +((dish.rating * dish.ratesCount - this.userRates.get(dish._id) + currRate) / dish.ratesCount).toFixed(2)
     }
-    this.userRates.set(dish.id, currRate)
-    this.http.put<Dish>(`${this.dishesJsonUrl}/${dish.id}`, dish, headers).subscribe()
+    this.userRates.set(dish._id, currRate)
+    this.http.patch<Dish>(`${this.dishesApiUrl}/${dish._id}`, dish, headers).subscribe()
   
-    const updatedDish = this.dishesMap.get(dish.id)
+    const updatedDish = this.dishesMap.get(dish._id)
     updatedDish!.ratesCount = dish.ratesCount
     updatedDish!.rating = dish.rating
     this.filtersService.notifyChanges()
@@ -131,11 +133,26 @@ export class DishesService {
   getValuesSet(attr: string): any {
     const result = new Set()
     // @ts-ignore
-    for (let dish of this.dishesMap.values()) result.add(dish[attr])
+    for (let dish of this.dishesArray) result.add(dish[attr])
     return result
   }
 
-  getUserRate(dishID: number): number {
-    return this.userRates.get(dishID) || 0
+  private insertSorted(dish: Dish, sortBy: string = 'name') {
+    if (!this.dishesArray.length) this.dishesArray.push(dish)
+    // @ts-ignore
+    else if (dish[sortBy] <= this.dishesArray[0][sortBy]) this.dishesArray.unshift(dish)
+    // @ts-ignore
+    else if (dish[sortBy] >= this.dishesArray[this.dishesArray.length - 1][sortBy]) {
+      this.dishesArray.unshift(dish)
+    } 
+    else {
+      for (let i = 0; i < this.dishesArray.length - 1; i++) {
+        // @ts-ignore
+        if (this.dishesArray[i][sortBy] <= dish[sortBy] && dish[sortBy] <= this.dishesArray[i + 1][sortBy]) {
+          this.dishesArray.splice(i, 0, dish)
+          return
+        }
+      }
+    }
   }
 }

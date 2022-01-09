@@ -18,7 +18,7 @@
       <a class="dish-page__rating-link"
         (click)="onReviewsClick()">
         <div class="dish-page__rating-item">
-          <app-rating class="dish-page__rating-component" [value]="dish.rating"></app-rating>
+          <app-rating class="dish-page__rating-component" [(value)]="dish.rating"></app-rating>
         </div>
       </a>
       <div class="dish-page__rating-item">
@@ -44,13 +44,8 @@
       </ul>
     </section>
     
-    <!-- TODO -->
-    <!-- <app-dish-quantity [dish]="dish"></app-dish-quantity> -->
-
     <section class="dish-page__order">
-      <p class="dish-page__order-text">
-        Liczba porcji
-      </p>
+      <app-dish-quantity [dish]="dish"></app-dish-quantity>
       <app-dish-order class="dish-page__order-component" [dish]="dish"></app-dish-order>
       <a class="dish-page__button dish-page__button--order" routerLink="/cart">
         Pokaż koszyk
@@ -75,7 +70,8 @@
 
     <section class="dish-page__reviews">
       <h4 class="dish-page__heading dish-page__heading--reviews">Recenzje</h4>
-
+      
+      <router-outlet></router-outlet>
       <app-reviews [reviews]="dish.reviews"></app-reviews>
     </section>
   </section>

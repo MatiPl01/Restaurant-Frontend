@@ -52,7 +52,7 @@
         }
 
         &:hover::after, &:hover ~ .rating__radio::after {
-            background: g.$blue !important;
+            background: g.$primary !important;
         }
     }
 
@@ -60,22 +60,14 @@
         background: c.$gray-light-2;
     }
 
+    &__value {
+        font-weight: 600;
+        color: c.$gray-dark-2;
+    }
+
     // When rating is disabled
     &.disabled {
         pointer-events: none;
     }
 
-    // When user left their own rating
-    &.user-rating {
-        .rating__radio {
-            &:checked::after, &:checked ~ .rating__radio::after {
-                background: g.$blue;
-            }
-        }
-    }
-
-    &__value {
-        font-weight: 600;
-        color: c.$gray-dark-2;
-    }
 }

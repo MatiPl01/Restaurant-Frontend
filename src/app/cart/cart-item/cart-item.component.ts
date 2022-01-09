@@ -23,7 +23,7 @@ export class CartItemComponent implements OnInit, OnDestroy {
   ngAfterViewChecked() {
     if (this.subscription) return
     this.subscription = this.orderService.updateDishQuantityEvent.subscribe(data => {
-      if (this.dish.id === data.dish.id) this.quantity = data.quantity
+      if (this.dish._id === data.dish._id) this.quantity = data.quantity
     })
   }
 

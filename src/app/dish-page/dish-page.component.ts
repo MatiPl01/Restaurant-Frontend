@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DishesService } from '../services/dishes.service';
@@ -22,13 +22,16 @@ export class DishPageComponent implements OnInit, OnDestroy {
               public paginationService: PaginationService) {}
 
   ngOnInit(): void {
-    this.visualizationService.scrollY(0)
     this.dishID = this.activatedRoute.snapshot.params['id']
     this.loadDishData()
 
     this.subscriptions.push(
       this.dishesService.dishesChangedEvent.subscribe(this.loadDishData.bind(this))
     )
+  }
+
+  ngAfterViewInit() {
+    this.visualizationService.scrollY(0, false)
   }
 
   ngOnDestroy() {
@@ -45,13 +48,13 @@ export class DishPageComponent implements OnInit, OnDestroy {
 
   getRatingText(): string {
     const lastDigit = this.dish.ratesCount % 10
-    if (lastDigit === 0 || 5 <= lastDigit && lastDigit <= 9) return 'ocen'
+    if (lastDigit === 0 || 5 <= lastDigit && lastDigit <= 9 || lastDigit === 1 && this.dish.ratesCount > 10 || this.dish.ratesCount >= 10 && this.dish.ratesCount <= 21) return 'ocen'
     if (lastDigit === 1) return 'ocena'
     return 'oceny'
   }
 
   private loadDishData(): void {
-    this.dish = this.dishesService.getDishWithID(+this.dishID)
+    this.dish = this.dishesService.getDishWithID(this.dishID)
   }
 
   private scrollToReviews(): void {

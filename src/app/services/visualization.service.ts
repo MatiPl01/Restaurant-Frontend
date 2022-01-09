@@ -10,10 +10,11 @@ export class VisualizationService {
         this.headerVisibilityChangedEvent.emit(isVisible)
     }
 
-    scrollY(offset: number): void {
+    scrollY(offset: number, isSmooth: boolean = true): void {
         window.scrollTo({
             top: offset,
-            behavior: 'smooth'
+            // @ts-ignore
+            behavior: isSmooth ? 'smooth' : 'instant'
         })
     }
 }

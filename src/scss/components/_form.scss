@@ -22,13 +22,20 @@
         position: relative;
 
         &--left {
-            text-align: right;
+            display: flex;
+            justify-content: right;
             width: 28%;
         }
 
         &--right {
-            text-align: left;
+            display: flex;
+            justify-content: left;
             width: 72%;
+        }
+
+        &--span {
+            width: 100%;
+            @include flex-center;
         }
     }
 
@@ -54,7 +61,8 @@
     }
 
     &__textarea,
-    &__input {
+    &__input,
+    &__date {
         border-radius: 10rem;
         border: 2px solid transparent;
         outline: none;
@@ -71,6 +79,15 @@
         resize: vertical;
         max-height: 25rem;
         min-height: 5rem;
+    }
+
+    &__rating {
+        font-size: 1.5rem;
+    }
+
+    &__info {
+        font-size: 1.6rem;
+        margin: 0 auto;
     }
 
     &__group {

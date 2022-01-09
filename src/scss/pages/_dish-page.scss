@@ -164,6 +164,10 @@
         background: g.$primary;
     }
 
+    &__reviews {
+        padding-top: 1.5rem;
+    }
+
     &__description {
         &-text {
             color: c.$gray-dark-3;

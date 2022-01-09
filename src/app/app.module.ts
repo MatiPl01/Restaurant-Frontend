@@ -42,7 +42,7 @@ import { DishPageComponent } from './dish-page/dish-page.component';
 import { ResponsiveGalleryComponent } from './responsive-gallery/responsive-gallery.component';
 import { GallerySliderComponent } from './responsive-gallery/gallery-slider/gallery-slider.component';
 import { ReviewsComponent } from './dish-page/reviews/reviews.component';
-import { ReviewComponent } from './dish-page/review/review.component';
+import { ReviewComponent } from './dish-page/reviews/review/review.component';
 import { CreateReviewComponent } from './dish-page/reviews/create-review/create-review.component';
 
 import { FiltersPipe } from '../app/pipes/filters.pipe'

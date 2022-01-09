@@ -59,7 +59,7 @@
             <div class="form__input-wrapper form__input-wrapper--price">
               <input class="form__input" type="text" name="price" id="price" placeholder="cena pojedynczej porcji"
                 pattern="\d+((,|.)\d{0,2})?" maxlength="6" required ngModel #price="ngModel">
-              <div class="form__help" *ngIf="!price.valid && price.touched">Proszę wprowadź cenę porcji (max. 2 cyfry po przecinku)</div>
+              <div class="form__help" *ngIf="!price.valid && price.touched">Proszę wprowadź cenę porcji (max 2 cyfry po przecinku)</div>
             </div>
             <div class="form__input-wrapper form__input-wrapper--currency">
               <app-choose-currency></app-choose-currency>
@@ -77,7 +77,7 @@
         </div>
       </li>
       <li class="form__item">
-        <form class="form__image-form" (ngSubmit)="onImageSubmit(g)" #g="ngForm">
+        <form class="form__image-form" #g="ngForm">
           <div class="form__column form__column--left"><label class="form__label" for="images">Zdjęcia</label></div>
           <div div class="form__column form__column--right">
             <div class="form__group">
@@ -113,7 +113,7 @@
     </ul>
   
     <div class="form__buttons">
-      <input type="submit" class="form__button form__button--save" value="Zapisz" [disabled]="!f.valid">
+      <input type="submit" class="form__button form__button--save" value="Zapisz" [disabled]="!f.valid || !images.length">
       <input type="reset" class="form__button form__button--reset" value="Wyczyść">
     </div>
   </form>

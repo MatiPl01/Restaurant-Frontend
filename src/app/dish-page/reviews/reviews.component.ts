@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ReviewsService } from 'src/app/services/reviews.service';
 import { Review } from 'src/app/shared/models/review.model';
 
 @Component({
@@ -8,9 +9,11 @@ import { Review } from 'src/app/shared/models/review.model';
 export class ReviewsComponent implements OnInit {
   @Input() reviews!: Review[]
 
-  constructor() { }
+  constructor(private reviewsService: ReviewsService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { // Save an opinion locally
+    this.reviewsService.addedReviewEvent.subscribe((review: Review) => {
+      this.reviews.push(review)
+    })
   }
-
 }

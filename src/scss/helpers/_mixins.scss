@@ -35,7 +35,7 @@
 @mixin emphasize-first-letter($background, $size) {
     @supports (-webkit-background-clip: text) or (background-clip: text) {
         &::first-letter {
-            padding-right: .1em;
+            background-size: 125%;
             font-size: $size;
             background: $background;
             color: transparent;

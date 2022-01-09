@@ -2,7 +2,7 @@ import { ImageEntry } from "./image-entry.model";
 import { Review } from "./review.model";
 
 export interface Dish {
-    id: number,
+    _id: string,
     name: string,
     cuisine: string,
     type: string,

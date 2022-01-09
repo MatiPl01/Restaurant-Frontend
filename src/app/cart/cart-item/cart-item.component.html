@@ -1,5 +1,5 @@
 <li class="cart-item">
-  <a [routerLink]="['/dishes', dish.id]" class="cart-item__link">
+  <a [routerLink]="['/dishes', dish._id]" class="cart-item__link">
   <figure class="cart-item__figure">
     <app-responsive-image
     class="dish__image" 
@@ -12,7 +12,7 @@
   </a>
 
   <section class="cart-item__details">
-    <a [routerLink]="['/dishes', dish.id]" class="cart-item__link">
+    <a [routerLink]="['/dishes', dish._id]" class="cart-item__link">
       <h3 class="cart-item__heading">
           {{ dish.name }}
       </h3>
