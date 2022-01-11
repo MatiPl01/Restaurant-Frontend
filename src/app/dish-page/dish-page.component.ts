@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CurrencyService } from '../services/currency.service';
 import { DishesService } from '../services/dishes.service';
 import { PaginationService } from '../services/pagination.service';
 import { VisualizationService } from '../services/visualization.service';
@@ -12,14 +13,15 @@ import { Dish } from '../shared/models/dish.model';
 })
 export class DishPageComponent implements OnInit, OnDestroy {
   dish!: Dish
-  dishID!: number
+  dishID!: string
   subscriptions: Subscription[] = []
 
   constructor(private elRef: ElementRef,
               private activatedRoute: ActivatedRoute,
               private visualizationService: VisualizationService,
               private dishesService: DishesService,
-              public paginationService: PaginationService) {}
+              public paginationService: PaginationService,
+              public currencyService: CurrencyService) {}
 
   ngOnInit(): void {
     this.dishID = this.activatedRoute.snapshot.params['id']

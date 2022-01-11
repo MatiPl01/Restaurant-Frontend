@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
+import { Review } from 'src/app/shared/models/review.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewsService } from 'src/app/services/reviews.service';
 
 @Component({
@@ -9,28 +11,33 @@ import { ReviewsService } from 'src/app/services/reviews.service';
 })
 export class CreateReviewComponent {
   ratingValue: number = 5
+  dishID: string
 
   constructor(private location: Location,
-              private reviewsService: ReviewsService)  { }
+              private activatedRoute: ActivatedRoute,
+              private reviewsService: ReviewsService) {
+    // @ts-ignore
+    this.dishID = this.activatedRoute.parent?.snapshot.params['id']
+  }
 
   onClose(): void {
     this.location.back()
   }
 
   onSubmit(form: NgForm): void {
-    this.reviewsService.addReview({
+    const review: Review = {
       username: form.value.username,
       title: form.value.title,
       body: form.value.body.split('\n').map((p: string) => p.trim()),
       date: form.value.date,
       rating: this.ratingValue
-    })
+    }
+    this.reviewsService.addReview(this.dishID, review)
     this.location.back()
   }
 
   onReset(): void {
     this.ratingValue = 5
-    console.log(this.ratingValue)
   }
 
   getCurrentDate(): string {

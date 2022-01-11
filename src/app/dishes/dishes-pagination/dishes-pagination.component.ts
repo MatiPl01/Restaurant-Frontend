@@ -50,7 +50,6 @@ export class DishesPaginationComponent implements OnInit, OnDestroy {
   }
 
   private update(data: any): void {
-    console.log('update', data.pagesCount, data.pageNum)
     this.pagesCount = data.pagesCount
     this.currentPage = data.pageNum
     this.updateMiddlePagesNumbers()

@@ -4,10 +4,9 @@
       <li class="form__item">
         <div class="form__column form__column--left"><label class="form__label" for="name">Nazwa</label></div>
         <div class="form__column form__column--right">
-          <input class="form__input" type="text" name="name" id="name" maxlength="30"
+          <input class="form__input" type="text" name="name" id="name" maxlength="40"
             placeholder="np. Schabowy z ziemniakami" required ngModel #name="ngModel">
-          <div class="form__help" *ngIf="!name.valid && name.touched">Proszę wprowadź nazwę dania nie dłuższą niż 30
-            znaków</div>
+          <p class="form__help" *ngIf="!name.valid && name.touched">Proszę wprowadź nazwę dania nie dłuższą niż 40 znaków</p>
         </div>
       </li>
       <li class="form__item">
@@ -28,7 +27,7 @@
         <div class="form__column form__column--left"><label class="form__label" for="category">Kategoria</label></div>
         <div class="form__column form__column--right">
           <input class="form__input" type="text" name="category" id="category" maxlength="15"
-            placeholder="np. na słodko / zupy / dania mięsne / etc." ngModel>
+            placeholder="np. zupy / dania mięsne / ciasta / etc." ngModel>
         </div>
       </li>
       <li class="form__item">
@@ -46,7 +45,7 @@
             magazynowy</label></div>
         <div class="form__column form__column--right">
           <input class="form__input" type="number" name="stock" id="stock" min="0" max="999"
-            placeholder="dzienna liczba wydawanych potraw" required ngModel #stock="ngModel">
+            placeholder="dzienna liczba wydawanych porcji" required ngModel #stock="ngModel">
           <div class="form__help" *ngIf="!stock.valid && stock.touched">Proszę wprowadź dzienną liczbę wydawanych porcji
           </div>
         </div>
@@ -58,7 +57,7 @@
           <div class="form__group">
             <div class="form__input-wrapper form__input-wrapper--price">
               <input class="form__input" type="text" name="price" id="price" placeholder="cena pojedynczej porcji"
-                pattern="\d+((,|.)\d{0,2})?" maxlength="6" required ngModel #price="ngModel">
+                pattern="\d+((,|.)\d{0,2})?" maxlength="8" required ngModel #price="ngModel">
               <div class="form__help" *ngIf="!price.valid && price.touched">Proszę wprowadź cenę porcji (max 2 cyfry po przecinku)</div>
             </div>
             <div class="form__input-wrapper form__input-wrapper--currency">
@@ -72,8 +71,8 @@
         </div>
         <div div class="form__column form__column--right">
           <textarea class="form__textarea" type="text" name="description" id="description" placeholder="opis potrawy"
-            maxlength="200" required ngModel #description="ngModel"></textarea>
-          <div class="form__help" *ngIf="!description.valid && description.touched">Proszę wprowadź opis pozycji</div>
+            maxlength="4000" required ngModel #description="ngModel"></textarea>
+          <div class="form__help" *ngIf="!description.valid && description.touched">Proszę wprowadź opis pozycji (max. 4000 znaków)</div>
         </div>
       </li>
       <li class="form__item">

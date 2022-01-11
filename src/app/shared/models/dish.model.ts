@@ -13,7 +13,7 @@ export interface Dish {
     unitPrice: number,
     rating: number,
     ratesCount: number,
-    description: string,
+    description: string[],
     images: {
         coverIdx: 0,
         gallery: ImageEntry[]

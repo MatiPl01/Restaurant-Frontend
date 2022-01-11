@@ -1,5 +1,6 @@
 @use '../helpers/colors' as c;
 @use '../helpers/gradients' as g;
+@use '../helpers/mixins' as *;
 
 .added-images {
     width: 100%;
@@ -17,7 +18,11 @@
         border-radius: .5rem;
         box-shadow: 0 0 .5rem rgba(c.$black, .3);
         display: flex;
-        align-items: center;
+        align-items: stretch;
+
+        & > * {
+            @include flex-center;
+        }
 
         &.separated {
             margin-top: 2rem;
@@ -33,6 +38,10 @@
                 background-color: c.$gray-light-4;
             }
         }
+    }
+
+    &__path {
+        justify-content: flex-start;
     }
 
     &__path,

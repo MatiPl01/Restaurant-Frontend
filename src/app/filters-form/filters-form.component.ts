@@ -26,7 +26,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   maxPrice: number = 0
   minRating: number = 0
   maxRating: number = 0
-  
+
   settings = {
     idField: 'filterID',
     textField: 'filterValue',
@@ -57,7 +57,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   selectedCategories = []
   selectedCuisines = []
 
-  priceOptions:  Options = Object.assign({}, this.placeholderOptions)
+  priceOptions: Options = Object.assign({}, this.placeholderOptions)
   ratingOptions: Options = Object.assign({}, this.placeholderOptions)
 
   subscriptions: Subscription[] = []
@@ -66,22 +66,15 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.dishesService.dishesChangedEvent.subscribe(() => {
-        this.setServiceInitialFilters()
-        this.filtersService.loadInitialFilters()
-        this.update()
-      }),
-      this.currencyService.currencyChangedEvent.subscribe(() => {
-        this.updatePriceSlider()
-        console.log(this.priceValues, this.ratingValues)
-      })
+      this.dishesService.dishesChangedEvent.subscribe(this.initialize.bind(this)),
+      this.currencyService.currencyChangedEvent.subscribe(this.updatePriceSlider.bind(this))
     )
   }
 
   ngAfterViewInit(): void {
     if (this.dishesService.areDishesLoaded) {
       setTimeout(() => {
-        this.update()
+        this.initialize()
       }, 0)
     }
   }
@@ -91,7 +84,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
   }
 
   getDropdownList(filterAttr: string) {
-    return [...this.dishesService.getValuesSet(filterAttr)]
+    return [...(this.dishesService.getValuesSet(filterAttr) || [])]
   }
 
   onItemSelected(eventObj: dropdownEventObj) {
@@ -110,7 +103,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.filtersService.removeAllFilters(eventObj.filterAttr)
   }
 
-  onRangeChanged(eventObj: {filterAttr: string, min: number, max: number}) {
+  onRangeChanged(eventObj: { filterAttr: string, min: number, max: number }) {
     let min, max
     if (eventObj.filterAttr === this.priceFilterAttr) {
       // Convert to the reference currency
@@ -120,7 +113,7 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
       min = this.stepToValue(eventObj.min, this.ratingSteps, this.minRating, this.maxRating)
       max = this.stepToValue(eventObj.max, this.ratingSteps, this.minRating, this.maxRating)
     }
-    
+
     this.filtersService.setRangeFilter(eventObj.filterAttr, min, max)
   }
 
@@ -128,16 +121,28 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     this.selectedCategories = []
     this.selectedCuisines = []
     this.filtersService.loadInitialFilters()
-    this.update()
+    this.reset()
+  }
+
+  private initialize() {
+    this.setServiceInitialFilters()
+    this.filtersService.loadInitialFilters()
+    this.reset()
+  }
+
+  private reset(): void {
+    this.categoriesList = [...(this.dishesService.getValuesSet(this.categoryFilterAttr) || [])]
+    this.cuisinesList = [...(this.dishesService.getValuesSet(this.cuisineFilterAttr) || [])]
+    this.updatePriceSlider()
+    this.resetRatingsSlider()
+    this.resetPriceSlider()
   }
 
   private setServiceInitialFilters(): void {
     const ratings = this.dishesService.getValuesSet('rating')
 
-    console.log('>>>> rating options', ratings)
-
     this.filtersService.setInitialFilters('unitPrice', {
-      min: this.dishesService.getMinReferencePrice(), 
+      min: this.dishesService.getMinReferencePrice(),
       max: this.dishesService.getMaxReferencePrice()
     })
     this.filtersService.setInitialFilters('rating', {
@@ -146,26 +151,25 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     })
   }
 
-  private updatePriceOptions(): void  {
-    console.log('>>>> price options', this.minPrice, this.maxPrice)
+  private updatePriceOptions(): void {
     const currency = this.currencyService.getCurrentCurrencySymbol()
     this.priceOptions = {
       floor: 0,
       ceil: this.priceSteps,
       translate: (value: number, label: LabelType): string => {
-        value = this.stepToValue(value, this.priceSteps, this.minPrice, this.maxPrice)
-        return currency + (value || 0).toFixed(2)
+        const res = this.stepToValue(value, this.priceSteps, this.minPrice, this.maxPrice) || 0
+        return value >= 0 ? currency + res.toFixed(2) : ''
       }
     }
   }
 
-  private updateRatingOptions(): void  {
+  private updateRatingOptions(): void {
     this.ratingOptions = {
       floor: 0,
       ceil: this.ratingSteps,
       translate: (value: number, label: LabelType): string => {
-        value = this.stepToValue(value, this.ratingSteps, this.minRating, this.maxRating)
-        return (value || 0).toFixed(2)
+        const res = this.stepToValue(value, this.ratingSteps, this.minRating, this.maxRating) || 0
+        return value >= 0 ? res.toFixed(2) : ''
       }
     }
   }
@@ -178,31 +182,25 @@ export class FiltersFormComponent implements OnInit, OnDestroy {
     return min + (max - min) / steps * step
   }
 
+  private resetPriceSlider() {
+    this.priceValues.min = 0
+    this.priceValues.max = this.priceSteps
+  }
+
   private updatePriceSlider() {
     this.minPrice = +(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinReferencePrice())).toFixed(2)
     this.maxPrice = +(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxReferencePrice())).toFixed(2)
     this.priceSteps = this.calcStepsCount(this.minPrice, this.maxPrice, this.priceStep)
-    this.priceValues.min = 0
-    this.priceValues.max = this.priceSteps
-    console.log(this.priceValues)
     this.updatePriceOptions()
   }
 
-  private updateRatingsSlider(): void  {
+  private resetRatingsSlider(): void {
     const ratings = this.filtersService.getInitialFilters('rating')
     this.minRating = ratings.min
     this.maxRating = ratings.max
     this.ratingSteps = this.calcStepsCount(this.minRating, this.maxRating, this.ratingStep)
     this.ratingValues.min = 0
     this.ratingValues.max = this.ratingSteps
-    console.log(this.ratingValues)
     this.updateRatingOptions()
-  }
-
-  private update(): void  {
-    this.categoriesList = [...this.dishesService.getValuesSet(this.categoryFilterAttr)]
-    this.cuisinesList = [...this.dishesService.getValuesSet(this.cuisineFilterAttr)]
-    this.updatePriceSlider()
-    this.updateRatingsSlider()
   }
 }

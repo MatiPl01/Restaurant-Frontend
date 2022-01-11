@@ -1,23 +1,22 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
 import { Dish } from 'src/app/shared/models/dish.model'
 import { Currencies } from '../shared/models/currencies.model';
+import { WebRequestService } from './web-request.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CurrencyService {
-    private currenciesUrl: string = 'http://localhost:3000/v1/currencies' 
-    currencyChangedEvent = new EventEmitter<string>();
+    currencyChangedEvent = new EventEmitter<string>()
     private exchangeRates: Map<string, Map<string, number>> = new Map()
     private symbols: Map<string, string> = new Map()
     private referenceCurrency: string = 'USD'
     currentCurrency: string = 'USD'
     areCurrenciesLoaded: boolean = false
 
-    constructor(private http: HttpClient) {
-        this.http
-            .get(this.currenciesUrl)
+    constructor(private webRequestService: WebRequestService) {
+        this.webRequestService
+            .get('currencies')
             .subscribe((res: any) => this.loadCurrencies(res.data))
     }
 
@@ -57,12 +56,11 @@ export class CurrencyService {
         return this.exchangeAmount(amount, this.referenceCurrency, this.currentCurrency)
     }
 
-    notifyCurrencyChanged() {
+    notifyCurrencyChanged(): void {
         this.currencyChangedEvent.emit(this.currentCurrency)
     }
 
-    private loadCurrencies(data: Currencies) {
-        console.log('loadCurrencies', data, data.symbols, data.exchangeRates, data.mainCurrency)
+    private loadCurrencies(data: Currencies): void {
         this.referenceCurrency = this.currentCurrency = data.mainCurrency
 
         data.symbols.forEach(({currency, symbol}) => {
@@ -71,14 +69,12 @@ export class CurrencyService {
         
         const rates = this.exchangeRates
         data.exchangeRates.forEach(({from, to, ratio}) => {
-            console.log(from, to, ratio)
             if (!rates.has(from)) rates.set(from, new Map())
             if (!rates.has(to)) rates.set(to, new Map())
             // @ts-ignore
             rates.get(from).set(to, ratio)
             // @ts-ignore
             rates.get(to).set(from, 1 / ratio)
-            console.log(rates, this.exchangeRates)
         })
 
         this.areCurrenciesLoaded = true

@@ -11,9 +11,8 @@
     z-index: 1000;
     pointer-events: none;
     background: transparent;
-    transition: all .3s;
     @include flex-center;
-    animation: animate-popup-wrapper .3s ease-out forwards;
+    animation: animate-popup-wrapper .3s linear forwards;
 }
 
 .popup {

@@ -29,13 +29,15 @@ export class DishesListComponent implements OnInit, OnDestroy {
               public filtersService: FiltersService) {}
 
   ngOnInit(): void {
+    this.dishes = this.dishesService.getDishes()
     // Setup event observers
     this.subscriptions.push(
       this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
-        console.log(dishes)
         this.dishes = dishes
-        this.paginationService.setDisplayedDishesCount(dishes.length, false)
+        this.paginationService.setDisplayedDishesCount(dishes.length)
+        this.recalculatePages()
         if (!this.queryParamsSubscription) this.subscribeQueryParams()
+        
       }),
       this.filtersService.filtersChangedEvent.subscribe(this.refilterDishes.bind(this)),
       this.paginationService.pagesChangedEvent.subscribe(this.updatePages.bind(this))
@@ -53,7 +55,6 @@ export class DishesListComponent implements OnInit, OnDestroy {
     // rendered
     setTimeout(() => {
       this.filtersService.loadInitialFilters()
-      this.dishes = this.dishesService.getDishes()
       if (this.dishes.length) {
         this.paginationService.setDisplayedDishesCount(this.dishes.length, false)
         this.paginationService.setQueryParams(this.activatedRoute.snapshot.queryParams)
@@ -71,7 +72,7 @@ export class DishesListComponent implements OnInit, OnDestroy {
   }
 
   getClassObj(dish: Dish) {
-    const dishPrice = +this.currencyService.calcDishCurrentPrice(dish).toFixed(2)
+    const dishPrice = +this.currencyService.calcDishReferencePrice(dish).toFixed(2)
     return {
       cheap: dishPrice === this.dishesService.getMinReferencePrice(),
       expensive: dishPrice === this.dishesService.getMaxReferencePrice()
@@ -82,9 +83,9 @@ export class DishesListComponent implements OnInit, OnDestroy {
     this.filteringTrigger = (this.filteringTrigger + 1) % 2
   }
 
-  // private recalculatePages() {
-  //   this.paginationTrigger = (this.paginationTrigger + 1) % 2
-  // }
+  private recalculatePages() {
+    this.paginationTrigger = (this.paginationTrigger + 1) % 2
+  }
 
   private updatePages(data: any): void {
     this.dishesPerPage = data.dishesPerPage

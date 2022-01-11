@@ -30,7 +30,7 @@
     </p>
   </div>
   
-  <app-add-dish-form [images]="images"></app-add-dish-form>
+  <app-add-dish-form [images]="images" (imagesChangedEvent)="onImagesChange($event)"></app-add-dish-form>
 
   <ul class="add-dish__table">
     <li class="add-dish__column">
@@ -44,5 +44,5 @@
     </li>
   </ul>
 
-  <app-added-images [images]="images"></app-added-images>
+  <app-added-images [images]="images" (imagesChangedEvent)="onImagesChange($event)"></app-added-images>
 </section>

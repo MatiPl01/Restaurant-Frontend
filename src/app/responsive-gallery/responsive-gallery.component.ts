@@ -82,8 +82,6 @@ export class ResponsiveGalleryComponent implements AfterViewInit {
     if (movedBy < -100 && this.currentIdx < this.itemsEls.length - 1) this.currentIdx += 1
     if (movedBy > 100 && this.currentIdx > 0) this.currentIdx -= 1
 
-    console.log(this.currentIdx, this.itemsEls.length)
-
     this.setPositionByIdx()
   }
 
@@ -91,7 +89,6 @@ export class ResponsiveGalleryComponent implements AfterViewInit {
     if (this.isDragging) {
       const currPosition = this.getTouchX(e)
       this.currTranslate = this.prevTranslate + currPosition - this.startPosition
-      console.log(this.currTranslate)
     }
   }
 

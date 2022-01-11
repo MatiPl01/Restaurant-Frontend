@@ -602,8 +602,8 @@
       ],
       "stock": 77,
       "currency": "USD",
-      "unitPrice": 26,
-      "rating": 4.239999999999999,
+      "unitPrice": 15,
+      "rating": 4.4,
       "ratesCount": 36,
       "description": [
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
@@ -662,7 +662,181 @@
             ]
           }
         ]
-      }
+      },
+      "reviews": [
+        {
+          "username": "ATempore",
+          "title": "inciduntquamveroexercitationemnisi",
+          "body": [
+            "Atipsamcupiditateperferendisconsectetur",
+            "Illohicidveritatisnihilreprehenderitrepudiandaecumqueasperiores"
+          ],
+          "date": "2021-04-15T12:24:44",
+          "rating": 4.5
+        },
+        {
+          "username": "ImpeditAperiam,",
+          "title": "expeditaAsperioresiustoquaseaquedolorumillumat",
+          "body": [
+            "Architectohicquameaquevelitmaximenullautcupiditateenimoditquibusdamsolutaquam",
+            "Eumnonnihillaborumdelectussapienteanimiomnis,nihilnisirepudiandaebeatae,"
+          ],
+          "date": "2021-11-07T04:36:06",
+          "rating": 4.0
+        },
+        {
+          "username": "NumquamUt",
+          "title": "praesentium,adexpeditateneturofficiaharumquaeQuasiveniamvelit!",
+          "body": [
+            "Similiqueincidunteligendi.porro,quiquod,velit!velitdelenitimolestiae",
+            "Obcaecatiaccusamusanimiofficiadeleniti,adipsaaperiammagnamsuscipit,culpaassumendacupiditateiure,autemhic"
+          ],
+          "date": "2021-06-19T03:07:08",
+          "rating": 5.0
+        },
+        {
+          "username": "DelectusNesciunt",
+          "title": "asperioresquisquamnonatquequaeratrepudiandaePerspiciatislabore",
+          "body": [
+            "Cumquead,autreiciendisearum",
+            "Fugatemporanulla.quisitaccusamusnobisnonnumquam.sequiesse"
+          ],
+          "date": "2021-09-14T10:23:24",
+          "rating": 4.0
+        },
+        {
+          "username": "Officiis.Voluptatibus,",
+          "title": "voluptatibusdolorevoluptatumducimusIdquinatuslabore",
+          "body": [
+            "Distinctiooptiovoluptatibusevenietanimiculpa,minusassumendaeligendivoluptatibusvoluptatemquisquamvelfuga,",
+            "Doloresaliquidtotamadiurenequeiste",
+            "Animiullammodi,accusamusvitaebeatae,reiciendisnonreprehenderittotam"
+          ],
+          "date": "2021-06-22T02:24:51",
+          "rating": 4.0
+        },
+        {
+          "username": "PerspiciatisOfficiis",
+          "title": "ducimussequicupiditateMagnamilloestporrohicaccusamus",
+          "body": [
+            "Iste?quassequi,atfugitasperiores?minus,",
+            "Nihilconsequuntureumcorporisabmagnimaximevoluptatibus",
+            "Sed.corruptiofficia,nisisitpraesentiumreiciendisaccusantiumoptiooditerrorculpa,consecteturtotam",
+            "Temporecupiditate.fugitvoluptatumdoloresperferendisdebitisquasiutestquas,voluptatumdoloredoloresillo?blanditiis!velit"
+          ],
+          "date": "2021-07-29T23:17:15",
+          "rating": 4.5
+        },
+        {
+          "username": "VoluptatumDebitis",
+          "title": "laudantiumeaquequisquamerrorenim.eveniet",
+          "body": [
+            "Abofficiaoptiomaximepraesentium,animiquivelittemporibus.animiodit,",
+            "Placeatdolorperferendisipsumilluminciduntdelectusarchitectoad,adipisciodionullaestatimpeditmagni,eoseumconsequunturmagnam",
+            "Iustoqui.repudiandaesuscipiteosadipisci.corruptiearumautnatussuntsimiliqueculpasolutavelit!facere",
+            "Sintrerumdolorequinobisanimiperspiciatisimpeditnesciuntaliquidsapienteameteumculpareiciendismaximerepudiandae",
+            "Beataedoloreetsuscipitpossimusrepellatearumvoluptatesmolestiaenulla!"
+          ],
+          "date": "2021-04-07T05:25:29",
+          "rating": 4.5
+        },
+        {
+          "username": "Cupiditate.Itaque",
+          "title": "sintnatustemporedebitismaioresassumenda.evenietculpareiciendis,",
+          "body": [
+            "Asperioresratione.temporerepellendusexercitationemassumendarepellatvoluptatesautemducimuspraesentiumeveniet",
+            "Totammollitia,doloresatasperioresquodlaboreinciduntexpeditaimpeditadomnisanimicorruptiatqueodit",
+            "Repellatquasicorruptiminimarationeat.obcaecatidictaexercitationemnemoquidemminusdeseruntofficia,sunt.deserunt?porro",
+            "Liberorepellendusquidematquevoluptatequoducimusiste?"
+          ],
+          "date": "2021-11-09T07:02:00",
+          "rating": 4.0
+        },
+        {
+          "username": "VoluptateConsequatur",
+          "title": "laboreestconsecteturerrorQuisVoluptates",
+          "body": [
+            "Reiciendisodio?culpa,distinctioipsumadipisci.ducimus",
+            "Nesciuntcommodidolorum?numquamaspernaturipsumtemporequisquamquos,vellabore",
+            "Rationecumqueducimuslaborevoluptates",
+            "Veltemporeblanditiissitdelenitiistequia!voluptasatquesaepeab"
+          ],
+          "date": "2021-07-13T09:54:09",
+          "rating": 5.0
+        },
+        {
+          "username": "DoloremqueAt",
+          "title": "autemconsequunturnostrum,voluptatesipsumveritatisquae",
+          "body": [
+            "Exercitationem,culpa,officiaveniamvoluptatesplaceatvoluptatemquipraesentiumrepellatquiaquiilloquoverovitaevoluptatum",
+            "Officiismolestiasverodolorexsedsapienteminuseaqueexercitationemveritatisvitaenisi",
+            "Iureaccusamusametlaboreplaceat",
+            "Quisquampraesentiumaccusamusearumitaqueut,numquam.temporibuseum",
+            "Sintnemoquibusdamveroiste"
+          ],
+          "date": "2021-12-08T02:58:25",
+          "rating": 4.0
+        },
+        {
+          "username": "AnimiInventore",
+          "title": "quiquidemanimiipsalaborumexplicabo,temporeullamquidem",
+          "body": [
+            "Pariaturconsecteturhicvero.quaenatusodit.quiinciduntnemoperferendisrerumdolorum",
+            "Culpainventore,ducimusperferendisrepellatcum,beataefugiterrorpariaturablibero",
+            "Assumendatotamiustoasperioresnam?temporibusfacilis",
+            "Eos?blanditiis!ipsumdelenitialiquidodiomaximeadipisci!aperiamdelectusrationefacilisfugitquodaspernaturveniamest?"
+          ],
+          "date": "2021-01-19T04:26:25",
+          "rating": 4.5
+        },
+        {
+          "username": "Commodi,Maiores",
+          "title": "inciduntmollitiaiustomolestiaeinciduntaliasrerumnemo!",
+          "body": [
+            "Quiipsumquossitnisi,culpa.impeditiustoquidemdelenitifugitvoluptatemnihilsimiliqueconsequuntur",
+            "Doloribusillumsuscipitiuretemporibusmagnamtotamsit,beatae,nemocupiditatevoluptatemanimitotamvoluptate",
+            "Placeatlaborumdoloremveniamsimiliquevoluptateiustonam?officiaeumofficiis,veritatisiureea",
+            "Teneturetvoluptatemquasiautrepellaterrornecessitatibus.commodi,totamilloaperiam,corruptiquaererum,temporavelit!illum,officianon"
+          ],
+          "date": "2021-05-17T11:30:43",
+          "rating": 4.0
+        },
+        {
+          "username": "NisiItaque",
+          "title": "maximerationearchitectosaepeducimusdoloribusneque",
+          "body": [
+            "Pariaturaspernaturfugitblanditiis!porroconsequunturdistinctio?ullamvoluptatemneque!maioresillo",
+            "Totamminimarepudiandaenostrumaliquidnonnullaaodio.ipsumexpossimus.fugablanditiisducimus",
+            "Laboriosameligendiasperioresmollitiaid,facerecupiditate"
+          ],
+          "date": "2021-08-30T09:17:00",
+          "rating": 5.0
+        },
+        {
+          "username": "DistinctioAutem",
+          "title": "eumreiciendisdolorhiclabore",
+          "body": [
+            "Minusaccusantiumnatusmodidebitismaximeautsuscipit,consequaturautemdoloremculpaducimus,quas?veritatisquidem!inventoresuscipitporroeveniet",
+            "Necessitatibusperferendisidmodi.veroautanimidolorumquiiusto,asperioreslaborum,",
+            "Hicullamquiaadcommodiofficia,vitaequisquamnemoexpeditafaciliseius",
+            "Nisiblanditiisreiciendis,sintoptionullaaliquid"
+          ],
+          "date": "2021-10-05T16:02:05",
+          "rating": 4.5
+        },
+        {
+          "username": "MagniTenetur",
+          "title": "suscipitassumendalaudantiummodimodiquisquamsapientecupiditateodit,aliquid",
+          "body": [
+            "Veronatusnatusveritatisanimiimpeditnecessitatibusplaceatnam,corporis,cupiditateutdignissimosadipisci.sapiente.accusantium,",
+            "Ametaspernaturaccusantiumaccusamusquo!sedveritatisundedoloresaspernaturexercitationemullamdelectus",
+            "Ducimustemporibusveritatisnobisasperioresnonofficiisomnisliberoaspernaturcumcupiditate?laborefugiteum,aliquideum",
+            "Est,atcorporislaboredicta,corporisfugiatnisisintmagnamtemporerepellendusdoloremnonculpaquodveritatis"
+          ],
+          "date": "2021-01-08T23:05:51",
+          "rating": 4.5
+        }
+      ]
     },
     {
       "id": 5,
@@ -2745,8 +2919,8 @@
       "stock": 178,
       "currency": "USD",
       "unitPrice": 13.5,
-      "rating": 0,
-      "ratesCount": 0,
+      "rating": 4.55,
+      "ratesCount": 11,
       "description": [
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis sunt laborum saepe debitis deserunt illo atque magnam quasi exercitationem aspernatur mollitia necessitatibus sit sed laudantium corrupti quam, error assumenda ex!",
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis magni iste impedit maiores a praesentium ad ab eveniet. Nisi aliquid commodi quos recusandae. Sequi accusantium, nesciunt amet, tempore molestias nobis minus earum excepturi voluptate corporis eligendi fugit dignissimos officia impedit?",
@@ -2804,7 +2978,134 @@
             ]
           }
         ]
-      }
+      },
+      "reviews": [
+        {
+          "username": "VoluptasSequi",
+          "title": "illumillotemporaevenietaspernaturQuo,doloribus!blanditiis",
+          "body": [
+            "Explicaboquiadistinctiomoditempore!ametmollitiaaliasitaque,voluptateconsequuntur",
+            "Asperioresoptioaperiam,necessitatibusmaxime",
+            "Reprehenderiteiusconsequunturvelitsolutaipsafugiathicperferendisnobisullammolestiaevitaetemporibusdolorem"
+          ],
+          "date": "2021-07-01T09:16:34",
+          "rating": 4.0
+        },
+        {
+          "username": "AdQuos",
+          "title": "veniamidconsecteturcupiditateaut",
+          "body": [
+            "Doloredeserunt?eveniet,eligendiettemporeblanditiisesseinciduntidnumquamconsectetur,eumnisiculpa",
+            "Esseet,autemvelsequitotamfugaofficiafacerepossimusbeatae,nostrum,odiobeataeodio",
+            "Laudantiummagnamharummaximeiureoditnulladeseruntveritatisrationesequiipsamid",
+            "Placeat!repellenduspariaturdignissimosdelectuspossimusquasisolutaexercitationem!nisiistedoloremnobisnullaevenietquisuntnecessitatibusvoluptateesse",
+            "Repellendusoptiovoluptatesrecusandaeperferendisteneturearumducimusatquetotamcorporisvoluptatemreiciendisquisquam"
+          ],
+          "date": "2021-07-17T02:42:56",
+          "rating": 5.0
+        },
+        {
+          "username": "Culpa,At",
+          "title": "minussintomnis,temporavoluptate,",
+          "body": [
+            "Atblanditiis!eumquodelenitiaccusantiumeligendi?",
+            "Officiiserrorrationedoloresvoluptasadolorverotemporacumquequibusdamanimiinciduntatobcaecati"
+          ],
+          "date": "2021-11-27T13:26:49",
+          "rating": 4.0
+        },
+        {
+          "username": "TeneturInventore",
+          "title": "atculpaelit.aliasreiciendiseum",
+          "body": [
+            "Quibusdam!illocommodicorruptinostrum,repudiandaeassumendaut,voluptatumnecessitatibusquaeratnon?delectusnobis",
+            "Suscipitautcommodiveniam,deleniti?exercitationem?ratione",
+            "Illumquiculpaeaquepossimusvitaecumundenumquamvoluptasad",
+            "Officiisquodillo,facilis.doloribusminimaveldistinctiotemporaquae"
+          ],
+          "date": "2022-01-05T11:28:33",
+          "rating": 4.5
+        },
+        {
+          "username": "MolestiasHic",
+          "title": "nesciuntexplicabonesciunt,cupiditate.iustomolestiae,ut",
+          "body": [
+            "Accusamus.dolorescorruptiodioasperiores?obcaecatiearummolestiasrepellendus,eaquead,iureullamcorrupti",
+            "Ataperiamrepellendus,iusto,id,inciduntcupiditate?placeatnonnemoexpeditailloarchitectoconsectetur!",
+            "Sintminusmagnamreiciendisvelitodit,teneturquoveroerrormollitiaitaque,undeoditnullavelitprovidentaspernatur",
+            "Possimusexercitationem.obcaecatiblanditiisquodmaximeofficiisneque.itaquesequiassumendafugiatmodisequitemporeveleiusvitaeveniam"
+          ],
+          "date": "2021-02-22T14:16:28",
+          "rating": 4.5
+        },
+        {
+          "username": "FugaNon",
+          "title": "oditodiononullamblanditiis",
+          "body": [
+            "Delenitioditaperiamverosequiobcaecatieos,sitnam,isteveroducimusearumipsam",
+            "Mollitiaquibusdam,pariaturfugiatfacilisutataliquidreiciendisquasquod,beatae,voluptatumnihilexpeditaut,",
+            "Inventoreculpanostrum,veritatisperspiciatispraesentiumexercitationem,abundecorruptisitvoluptateexcepturidoloremculpaquidemsolutatenetur",
+            "Rerumilloquodtemporibusrecusandaeharum,maximeexercitationem?autemrem,quae?",
+            "Officiisducimus,laborumvitae.voluptatemmagnideleniti"
+          ],
+          "date": "2021-06-06T00:40:57",
+          "rating": 5.0
+        },
+        {
+          "username": "DictaVoluptatem",
+          "title": "quasiquibusdam,quisquamoditconsequunturquasi",
+          "body": [
+            "Deseruntminimamolestiaecorporis,nemoconsequunturminimaquisquamenimtotam",
+            "Animi,eaquevitaeipsuminaliquamexplicabobeatae,namdictaprovidentadipisciid,beatae"
+          ],
+          "date": "2021-05-01T02:36:24",
+          "rating": 4.0
+        },
+        {
+          "username": "NullaLaudantium",
+          "title": "quivoluptatemquaeratperferendisquasipsumamet",
+          "body": [
+            "Autemveritatisutmodi.veroillum.corporisfugaconsectetursaepevoluptates.labore",
+            "Autaliquidblanditiis!voluptateperferendisvelveroporropraesentium",
+            "Commodinisiprovidentexercitationem,teneturesseconsequunturaccusantium"
+          ],
+          "date": "2021-08-01T14:55:21",
+          "rating": 5.0
+        },
+        {
+          "username": "VeritatisPerferendis",
+          "title": "earumquibusdamTotamvoluptates.culpaFugiat,Necessitatibuscupiditatedebitis!placeat",
+          "body": [
+            "Totamexpedita,perferendisnostrumtemporefacerelaborummollitiaquaeeosdebitissuscipitofficiasuscipit,asperiores?assumendaliberoest?",
+            "Commodiiustotemporedelenitivoluptatequaeratquoeiusex,earumut,non?nonmagnam",
+            "Architectoiustoquidemquiaccusamus,similique.",
+            "Molestiassequi,officiaconsequunturquasitotammagniomnisest?rationetotamconsequunturlaborevoluptateslibero"
+          ],
+          "date": "2021-11-22T16:22:57",
+          "rating": 5.0
+        },
+        {
+          "username": "DelectusEligendi",
+          "title": "placeatexcepturialiasrepellendus,rerumsunt?illumpariaturutmolestiae",
+          "body": [
+            "Magni,nobisquasidolorfaceredoloresvoluptatesdelectusfacilisexcupiditate",
+            "Expeditatempora,adestlaboriosamnisidolorespariaturtotamdoloremquia!perspiciatisverotemporaipsum"
+          ],
+          "date": "2021-03-16T18:26:43",
+          "rating": 4.5
+        },
+        {
+          "username": "QuasAperiam",
+          "title": "voluptatibusnihilnisi,quasivoluptas,utadipisciquisquamneque",
+          "body": [
+            "Aliquidabdoloremeligendi!magni,cumquisquamofficiis,culpa,nonquasenim.",
+            "Quasiveniamnihilsuscipit,idadipisicingoptiomolestias",
+            "Providentipsalabore!laboriosamdignissimosexnisianullaperferendisvoluptasteneturtemporibuseaqueearumvoluptatum.eumfacereeos"
+          ],
+          "date": "2021-12-14T20:09:06",
+          "rating": 4.5
+        }
+      ]
     },
     {
       "id": 15,

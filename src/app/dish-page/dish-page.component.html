@@ -43,6 +43,13 @@
         </li>
       </ul>
     </section>
+
+    <section class="dish-page__price">
+      <app-price
+        [amount]="currencyService.calcDishCurrentPrice(dish)"
+        [currency]="currencyService.getCurrentCurrencySymbol()"
+      ></app-price>
+    </section>
     
     <section class="dish-page__order">
       <app-dish-quantity [dish]="dish"></app-dish-quantity>
@@ -70,7 +77,6 @@
 
     <section class="dish-page__reviews">
       <h4 class="dish-page__heading dish-page__heading--reviews">Recenzje</h4>
-      
       <router-outlet></router-outlet>
       <app-reviews [reviews]="dish.reviews"></app-reviews>
     </section>

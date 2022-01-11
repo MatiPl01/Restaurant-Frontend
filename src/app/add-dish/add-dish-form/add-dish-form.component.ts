@@ -28,11 +28,14 @@ export class AddDishFormComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid && this.images.length) {
+      // Create a dish data object
       const dish = this.createDishObject(form)
-      this.dishesService.addDish(dish)
+      // Clear form
       this.images = []
       this.imagesChangedEvent.emit(this.images)
       form.reset()
+      // Send data to the service
+      this.dishesService.addDish(dish)
     }
   }
 
@@ -43,13 +46,12 @@ export class AddDishFormComponent {
     this.isImageValid = path !== ''
     // @ts-ignore
     this.isWidthValid = width >= 20 && width <= 4000
-    this.isGroupValid = form.value.group.length && (group >= 0 && group <= 99)
+    this.isGroupValid = form.value.group.length > 0 && (group >= 0 && group <= 99)
     
     if (this.isImageValid && this.isWidthValid && this.isGroupValid) {
       this.images.push({ path, width, group })
       this.imageForm.resetForm()
       this.images.sort((a: AddedImage, b: AddedImage) => {
-        console.log(10 * Math.sign(a.group - b.group) + Math.sign(a.width - b.width))
         return 10 * Math.sign(a.group - b.group) + Math.sign(a.width - b.width)
       })
       this.imagesChangedEvent.emit(this.images)
@@ -57,11 +59,11 @@ export class AddDishFormComponent {
   }
 
   private createDishObject(form: NgForm): Dish {
+    // @ts-ignore
     return {
-      _id: '',
       name: form.value.name,
-      cuisine: form.value?.cuisine || 'międzynarodowa',
-      type: form.value?.type || 'pozostałe',
+      cuisine: form.value?.cuisine?.toLowerCase() || 'międzynarodowa',
+      type: form.value?.type?.toLowerCase() || 'pozostałe',
       category: form.value?.category || 'pozostałe',
       ingredients: form.value.ingredients?.trim().split(',').map((s: string) => s.trim()) || [],
       stock: form.value.stock,

@@ -19,8 +19,6 @@ export class FiltersSelectComponent {
   @Input() dropDownList: any = []
   @Input() filterAttr!: string
   @Input() selectedItems!: never[]
-  
-  constructor() {}
 
   onItemSelect(filterValue: any) {
     this.itemSelectedEvent.emit(this.createEventObj(filterValue))
