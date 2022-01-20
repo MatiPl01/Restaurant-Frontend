@@ -1,108 +1,135 @@
+// BUILT-INS
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
+// VENDORS
 import { NgxSliderModule } from '@angular-slider/ngx-slider'
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'
 
-import { AppComponent } from './app.component'
-import { HomeComponent } from './home/home.component'
-import { HeaderComponent } from './home/header/header.component'
-import { FooterComponent } from './home/footer/footer.component'
-import { NavBarComponent } from './nav-bar/nav-bar.component'
-import { ParallaxDirective } from './directives/parallax.directive'
-import { ParallaxSliderComponent } from './home/parallax-slider/parallax-slider.component'
-import { ChooseCurrencyComponent } from './choose-currency/choose-currency.component'
-import { DishesListComponent } from './dishes/dishes-list/dishes-list.component'
-import { DishComponent } from './dishes/dish/dish.component'
-import { DishesComponent } from './dishes/dishes.component'
-import { PriceComponent } from './price/price.component'
-import { ResponsiveImageComponent } from './responsive-image/responsive-image.component'
-import { DishDetailsComponent } from './dishes/dish/dish-details/dish-details.component'
-import { DishQuantityComponent } from './dishes/dish/dish-quantity/dish-quantity.component'
-import { DishOrderComponent } from './dishes/dish/dish-order/dish-order.component'
-import { FiltersFormComponent } from './filters-form/filters-form.component'
-import { FiltersSelectComponent } from './filters-form/filters-select/filters-select.component'
-import { FiltersRangeComponent } from './filters-form/filters-range/filters-range.component'
-import { CartComponent } from './cart/cart.component'
-import { NotFoundComponent } from './not-found/not-found.component'
-import { AboutComponent } from './about/about.component'
-import { AddDishComponent } from './add-dish/add-dish.component'
-import { AddDishFormComponent } from './add-dish/add-dish-form/add-dish-form.component'
-import { ScrollTopBtnComponent } from './scroll-top-btn/scroll-top-btn.component'
-import { FiltersPagesComponent } from './filters-form/filters-pages/filters-pages.component'
-import { DishesPaginationComponent } from './dishes/dishes-pagination/dishes-pagination.component'
+// ROUTING
 import { AppRoutingModule } from './app-routing.module'
-import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component'
-import { CartItemComponent } from './cart/cart-item/cart-item.component'
-import { CartItemsListComponent } from './cart/cart-items-list/cart-items-list.component'
-import { RatingComponent } from './rating/rating.component'
-import { DishPageComponent } from './dish-page/dish-page.component';
-import { ResponsiveGalleryComponent } from './responsive-gallery/responsive-gallery.component';
-import { GallerySliderComponent } from './responsive-gallery/gallery-slider/gallery-slider.component';
-import { ReviewsComponent } from './dish-page/reviews/reviews.component';
-import { ReviewComponent } from './dish-page/reviews/review/review.component';
-import { AddedImagesComponent } from './add-dish/added-images/added-images.component';
-import { PopupComponent } from './popup/popup.component';
-import { ReviewFormComponent } from './dish-page/reviews/review-form/review-form.component';
 
-import { FiltersPipe } from '../app/pipes/filters.pipe'
-import { PaginationPipe } from '../app/pipes/pagination.pipe';
-import { ReviewCreateComponent } from './dish-page/reviews/review-create/review-create.component';
+// DIRECTIVES
+import { ParallaxDirective } from './directives/parallax.directive'
 
+// PIPES
+import { FiltersPipe } from './pipes/filters.pipe'
+import { PaginationPipe } from './pipes/pagination.pipe'
+
+// COMPONENTS
+  // Main app component
+import { AppComponent } from './app.component'
+
+  // Core components
+import { FooterComponent } from './core/footer/footer.component'
+import { HeaderComponent } from './core/header/header.component'
+import { NavBarComponent } from './core/nav-bar/nav-bar.component'
+
+  // Views components
+import { AboutComponent } from './views/about/about.component'
+import { AddDishComponent } from './views/add-dish/add-dish.component'
+import { CartComponent } from './views/cart/cart.component'
+import { DishPageComponent } from './views/dish-page/dish-page.component'
+import { DishesComponent } from './views/dishes/dishes.component'
+import { HomeComponent } from './views/home/home.component'
+import { NotFoundComponent } from './views/not-found/not-found.component'
+
+  // Features components
+import { CreateReviewComponent } from './features/create-review/create-review.component'
+import { DishesFiltersComponent } from './features/dishes-filters/dishes-filters.component'
+
+  // Shared components
+import { AddDishFormComponent } from './shared/components/add-dish-form/add-dish-form.component'
+import { AddedImagesComponent } from './shared/components/added-images/added-images.component'
+import { CartItemComponent } from './shared/components/cart-item/cart-item.component'
+import { CartItemsListComponent } from './shared/components/cart-items-list/cart-items-list.component'
+import { CartSummaryComponent } from './shared/components/cart-summary/cart-summary.component'
+import { ChooseCurrencyComponent } from './shared/components/choose-currency/choose-currency.component'
+import { DishComponent } from './shared/components/dish-card/dish.component'
+import { DishDetailsComponent } from './shared/components/dish-details/dish-details.component'
+import { DishOrderComponent } from './shared/components/dish-order/dish-order.component'
+import { DishQuantityComponent } from './shared/components/dish-quantity/dish-quantity.component'
+import { DishesListComponent } from './shared/components/dishes-list/dishes-list.component'
+import { DishesPaginationComponent } from './shared/components/dishes-pagination/dishes-pagination.component'
+import { FiltersPagesComponent } from './shared/components/filters-pages/filters-pages.component'
+import { FiltersRangeComponent } from './shared/components/filters-range/filters-range.component'
+import { FiltersSelectComponent } from './shared/components/filters-select/filters-select.component'
+import { GallerySliderComponent } from './shared/components/gallery-slider/gallery-slider.component'
+import { ParallaxSliderComponent } from './shared/components/parallax-slider/parallax-slider.component'
+import { PopupComponent } from './shared/components/popup/popup.component'
+import { PriceComponent } from './shared/components/price/price.component'
+import { RatingComponent } from './shared/components/rating/rating.component'
+import { ResponsiveGalleryComponent } from './shared/components/responsive-gallery/responsive-gallery.component'
+import { ResponsiveImageComponent } from './shared/components/responsive-image/responsive-image.component'
+import { ReviewComponent } from './shared/components/review/review.component'
+import { ReviewFormComponent } from './shared/components/review-form/review-form.component'
+import { ReviewsComponent } from './shared/components/reviews/reviews.component'
+import { ScrollTopBtnComponent } from './shared/components/scroll-top-btn/scroll-top-btn.component'
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavBarComponent,
+    // Directives
     ParallaxDirective,
-    ParallaxSliderComponent,
-    ChooseCurrencyComponent,
+
+    // Pipes
+    FiltersPipe,
+    PaginationPipe,
+
+    // Components
+    AppComponent,
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    NavBarComponent,
+    AboutComponent,
+    AddDishComponent,
+    CartComponent,
+    DishPageComponent,
     DishesComponent,
-    DishesListComponent,
+    HomeComponent,
+    NotFoundComponent,
+    CreateReviewComponent,
+    DishesFiltersComponent,
+    AddDishFormComponent,
+    AddedImagesComponent,
+    CartItemComponent,
+    CartItemsListComponent,
+    CartSummaryComponent,
+    ChooseCurrencyComponent,
     DishComponent,
     DishDetailsComponent,
     DishOrderComponent,
     DishQuantityComponent,
-    PriceComponent,
-    ResponsiveImageComponent,
-    RatingComponent,
-    FiltersFormComponent,
-    FiltersSelectComponent,
-    FiltersRangeComponent,
-    FiltersPipe,
-    PaginationPipe,
-    CartComponent,
-    NotFoundComponent,
-    AboutComponent,
-    AddDishComponent,
-    AddDishFormComponent,
-    ScrollTopBtnComponent,
-    FiltersPagesComponent,
+    DishesListComponent,
     DishesPaginationComponent,
-    CartSummaryComponent,
-    CartItemComponent,
-    CartItemsListComponent,
-    DishPageComponent,
-    ResponsiveGalleryComponent,
+    FiltersPagesComponent,
+    FiltersRangeComponent,
+    FiltersSelectComponent,
     GallerySliderComponent,
-    ReviewsComponent,
-    ReviewComponent,
-    AddedImagesComponent,
+    ParallaxSliderComponent,
     PopupComponent,
+    PriceComponent,
+    RatingComponent,
+    ResponsiveGalleryComponent,
+    ResponsiveImageComponent,
+    ReviewComponent,
     ReviewFormComponent,
-    ReviewCreateComponent,
+    ReviewsComponent,
+    ScrollTopBtnComponent
   ],
   imports: [
+    // BUILT-INS
     BrowserModule,
     HttpClientModule,
     FormsModule,
+
+    // VENDORS
     NgMultiSelectDropDownModule.forRoot(),
     NgxSliderModule,
+    
+    // ROUTING
     AppRoutingModule
   ],
   providers: [],

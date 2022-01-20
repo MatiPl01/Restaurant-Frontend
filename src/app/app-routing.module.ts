@@ -1,20 +1,23 @@
+// BUILT-INS
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AboutComponent } from './about/about.component'
-import { AddDishComponent } from './add-dish/add-dish.component'
-import { CartComponent } from './cart/cart.component'
-import { DishesComponent } from './dishes/dishes.component'
-import { HomeComponent } from './home/home.component'
-import { NotFoundComponent } from './not-found/not-found.component'
-import { DishPageComponent } from './dish-page/dish-page.component'
-import { ReviewCreateComponent } from './dish-page/reviews/review-create/review-create.component'
+
+// VIEWS
+import { AboutComponent } from './views/about/about.component'
+import { AddDishComponent } from './views/add-dish/add-dish.component'
+import { CartComponent } from './views/cart/cart.component'
+import { DishesComponent } from './views/dishes/dishes.component'
+import { HomeComponent } from './views/home/home.component'
+import { NotFoundComponent } from './views/not-found/not-found.component'
+import { DishPageComponent } from './views/dish-page/dish-page.component'
+import { CreateReviewComponent } from './features/create-review/create-review.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cart', component: CartComponent },
   { path: 'dishes', component: DishesComponent },
   { path: 'dishes/:id', component: DishPageComponent, children: [
-    { path: 'review', component: ReviewCreateComponent }
+    { path: 'review', component: CreateReviewComponent }
   ] },
   { path: 'about', component: AboutComponent },
   { path: 'add-dish', component: AddDishComponent },
