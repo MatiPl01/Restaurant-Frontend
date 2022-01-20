@@ -1,12 +1,12 @@
 <main class="dish-page" *ngIf="this.dish">
-  <section class="dish-page__left">
+  <section class="dish-page__gallery">
     <app-responsive-gallery
       [images]="dish.images.gallery" [sizes]="'40vw'"
       [alts]="getImagesAlts()"
     ></app-responsive-gallery>
   </section>
 
-  <section class="dish-page__right">
+  <section class="dish-page__content">
     <a class="dish-page__button dish-page__button--back"
       routerLink="..">
       &larr; Powrót do listy dań
@@ -52,7 +52,7 @@
     </section>
     
     <section class="dish-page__order">
-      <app-dish-quantity [dish]="dish"></app-dish-quantity>
+      <app-dish-quantity class="dish-page__order-text" [dish]="dish"></app-dish-quantity>
       <app-dish-order class="dish-page__order-component" [dish]="dish"></app-dish-order>
       <a class="dish-page__button dish-page__button--order" routerLink="/cart">
         Pokaż koszyk

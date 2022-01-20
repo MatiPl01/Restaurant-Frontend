@@ -2,26 +2,22 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Review } from 'src/app/shared/models/review.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ReviewsService } from 'src/app/services/reviews.service';
 
 @Component({
-  selector: 'app-create-review',
-  templateUrl: './create-review.component.html'
+  selector: 'app-review-form',
+  templateUrl: './review-form.component.html'
 })
-export class CreateReviewComponent {
+export class ReviewFormComponent {
   ratingValue: number = 5
   dishID: string
 
   constructor(private location: Location,
-              private activatedRoute: ActivatedRoute,
-              private reviewsService: ReviewsService) {
+    private activatedRoute: ActivatedRoute,
+    private reviewsService: ReviewsService) {
     // @ts-ignore
     this.dishID = this.activatedRoute.parent?.snapshot.params['id']
-  }
-
-  onClose(): void {
-    this.location.back()
   }
 
   onSubmit(form: NgForm): void {

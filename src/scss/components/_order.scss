@@ -43,13 +43,5 @@
 }
 
 .order--white {
-    .order {
-        &__button {
-            background: c.$white;
-        }
-
-        &__icon {
-            fill: c.$gray-dark-1;
-        }
-    }
+    @include order-btn-white;
 }

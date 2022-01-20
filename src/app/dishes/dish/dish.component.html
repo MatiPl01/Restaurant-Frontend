@@ -6,21 +6,22 @@
     </svg>
   </button>
 
-  <figure class="dish__figure"
-    [routerLink]="[dish._id]">
-    <app-responsive-image class="dish__image"
-      [breakpoints]="dish.images.gallery[dish.images.coverIdx].breakpoints"
-      [paths]="dish.images.gallery[dish.images.coverIdx].paths"
-      [sizes]="'(max-width: 28em) calc(100vw - 1.875em), (max-width: 56.25em) 25em, (max-width: 75em) calc((100vw - 14.625em) / 2), (min-width: 135em) 37em, (min-width: 112.5em) calc((100vw - 24em) / 3), calc((100vw - 20em) / 3)'"
-      [alt]="dish.name">
-    </app-responsive-image>
-    <figcaption class="dish__caption">
-      <h3 class="dish__heading"    
-          [title]="dish.name">
-        {{ dish.name | uppercase }}
-      </h3>
-    </figcaption>
-  </figure>
+  <a [routerLink]="[dish._id]" class="dish__link">
+    <figure class="dish__figure">
+      <app-responsive-image class="dish__image"
+        [breakpoints]="dish.images.gallery[dish.images.coverIdx].breakpoints"
+        [paths]="dish.images.gallery[dish.images.coverIdx].paths"
+        [sizes]="'(max-width: 28em) calc(100vw - 1.875em), (max-width: 56.25em) 25em, (max-width: 75em) calc((100vw - 14.625em) / 2), (min-width: 135em) 37em, (min-width: 112.5em) calc((100vw - 24em) / 3), calc((100vw - 20em) / 3)'"
+        [alt]="dish.name">
+      </app-responsive-image>
+      <figcaption class="dish__caption">
+        <h3 class="dish__heading"    
+            [title]="dish.name">
+          {{ dish.name | uppercase }}
+        </h3>
+      </figcaption>
+    </figure>
+  </a>
 
   <section class="dish__body">
     <app-dish-details class="dish__details" [dish]="dish">

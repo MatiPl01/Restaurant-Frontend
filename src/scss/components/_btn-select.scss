@@ -1,6 +1,8 @@
 @use '../helpers/colors' as c;
 
 .btn-select {
+    user-select: none;
+    
     &__select {
         cursor: pointer;
         font-size: 1.6rem;

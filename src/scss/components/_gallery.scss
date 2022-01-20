@@ -1,12 +1,11 @@
 @use '../helpers/sizes' as s;
+@use '../helpers/mixins' as *;
 
 .gallery {
-    padding-top: s.$nav-bar-height;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
-    position: sticky;
-    top: 0;
+    position: relative;
 
     &__images {
         &-list {
@@ -19,9 +18,13 @@
 
         &-item {
             height: 100%;
-            width: 40vw;
+            width: s.$dish-gallery-width-normal;
             position: relative;
             user-select: none;
+
+            @include respond(tab-port) {
+                width: s.$dish-gallery-width-mobile;
+            }
         }
     }
 }

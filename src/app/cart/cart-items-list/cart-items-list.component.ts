@@ -11,7 +11,7 @@ export class CartItemsListComponent implements OnInit, OnDestroy {
   cartDishes: Dish[] = []
   subscription!: Subscription
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.cartDishes = this.orderService.getCartDishes()

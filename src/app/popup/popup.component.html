@@ -1,0 +1,21 @@
+<div class="popup">
+  <div class="popup__background" (click)="onClose()"></div>
+    
+  <div class="popup__wrapper">
+    <header class="popup__header">
+      <h2 class="popup__heading">{{ heading }}</h2>
+    </header>
+
+    <button class="popup__button popup__button--close" title="Zamknij popup" (click)="onClose()">
+      <svg class="popup__button-icon">
+        <use href="assets/svg/icons.svg#times"></use>
+      </svg>
+    </button>
+  
+    <div class="popup__content-wrapper">
+      <section class="popup__content">
+        <ng-content></ng-content>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+@use '../helpers/colors' as c;
+
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {       // <= 600px
         @media only screen and (max-width: 37.5em) { @content }; 
@@ -10,6 +12,16 @@
     }
     @if $breakpoint == big-desktop { // >= 1800px
         @media only screen and (min-width: 112.5em) { @content };
+    }
+
+    @if $breakpoint == not-phone {    // >= 600px
+        @media only screen and (min-width: 37.5em) { @content }; 
+    }
+    @if $breakpoint == not-tab-port { // >= 900px
+        @media only screen and (min-width: 56.25em) { @content }; 
+    }
+    @if $breakpoint == not-tab-land { // >= 1200px
+        @media only screen and (min-width: 75em) { @content }; 
     }
 }
 
@@ -43,6 +55,37 @@
             color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
+        }
+    }
+}
+
+@mixin order-btn-white {
+    .order {
+        &__button {
+            background: c.$white;
+        }
+
+        &__icon {
+            fill: c.$gray-dark-1;
+        }
+    }
+}
+
+@mixin content-scrollbar {
+    ::-webkit-scrollbar {
+        width: 1rem;
+
+        &-thumb {
+            background: c.$gray-dark-3;
+            border-radius: 1rem;
+        }
+
+        &-track {
+            background-color: transparent;
+
+            &:hover {
+                background-color: c.$gray-light-3;
+            }
         }
     }
 }

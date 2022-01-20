@@ -1,15 +1,15 @@
 <li class="cart-item">
-  <a [routerLink]="['/dishes', dish._id]" class="cart-item__link">
   <figure class="cart-item__figure">
-    <app-responsive-image
-    class="dish__image" 
-    [breakpoints]="dish.images.gallery[dish.images.coverIdx].breakpoints"
-    [paths]="dish.images.gallery[dish.images.coverIdx].paths"
-      [sizes]="'30px'"
-      [alt]="dish.name">
-    </app-responsive-image>
+    <a [routerLink]="['/dishes', dish._id]" class="cart-item__link">
+      <app-responsive-image
+      class="cart-item__image" 
+      [breakpoints]="dish.images.gallery[dish.images.coverIdx].breakpoints"
+      [paths]="dish.images.gallery[dish.images.coverIdx].paths"
+        [sizes]="'30px'"
+        [alt]="dish.name">
+      </app-responsive-image>
+    </a>
   </figure>
-  </a>
 
   <section class="cart-item__details">
     <a [routerLink]="['/dishes', dish._id]" class="cart-item__link">
@@ -41,7 +41,7 @@
         ></app-dish-order>
       </li>
       <li class="cart-item__order-item">
-        <button class="cart-item__order-button"
+        <button class="cart-item__order-remove"
           (click)="onRemoveClick()"  
         >Usuń</button>
       </li>
@@ -53,6 +53,7 @@
       [currency]="currencyService.getCurrentCurrencySymbol()" 
       [amount]="currencyService.calcDishCurrentPrice(dish)"
     ></app-price>
+    <span class="cart-item__price--unit-text">szt.</span>
   </section>
 
   <section class="cart-item__price cart-item__price--total">
@@ -61,4 +62,6 @@
       [amount]="quantity * currencyService.calcDishCurrentPrice(dish)"
     ></app-price>
   </section>
+
+  <div class="cart-item__mobile-bg"></div>
 </li>

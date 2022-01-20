@@ -1,6 +1,9 @@
 <app-nav-bar></app-nav-bar>
 <app-scroll-top-btn></app-scroll-top-btn>
-<router-outlet></router-outlet>
+
+<div class="content" [ngClass]="{'nav-open': isMobileNavOpen}">
+  <router-outlet></router-outlet>
+</div>
 
 <div class="gradient gradient--1">
   <svg width="0" height="0" viewBox="0 0 0 0" xmlns="http://www.w3.org/2000/svg">

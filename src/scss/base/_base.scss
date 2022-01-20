@@ -48,7 +48,10 @@ html {
 }
 
 body {
-    overflow-y: scroll;
+    &.no-scroll {
+        overflow-y: hidden !important;
+        height: 100vh !important;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -70,4 +73,5 @@ body {
 .hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }

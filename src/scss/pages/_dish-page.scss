@@ -1,3 +1,4 @@
+@use '../helpers/sizes' as s;
 @use '../helpers/colors' as c;
 @use '../helpers/gradients' as g;
 @use '../helpers/mixins' as *;
@@ -6,15 +7,18 @@
     position: relative;
     display: flex;
     
-    &__left {
-        width: 40vw;
-        position: relative;
+    &__gallery {
+        width: s.$dish-gallery-width-normal;
+        height: 100vh;
+        position: sticky;
+        padding-top: s.$nav-bar-height;
+        top: 0;
     }
 
-    &__right {
+    &__content {
         margin-top: 12rem;
         padding: 0 6vw;
-        margin-bottom: 4rem;
+        padding-bottom: 4rem;
     }
 
     &__rating {
@@ -66,6 +70,8 @@
     &__heading {
         &--main {
             margin-top: 5vh;
+            line-height: 1;
+            margin-bottom: 3rem;
         }
 
         &--ingredients,
@@ -184,5 +190,95 @@
         &-paragraph:not(:last-child) {
             margin-bottom: 1rem;
         }
+    }
+
+    @include respond(tab-port) {
+        flex-direction: column;
+
+        &__gallery {
+            width: s.$dish-gallery-width-mobile;
+            height: calc(100vh - 18rem);
+            padding-top: 0;
+        }
+
+        &__content {
+            z-index: 1;
+            padding-bottom: 0;
+            margin: 0;
+            position: relative;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background-color: c.$white;
+            }
+        }
+
+        &__button {
+            &--back {
+                position: fixed;
+                z-index: -1;
+                top: 2rem;
+                left: 0;
+                padding: 1rem 3rem 1rem 2rem;
+                color: c.$white;
+                text-decoration: none;
+                transition: margin .4s .15s ease-in-out;
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background-color: c.$black;
+                    opacity: .35;
+                    z-index: -1;
+                    border-top-right-radius: 10rem;
+                    border-bottom-right-radius: 10rem;
+                }
+            }
+        }
+
+        &__details {
+            margin-top: 4rem;
+        }
+
+        &__order {
+            display: grid;
+            grid-template-areas: 
+                "order  text"
+                "button button";
+            max-width: 100%;
+
+            &-text {
+                grid-area: text;
+            }
+
+            &-component {
+                grid-area: order;
+            }
+        }
+
+        &__button--order {
+            grid-area: button;
+            justify-self: flex-start;
+        }
+    }
+
+    @include respond(phone) {
+        .popup__content {
+            width: 100vw;
+            height: 100vh;
+            animation: animate-popup .5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+        }
+    }
+}
+
+// FIX for open mobile nav-bar animation (content shifting to the right)
+@include respond(tab-port) {
+    .content.nav-open .dish-page__button--back {
+        $translate: max(10vw, 15rem);
+        margin: 0 calc(-1 * $translate) 0 $translate;
     }
 }

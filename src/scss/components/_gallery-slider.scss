@@ -1,4 +1,5 @@
 @use '../helpers/colors' as c;
+@use '../helpers/mixins' as *;
 
 .gallery-slider {
     padding: 1.25rem 1.5rem;
@@ -29,6 +30,20 @@
         &.active,
         &:hover {
             background-color: c.$gray-light-1;
+        }
+    }
+
+    @include respond(tab-port) {
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        height: min-content;
+        padding: 1.5rem 1.25rem;
+
+        &__dots {
+            height: auto;
+            width: 100%;
+            flex-direction: column;
         }
     }
 }

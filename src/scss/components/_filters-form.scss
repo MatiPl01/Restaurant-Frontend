@@ -13,6 +13,17 @@
         & > * {
             flex: 1 1 0;
         }
+
+        @include respond(tab-land) {
+            display: grid;
+            grid-column-gap: 5%;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond(tab-port) {
+            max-width: 50rem;
+            grid-template-rows: repeat(5, 1fr);
+        }
     }
 
     &__item {
@@ -21,12 +32,32 @@
         gap: 1rem;
         justify-content: space-between;
 
+        @include respond(tab-land) {
+            gap: 2rem;
+        }
+
+        @include respond(tab-port) {
+            gap: 1rem;
+            grid-column: 1 / span 2;
+        }
+
         &--pages,
         &--reset {
             flex: 0 0 0;
+
+            @include respond(tab-port) {
+                grid-row: -2 / -1;
+                pointer-events: none;
+
+                & > * {
+                    pointer-events: all;
+                }
+            }
         }
 
         &--pages {
+            align-items: flex-end;
+            
             .btn-select__select {
                 width: 7.5rem;
             }
@@ -57,16 +88,5 @@
 
     &__range {
         padding-bottom: 1rem;
-    }
-
-    @include respond(tab-port) {
-        flex-direction: column;
-        max-width: 50rem;
-        gap: 4rem;
-
-        & > * {
-            width: 100%;
-            max-width: 100%;
-        }
     }
 }

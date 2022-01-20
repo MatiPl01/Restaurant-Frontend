@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core'
+import { Component, OnDestroy, OnInit, HostListener, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { VisualizationService } from '../services/visualization.service'
 
@@ -7,22 +7,28 @@ import { VisualizationService } from '../services/visualization.service'
   templateUrl: './scroll-top-btn.component.html'
 })
 export class ScrollTopBtnComponent implements OnInit, OnDestroy {
-  isHeaderVisible: boolean = false
+  @ViewChild('btn') btn: any
+  isVisible: boolean = true
   scrolledFarEnough: boolean = false
   minScrollY: number = 500
 
-  subscription!: Subscription
+  subscriptions: Subscription[] = []
   
   constructor(private visualizationService: VisualizationService) {}
 
   ngOnInit() {
-    this.subscription = this.visualizationService.headerVisibilityChangedEvent.subscribe((isVisible: boolean) => {
-      this.isHeaderVisible = isVisible
-    })
+    this.subscriptions.push(
+      this.visualizationService.headerVisibilityChangedEvent.subscribe((isHeaderVisible: boolean) => {
+        this.isVisible = !isHeaderVisible
+      }),
+      this.visualizationService.scrollAvailabilityChangedEvent.subscribe((canScroll: boolean) => {
+        this.isVisible = canScroll
+      })
+    )
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.subscriptions.forEach((subscription: Subscription) => subscription)
   }
 
   @HostListener("window:scroll", ["$event"])
@@ -32,5 +38,9 @@ export class ScrollTopBtnComponent implements OnInit, OnDestroy {
 
   onClick() {
     this.visualizationService.scrollY(0)
+    this.btn.nativeElement.classList.add('anim')
+    setTimeout(() => {
+      this.btn.nativeElement.classList.remove('anim')
+    }, 750)
   }
 }

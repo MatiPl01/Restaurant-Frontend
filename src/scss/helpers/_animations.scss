@@ -20,6 +20,12 @@
     }
 }
 
+@keyframes slide-in-left {
+    from {
+        transform: translateX(7.5rem);
+    }
+}
+
 @keyframes animate-scroll {
     50% {
         margin-top: 3rem;
@@ -45,7 +51,7 @@
 }
 
 @keyframes to-top-btn {
-    20% {
+    5% {
         transform: translateY(10%);
     }
     50% {
@@ -59,7 +65,7 @@
     }
 }
 
-@keyframes animate-popup-wrapper {
+@keyframes animate-popup-background {
     to {
         background-color: rgba(c.$black, .8);
         pointer-events: all;
@@ -70,5 +76,40 @@
     from {
         transform: scale(.2);
         opacity: 0;
+    }
+}
+
+@keyframes mobile-nav-item-line-show {
+    from {
+        width: 0;
+        left: 0;
+    }
+    40%, to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@keyframes mobile-nav-item-line-hide {
+    from {
+        width: 100%;
+        left: 0;
+    }
+    to {
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes mobile-nav-item-text-show {
+    from {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes show-nav-content {
+    from {
+        opacity: 0;
+        visibility: hidden;
     }
 }

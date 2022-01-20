@@ -198,4 +198,70 @@
             border: 2px solid c.$red !important;
         }
     }
+
+    @include respond(tab-port) {
+        &__item,
+        &__image-form {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        &__column {
+            &--left {
+                width: max-content;
+                max-width: 100%;
+            }
+
+            &--right {
+                width: 100%;
+            }
+        }
+
+        &__label {
+            border-radius: .3rem 1rem .3rem 1rem;
+        }
+
+        &__help {
+            top: unset;
+            bottom: -.75rem;
+        }
+
+        &__textarea,
+        &__input,
+        &__date {
+            margin-left: 0;
+        }
+
+        &__image-form &__group {
+            display: grid;
+            grid-template-areas: 
+                "image image image"
+                "width group add";
+            grid-template-columns: auto auto 3rem;
+        }
+
+        &__input-wrapper {
+            &--currency {
+                margin: -1rem 0;
+            }
+
+            &--image {
+                grid-area: image;
+            }
+
+            &--width {
+                grid-area: width;
+            }
+
+            &--group {
+                grid-area: group;
+            }
+
+            &--add {
+                grid-area: add;
+                width: min-content;
+                margin: 0;
+            }
+        }
+    }
 }

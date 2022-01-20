@@ -1,22 +1,49 @@
 @use '../helpers/gradients' as g;
 @use '../helpers/colors' as c;
+@use '../helpers/mixins' as *;
+
+.cart-summary__checkbox {
+    display: none;
+}
 
 .cart-summary {
     background: g.$primary;
     border-radius: .5rem;
-    padding: 3rem;
     top: 18rem;
     position: sticky;
+    pointer-events: all;
 
     &__header {
         padding-bottom: 1.5rem;
-        border-bottom: 1px solid c.$gray-dark-2;
-        margin-bottom: 2rem;
+    }
+
+    &__label,
+    &__content {
+        padding: 0 3rem;
+    }
+
+    &__label {
+        display: block;
+        padding-top: 3rem;
+    }
+
+    &__content {
+        padding-bottom: 3rem;
     }
 
     &__heading {
         font-family: Poppins, Arial, Helvetica, sans-serif;
         font-size: 1.8em;
+        border-bottom: 1px solid c.$gray-dark-2;
+        padding-bottom: 2rem;
+    }
+
+    &__arrow {
+        display: none;
+        height: 1em;
+        width: 1em;
+        margin-left: 1rem;
+        line-height: 1;
     }
 
     &__details {
@@ -59,5 +86,37 @@
         background-color: c.$white;
         border-radius: 10rem;
         box-shadow: 0 0 .2rem rgba(c.$black, .3);
+    }
+
+    @include respond(tab-land) {
+        transform: translateY(calc(100% - 4rem - 1.8em));
+        
+        &,
+        &__arrow {
+            transition: transform .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        &__label {
+            padding-top: 2rem;
+            cursor: pointer;
+        }
+
+        &__arrow {
+            display: inline;
+            transform: rotate(0);
+        }
+    }
+}
+
+// Styles for revealed summary
+.cart-summary__checkbox:checked ~ .cart-summary {
+    @include respond(tab-land) {
+        transform: translateY(0);
+
+        .cart-summary {
+            &__arrow {
+                transform: rotate(-180deg);
+            }
+        }
     }
 }

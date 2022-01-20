@@ -1,5 +1,6 @@
 @use '../helpers/sizes' as s;
 @use '../helpers/colors' as c;
+@use '../helpers/mixins' as *;
 
 .add-dish {
     display: flex;
@@ -13,6 +14,7 @@
     .form,
     .added-images {
         width: 80rem;
+        max-width: 90vw;
     }
 
     &__info {
@@ -63,5 +65,9 @@
             font-size: 1.6rem;
             font-family: Poppins, Arial, Helvetica, sans-serif;
         }
+    }
+
+    @include respond(tab-port) {
+        padding-top: 2rem;
     }
 }

@@ -43,11 +43,13 @@ import { ResponsiveGalleryComponent } from './responsive-gallery/responsive-gall
 import { GallerySliderComponent } from './responsive-gallery/gallery-slider/gallery-slider.component';
 import { ReviewsComponent } from './dish-page/reviews/reviews.component';
 import { ReviewComponent } from './dish-page/reviews/review/review.component';
-import { CreateReviewComponent } from './dish-page/reviews/create-review/create-review.component';
+import { AddedImagesComponent } from './add-dish/added-images/added-images.component';
+import { PopupComponent } from './popup/popup.component';
+import { ReviewFormComponent } from './dish-page/reviews/review-form/review-form.component';
 
 import { FiltersPipe } from '../app/pipes/filters.pipe'
 import { PaginationPipe } from '../app/pipes/pagination.pipe';
-import { AddedImagesComponent } from './add-dish/added-images/added-images.component';
+import { ReviewCreateComponent } from './dish-page/reviews/review-create/review-create.component';
 
 
 @NgModule({
@@ -90,8 +92,10 @@ import { AddedImagesComponent } from './add-dish/added-images/added-images.compo
     GallerySliderComponent,
     ReviewsComponent,
     ReviewComponent,
-    CreateReviewComponent,
     AddedImagesComponent,
+    PopupComponent,
+    ReviewFormComponent,
+    ReviewCreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@
     display: flex;
     padding: 2rem 0;
     border-bottom: 1px solid c.$gray-light-4;
+    position: relative;
 
     &__figure {
         width: 12.5rem;
@@ -52,6 +53,7 @@
     }
 
     &__detail-value {
+        display: inline-block;
         font-weight: bold;
         font-size: 1.2rem;
         color: c.$gray-dark-2;
@@ -59,10 +61,6 @@
 
     &__order {
         @include flex-center;
-    }
-
-    &__item__order-button {
-        background-color: black;
     }
 
     &__order-list {
@@ -74,11 +72,7 @@
         list-style: none;
     }
 
-    &__order-item {
-        
-    }
-
-    &__order-button {
+    &__order-remove {
         text-transform: uppercase;
         padding: .75rem 1rem;
         border-radius: 10rem;
@@ -90,17 +84,93 @@
         font-size: 2rem;
         @include flex-center;
 
-        &--unit {
-
-        }
-
-        &--total {
-
-        }
+        &--unit-text { display: none; }
     }
 
     &__order,
     &__price {
         width: 10rem;
+    }
+    
+    &__mobile-bg {
+        display: none;
+    }
+
+    @include respond(phone) {
+        border-bottom: none;
+        display: grid;
+        grid-template-areas: 
+            "figure details details"
+            "figure price   price"
+            "total  order   order";
+        grid-template-columns: repeat(3, 1fr);
+        box-shadow: 0 0 .5rem rgba(c.$black, .15);
+        padding: 0;
+        border-radius: .3rem;
+        overflow: hidden;
+
+        &__figure {
+            grid-area: figure;
+            height: 100%;
+            width: 100%;
+        }
+
+        &__details {
+            grid-area: details;
+            padding: 1rem 0;
+
+            &-list {
+                gap: .5rem;
+            }
+        }
+
+        &__order-remove {
+            margin-right: 1.5rem;
+        }
+
+        &__order {
+            grid-area: order;
+            justify-self: flex-end;
+            width: auto;
+            padding: .75rem 0;
+
+            @include order-btn-white;
+
+            &-list {
+                flex-direction: row;
+            }
+        }
+
+        &__price {
+            &--unit {
+                grid-area: price;
+                justify-self: flex-end;
+                padding: .5rem 1.5rem 1rem 0;
+            
+                &-text {
+                    display: block;
+                    font-family: Poppins;
+                    font-size: 1.2rem;
+                    color: c.$gray-dark-2;
+                    margin-bottom: -.4rem;
+                    margin-left: .2rem;
+                }
+            }
+
+            &--total {
+                grid-area: total;
+                width: auto;
+                justify-self: flex-start;
+                margin-left: 1.5rem;
+            }
+        }
+
+        &__mobile-bg {
+            grid-column: 1 / -1;
+            grid-row: -2 / -1;
+            display: block;
+            background: g.$primary;
+            z-index: -1;
+        }
     }
 }

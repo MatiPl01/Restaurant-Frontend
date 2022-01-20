@@ -1,4 +1,5 @@
 @use '../helpers/colors' as c;
+@use '../helpers/mixins' as *;
 
 .review {
     box-shadow: 0 0 1.75em rgba(c.$black, .15);
@@ -25,6 +26,7 @@
     &__paragraph {
         font-size: 1.4rem;
         line-height: 1.5;
+        overflow-wrap: break-word;
 
         &:not(:last-child) {
             margin-bottom: .5rem;
@@ -51,6 +53,26 @@
         &-value {
             color: c.$gray-dark-3;
             font-weight: bold;
+        }
+    }
+
+    @include respond(phone) {
+        &__header {
+            flex-direction: column;
+            border-bottom: 1px solid c.$gray-light-4;
+            gap: 0;
+            padding-bottom: 1rem;
+        }
+
+        &__heading {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        &__footer {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: .5rem;
         }
     }
 }

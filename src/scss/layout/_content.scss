@@ -1,0 +1,11 @@
+@use '../helpers/gradients' as g;
+@use '../helpers/colors' as c;
+
+.content {
+    transition: margin .4s .15s ease-in-out;
+
+    &.nav-open {
+        $translate: max(10vw, 15rem);
+        margin: 0 calc(-1 * $translate) 0 $translate;
+    }
+}

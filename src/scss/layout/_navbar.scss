@@ -55,7 +55,9 @@
         }
     }
 
-    &__list {
+    &__controls,
+    &__links,
+    &__buttons {
         list-style: none;
         align-items: center;
         display: flex;
@@ -64,10 +66,16 @@
 
     &__link {
         text-decoration: none;
+        user-select: none;
         font-family: Poppins;
         font-weight: 400;
-        font-size: .25 * s.$nav-bar-height;
-        color: c.$black;
+        font-size: .2 * s.$nav-bar-height;
+        color: c.$gray-dark-1;
+
+        &.active {
+            font-weight: 600;
+            color: c.$black;
+        }
     }
 
     &__button {
@@ -91,10 +99,6 @@
             font-size: 1.8rem;
             font-family: Poppins, Arial, Helvetica, sans-serif;
             text-transform: uppercase;
-
-            @include respond(phone) {
-                display: none;
-            }
         }
 
         &--cart {
@@ -117,6 +121,18 @@
                 box-shadow: 0 0 .5rem rgba(c.$black, .3);
                 background: g.$orange;
             }
+
+            @include respond(tab-land) {
+                .nav-bar__button-text {
+                    display: none;
+                }
+            }
+
+            @include respond(tab-port) {
+                .nav-bar__button-text {
+                    display: block;
+                }
+            }
         }
 
         &--add {
@@ -134,76 +150,372 @@
         }
     }
 
-    // Styles for normal nav-bar
-    &--normal {
-        animation: slide-in-bottom 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-        .nav-bar {
-            &__item--cart {
-                order: 1;
-            }
-        }
-    }
-
     // Styles for nav-par displayed in header
     &--header {
         position: absolute;
         background: transparent;
         height: s.$header-nav-bar-height;
+    }
 
-        .nav-bar {
-            &__logo {
-                animation: fade-in-bottom .75s .5s backwards;
-            }
+    @include respond(not-tab-port) {
+         // Styles for normal nav-bar
+        &--normal {
+            animation: slide-in-bottom 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-            &__icon {
-                fill: c.$white;
-            }
-
-            &__heading {
-                font-weight: 300;
-                
-                &--primary {
-                    color: c.$white;
-                }
-
-                &--secondary {
-                    color: c.$gray-light-4;
+            .nav-bar {
+                &__item--cart {
+                    order: 1;
                 }
             }
+        }
 
-            &__link {
-                color: c.$white;
-            }
+        // Styles for nav-par displayed in header
+        &--header {
+            .nav-bar {
+                &__logo,
+                &__item {
+                    filter: drop-shadow(0 0 1rem rgba(c.$black, .5));
+                }
 
-            &__item {
-                @for $i from 0 through n.$nav-bar-links {
-                    &:nth-child(#{$i}) {
-                        animation: fade-in-bottom .75s (.75 + .1 * $i) * 1s backwards;
+                &__logo {
+                    animation: fade-in-bottom .75s .5s backwards;
+                }
+
+                &__icon {
+                    fill: c.$white;
+                }
+
+                &__heading {
+                    font-weight: 300;
+                    
+                    &--primary {
+                        color: c.$white;
+                    }
+
+                    &--secondary {
+                        color: c.$gray-light-4;
                     }
                 }
 
-                &--currency,
-                &--add {
-                    display: none;
+                &__link {
+                    color: c.$white;
+                }
+
+                &__item {
+                    @for $i from 0 through n.$header-nav-bar-links {
+                        &:nth-child(#{$i}) {
+                            animation: fade-in-bottom .75s (.75 + .1 * $i) * 1s backwards;
+                        }
+                    }
+
+                    &--currency,
+                    &--add {
+                        display: none;
+                    }
+                }
+
+                &__button {
+                    padding: 0;
+
+                    &-icon {
+                        display: none;
+                    }
+
+                    &--cart {
+                        box-shadow: none;
+                        background-color: transparent;
+                        color: c.$white;
+                    }
+
+                    &::before {
+                        display: none;
+                    }
                 }
             }
+        }
+    }
 
-            &__button {
-                padding: 0;
+    // MOBILE NAVBAR STYLES
+    $bg-cut: 30rem;
+    $bg-width: calc(100vw + $bg-cut);
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__mobile-bg {
+        height: 100vh;
+        transition: left .5s ease-in-out;
+        top: 0;
+        left: calc(-1 * $bg-width);
+        position: fixed;
+        width: $bg-width;
+        filter: drop-shadow(0 0 5rem rgba(c.$black, .5));
+        display: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: g.$primary;
+            clip-path: polygon(0 0, calc(100% - $bg-cut) 0, 100% 100%, 0 100%);
+        }
+    }
+
+    &__label {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        @include flex-center;
+    }
+
+    &__toggle {
+        background-color: transparent;
+        width: .75 * s.$nav-bar-height;
+        height: .75 * s.$nav-bar-height;
+        display: none;
+        border-radius: 50%;
+        z-index: 1001;
+
+        &-icon {
+            transition: transform .4s;
+        }
+
+        &-line {
+            fill: none;
+            transition: stroke .3s, stroke-dasharray .4s, stroke-dashoffset .4s;
+            stroke: c.$gray-dark-1;
+            stroke-width: 5.5;
+            stroke-linecap: round;
+            // Fixes for svg animation flickering
+            -webkit-transform:translate3d(0,0,0);
+            -webkit-perspective: 1000;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform-style: preserve-3d;
+
+            &--1 {
+                stroke-dasharray: 40 121;
+            }
+            
+            &--3 {
+                stroke-dasharray: 40 121;
+            }
+        }
+    }
+
+    @include respond(tab-port) {
+        background: transparent;
+        justify-content: flex-end;
+        pointer-events: none;
+
+        &__toggle {
+            display: block;
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            pointer-events: all;
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                z-index: -1;
+                transition: all .3s;
+            }
+        }
+
+        &__button--cart {
+            padding: 0;
+            
+            .nav-bar__button {
+                &-text {
+                    text-transform: capitalize;
+                    color: c.$gray-dark-1;
+                    font-size: 3rem;
+                }
 
                 &-icon {
                     display: none;
                 }
+            }
 
-                &--cart {
-                    box-shadow: none;
-                    background-color: transparent;
-                    color: white;
+            box-shadow: none;
+            background-color: transparent;
+            color: c.$white;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &--header .nav-bar__toggle {
+            &-line {
+                stroke: c.$white;
+            }
+
+            &-icon {
+                filter: drop-shadow(0 0 1rem rgba(c.$black, .75));
+            }
+        }
+
+        &--normal .nav-bar__toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            transition: right .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slide-in-left .7s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+            &--hidden {
+                right: -6rem;
+            }
+            
+            &::after {
+                background: g.$primary;
+                box-shadow: 0 0 .5rem rgba(c.$black, .5);
+            }
+
+            &-icon {
+                filter: drop-shadow(0 0 .15rem rgba(c.$black, .15));
+            }
+        }
+
+        &__content {
+            padding: 5vh;
+            gap: 5vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            left: -100vw;
+        }
+
+        &__controls {
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        &__mobile-bg {
+            display: block;
+        }
+
+        &__controls,
+        &__links {
+            flex-direction: column;
+        }
+
+        &__links {
+            flex-grow: 1;
+            justify-content: center;
+            gap: 5rem;
+        }
+
+        &__link {
+            font-size: 3rem;
+            overflow: hidden;
+            display: block;
+
+            span {
+                height: 100%;
+                display: block;
+            }
+        }
+
+        &__links .nav-bar__item {
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '';
+                display: block;
+                height: .5rem;
+                border-radius: 2px;
+                width: 0;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                background-color: c.$gray-light-1;
+            }
+        }
+    }
+
+    // Mobile open styles
+    &__checkbox:checked + .nav-bar {
+        pointer-events: all;
+
+        .nav-bar {
+            &__content {
+                left: 0;
+                animation: show-nav-content 1ms .5s backwards;
+            }
+
+            &__logo {
+                animation: fade-in-bottom .5s .75s backwards;
+            }
+
+            &__links .nav-bar__item {
+                $duration: 1s;
+                $half-duration: $duration / 2;
+
+                &::after {
+                    animation: mobile-nav-item-line-hide .3s both;
                 }
 
-                &::before {
-                    display: none;
+                &:hover::after {
+                    animation: mobile-nav-item-line-show $half-duration both;
+                }
+
+                @for $i from 0 through n.$mobile-nav-bar-links {
+                    &:nth-child(#{$i}) {
+                        &::before {
+                            animation: mobile-nav-item-line-show $half-duration (.2 + .1 * $i) * 1s both, mobile-nav-item-line-hide $half-duration ($half-duration + .2 + .1 * $i) forwards;
+                        }
+
+                        .nav-bar__link span {
+                            animation: mobile-nav-item-text-show .5s (.3 + .1 * $i) * 1s backwards;
+                        }
+                    }
+                }
+            }
+
+            &__buttons .nav-bar__item {
+                @for $i from 0 through n.$mobile-nav-bar-buttons {
+                    &:nth-child(#{$i}) {
+                        animation: fade-in-top .5s (.5 + .1 * $i) * 1s backwards;
+                    }
+                }
+            }
+
+            &__mobile-bg {
+                left: 0;
+            }
+        
+            &__toggle {
+                position: fixed;
+                
+                &::after {
+                    box-shadow: none;
+                    opacity: 0;
+                    transition: .5s .25s;
+                }
+                
+                &-icon {
+                    transform: rotate(45deg);
+                    filter: drop-shadow(0 0 .15rem rgba(c.$black, .15));
+                }
+                
+                &-line {
+                    stroke: c.$gray-dark-1;
+                    transition: stroke .3s .25s, stroke-dasharray .4s, stroke-dashoffset .4s;
+
+                    &--1, 
+                    &--3 {
+                        stroke-dashoffset: -68px;
+                    }
                 }
             }
         }
