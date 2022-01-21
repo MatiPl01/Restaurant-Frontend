@@ -2,9 +2,10 @@
 @use '../helpers/colors' as c;
 
 .content {
-    transition: margin .4s .15s ease-in-out;
-
+    transition: margin .3s .05s ease-in;
+    
     &.nav-open {
+        transition: margin .35s .13s ease-in-out;
         $translate: max(10vw, 15rem);
         margin: 0 calc(-1 * $translate) 0 $translate;
     }
