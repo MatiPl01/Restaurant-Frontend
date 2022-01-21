@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core'
+import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
 
@@ -19,6 +20,7 @@ export class DishPageComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = []
 
   constructor(private elRef: ElementRef,
+              private router: Router,
               private activatedRoute: ActivatedRoute,
               private visualizationService: VisualizationService,
               private dishesService: DishesService,
@@ -59,6 +61,11 @@ export class DishPageComponent implements OnInit, OnDestroy {
 
   private loadDishData(): void {
     this.dish = this.dishesService.getDishWithID(this.dishID)
+
+    // TODO - redirect to the not found page when dish doesn't exist (probably shouldn't do this inside this function)
+
+    // // Redirect to the not-found page if there is no dish of a specified id
+    // if (!this.dish) this.router.navigate(['not-found']) // TODO  - prevent going back to the not found dish page
   }
 
   private scrollToReviews(): void {

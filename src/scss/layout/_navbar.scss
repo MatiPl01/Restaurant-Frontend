@@ -98,7 +98,6 @@
         &-text {
             font-size: 1.8rem;
             font-family: Poppins, Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
         }
 
         &--cart {
@@ -120,18 +119,6 @@
                 justify-content: center;
                 box-shadow: 0 0 .5rem rgba(c.$black, .3);
                 background: g.$orange;
-            }
-
-            @include respond(tab-land) {
-                .nav-bar__button-text {
-                    display: none;
-                }
-            }
-
-            @include respond(tab-port) {
-                .nav-bar__button-text {
-                    display: block;
-                }
             }
         }
 
@@ -155,6 +142,21 @@
         position: absolute;
         background: transparent;
         height: s.$header-nav-bar-height;
+    }
+
+    // STyles for normal nav-bar
+    &--normal {
+        @include respond(tab-land) {
+            .nav-bar__button-text {
+                display: none;
+            }
+        }
+
+        @include respond(tab-port) {
+            .nav-bar__button-text {
+                display: block;
+            }
+        }
     }
 
     @include respond(not-tab-port) {

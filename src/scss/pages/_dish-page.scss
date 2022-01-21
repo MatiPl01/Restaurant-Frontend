@@ -265,14 +265,6 @@
             justify-self: flex-start;
         }
     }
-
-    @include respond(phone) {
-        .popup__content {
-            width: 100vw;
-            height: 100vh;
-            animation: animate-popup .5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-        }
-    }
 }
 
 // FIX for open mobile nav-bar animation (content shifting to the right)

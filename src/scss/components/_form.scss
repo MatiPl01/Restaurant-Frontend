@@ -5,6 +5,7 @@
 .form {
     margin: 0 auto;
     width: 100%;
+    @include content-scrollbar;
 
     &__list {
         list-style: none;
@@ -78,7 +79,11 @@
         border-radius: 1rem;
         resize: vertical;
         max-height: 25rem;
-        min-height: 5rem;
+        min-height: 10rem;
+
+        @include respond(phone) {
+            min-height: 20rem;
+        }
     }
 
     &__rating {
@@ -262,6 +267,17 @@
                 width: min-content;
                 margin: 0;
             }
+        }
+    }
+
+    @include respond(phone) {
+        &__image-form &__group {
+            display: grid;
+            grid-template-areas: 
+                "image image"
+                "width width"
+                "group add";
+            grid-template-columns: auto 3rem;
         }
     }
 }

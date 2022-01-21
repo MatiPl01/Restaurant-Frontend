@@ -11,13 +11,6 @@
     z-index: 1000;
     @include flex-center;
 
-    &__heading {
-        font-family: Poppins, Arial, Helvetica, sans-serif;
-        color: c.$white;
-        font-size: 2.4rem;
-        text-shadow: 0 0 1.5rem rgba(c.$black, .6);
-    }
-
     &__background {
         position: absolute;
         inset: 0;
@@ -31,21 +24,27 @@
         position: relative;
         border-radius: .5rem;
         background-color: c.$gray-light-1;
-        max-height: 85vh;
         position: relative;
     }
 
     &__header {
-        width: max-content;
-        padding: 1rem 2rem;
-        border-top-right-radius: 3rem;
-        border-bottom-left-radius: 3rem;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         top: -3rem;
-        background: g.$primary;
         z-index: 1;
+    }
+
+    &__heading {
+        font-family: Poppins, Arial, Helvetica, sans-serif;
+        color: c.$white;
+        font-size: 2.4rem;
+        text-shadow: 0 0 1.5rem rgba(c.$black, .6);
+        background: g.$primary;
+        width: max-content;
+        padding: 1rem 2rem;
+        border-top-right-radius: 3rem;
+        border-bottom-left-radius: 3rem;
         box-shadow: 0 0 1rem rgba(c.$black, .35);
     }
 
@@ -61,7 +60,8 @@
             top: 1.5rem;
             right: 1.5rem;
             filter: drop-shadow(0 0 .3rem rgba(c.$black, .25));
-            transition: all .7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform .7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1;
 
             &:hover {
                 transform: rotate(270deg);
@@ -77,14 +77,45 @@
     &__content-wrapper {
         border-radius: .5rem;
         overflow: hidden;
+        height: 100%;
+        width: 100%;
         @include content-scrollbar;
     }
-
+    
     &__content {
-        padding: 6rem 3rem 2rem 3rem;
+        padding-top: 3rem;
         overflow-y: auto;
         max-height: 85vh;
         height: 100%;
         width: 100%;
+    }
+
+     @include respond(phone) {
+        &__header {
+            background: g.$primary;
+            width: 100%;
+            top: 0;
+            padding: 1rem 0;
+        }
+
+        &__heading {
+            margin: 0 auto;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        &__wrapper {
+            max-height: 100vh;
+            height: 100vh;
+            width: 100vw;
+            animation: animate-popup .5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+            border-radius: 0;
+            padding-top: 8rem;
+        }
+
+        &__button--close {
+            top: 2.5rem;
+            right: 2.5rem;
+        }
     }
 }
