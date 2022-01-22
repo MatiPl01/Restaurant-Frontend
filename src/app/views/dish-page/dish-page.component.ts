@@ -9,6 +9,7 @@ import { DishesService } from 'src/app/services/dishes.service'
 import { CurrencyService } from 'src/app/services/currency.service'
 import { PaginationService } from 'src/app/services/pagination.service'
 import { VisualizationService } from 'src/app/services/visualization.service'
+import { ErrorService } from 'src/app/services/error.service'
 
 @Component({
   selector: 'app-dish-page',
@@ -20,10 +21,10 @@ export class DishPageComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = []
 
   constructor(private elRef: ElementRef,
-              private router: Router,
               private activatedRoute: ActivatedRoute,
               private visualizationService: VisualizationService,
               private dishesService: DishesService,
+              private errorService: ErrorService,
               public paginationService: PaginationService,
               public currencyService: CurrencyService) {}
 
@@ -60,12 +61,17 @@ export class DishPageComponent implements OnInit, OnDestroy {
   }
 
   private loadDishData(): void {
-    this.dish = this.dishesService.getDishWithID(this.dishID)
+    // this.dish = this.dishesService.getDishWithID(this.dishID)
 
-    // TODO - redirect to the not found page when dish doesn't exist (probably shouldn't do this inside this function)
-
-    // // Redirect to the not-found page if there is no dish of a specified id
-    // if (!this.dish) this.router.navigate(['not-found']) // TODO  - prevent going back to the not found dish page
+    this.dishesService.getDishWithID(this.dishID).subscribe({
+      next: (res: any) => {
+        this.dish = res.data
+      },
+      error: err => {
+        console.log(err)
+        this.errorService.displayError(err.error, 'Potrawa o wskazanym ID nie istnieje')
+      }
+    })
   }
 
   private scrollToReviews(): void {

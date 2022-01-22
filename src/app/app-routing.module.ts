@@ -8,9 +8,10 @@ import { AddDishComponent } from './views/add-dish/add-dish.component'
 import { CartComponent } from './views/cart/cart.component'
 import { DishesComponent } from './views/dishes/dishes.component'
 import { HomeComponent } from './views/home/home.component'
-import { NotFoundComponent } from './views/not-found/not-found.component'
+import { ErrorPageComponent } from './views/error-page/error-page.component'
 import { DishPageComponent } from './views/dish-page/dish-page.component'
 import { CreateReviewComponent } from './features/create-review/create-review.component'
+import { LoginPageComponent } from './views/login-page/login-page.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   ] },
   { path: 'about', component: AboutComponent },
   { path: 'add-dish', component: AddDishComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: '**', component: ErrorPageComponent }
 ]
 
 @NgModule({

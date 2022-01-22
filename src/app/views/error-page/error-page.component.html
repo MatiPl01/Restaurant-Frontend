@@ -1,0 +1,20 @@
+<section class="section-error">
+  <article class="error">
+    <h2 class="heading-primary error__heading error__heading--primary">
+      Kurza twarz!
+    </h2>
+    <h3 class="error__heading error__heading--secondary">
+      {{ description }}
+    </h3>
+    <div class="error__details">
+      <p class="error__status" *ngIf="status">
+        <span>status:</span>
+        <span>{{ status }}</span>
+      </p>
+      <p class="error__message" *ngIf="message">
+        <span>komunikat błędu:</span>
+        <span>{{ message }}</span>
+      </p>
+    </div>
+  </article>
+</section>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { Dish } from '../shared/models/dish.model'
 
 const headers = {
     headers: new HttpHeaders({
@@ -21,11 +20,11 @@ export class WebRequestService {
         return this.http.get(`${this.API_URL}/${url}`)
     }
 
-    post(url: string, obj: Dish): Observable<any> {
+    post(url: string, obj: Object): Observable<any> {
         return this.http.post(`${this.API_URL}/${url}`, obj, headers)
     }
 
-    patch(url: string, obj: Dish): Observable<any> {
+    patch(url: string, obj: Object): Observable<any> {
         return this.http.patch(`${this.API_URL}/${url}`, obj, headers)
     }
 

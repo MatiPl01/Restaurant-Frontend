@@ -1,0 +1,65 @@
+<article class="registration__form">
+  <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <ul class="form__list">
+      <li class="form__item">
+        <div class="form__column form__column--left">
+          <label for="name" class="form__label">Twoja nazwa</label>
+        </div>
+        <div class="form__column form__column--right">
+          <input class="form__input" type="text" name="name" id="name" minlength="3" maxlength="20"
+            placeholder="Wprowadź nazwę użytkownika" required ngModel #name="ngModel">
+          <p class="form__help" *ngIf="!name.valid && name.touched">
+            Podaj twoją nazwę (od 3 do 20 znaków)
+          </p>
+        </div>
+      </li>
+      <li class="form__item">
+        <div class="form__column form__column--left">
+          <label for="email" class="form__label">Adres email</label>
+        </div>
+        <div class="form__column form__column--right">
+          <input class="form__input" type="email" name="email" id="email" placeholder="Wprowadź adres email" required
+            ngModel #email="ngModel" (input)="onEmailInput()" [ngClass]="{invalid: email.touched && (!email.valid || !isEmailValid)}">
+          <p class="form__help" *ngIf="email.touched && (!email.valid || !isEmailValid)">
+            Podaj prawidłowy adres e-mail
+          </p>
+        </div>
+      </li>
+      <li class="form__item">
+        <div class="form__column form__column--left">
+          <label for="password" class="form__label">Hasło</label>
+        </div>
+        <div class="form__column form__column--right">
+          <input class="form__input" type="password" name="password" id="password" placeholder="Wprowadź hasło" minlength="8" required ngModel #password="ngModel">
+          <p class="form__help" *ngIf="!password.valid && password.touched">
+            Hasło powinno mieć przynajmniej 8 znaków
+          </p>
+        </div>
+      </li>
+      <li class="form__item">
+        <div class="form__column form__column--left">
+          <label for="repeatedPassword" class="form__label">Powtórz hasło</label>
+        </div>
+        <div class="form__column form__column--right">
+          <input class="form__input" type="password" name="repeatedPassword" id="repeatedPassword" placeholder="Powtórz hasło"
+            required ngModel #repeatedPassword="ngModel" [ngClass]="{invalid: repeatedPassword.value !== password.value && repeatedPassword.touched && password.touched}">
+          <p class="form__help" *ngIf="repeatedPassword.value !== password.value && repeatedPassword.touched && password.touched">
+            Hasło różni się od podanego wyżej
+          </p>
+          <p class="form__help" *ngIf="repeatedPassword.value === password.value && !password.value && repeatedPassword.touched">
+            Wprowadź hasło w poprzednim polu
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <p class="form__error">
+      <span class="form__error-message" *ngIf="postError">{{ postError.message }}</span>&nbsp;
+    </p>
+
+    <div class="form__buttons">
+      <input type="submit" class="form__button form__button--save" value="Zarejestruj" [disabled]="!f.valid || !isEmailValid || password.value !== repeatedPassword.value">
+      <input type="reset" class="form__button form__button--reset" value="Wyczyść">
+    </div>
+  </form>
+</article>

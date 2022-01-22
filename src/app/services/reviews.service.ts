@@ -14,19 +14,19 @@ export class ReviewsService {
                 private webRequestService: WebRequestService) {}
 
     addReview(dishID: string, review: Review): void {
-        const dish = this.dishesService.getDishWithID(dishID)
-        dish.reviews.push(review)
-        this.updateRating(dish, review.rating)
-        this.webRequestService.patch(`dishes/${dishID}`, dish).subscribe()
+        // const dish = this.dishesService.getDishWithID(dishID)
+        // dish.reviews.push(review)
+        // this.updateRating(dish, review.rating)
+        // this.webRequestService.patch(`dishes/${dishID}`, dish).subscribe()
     }
 
     updateRating(dish: Dish, currRate: number) {
-        dish.rating = (dish.rating * dish.ratesCount + currRate) / (dish.ratesCount + 1)
-        dish.ratesCount++
+        // dish.rating = (dish.rating * dish.ratesCount + currRate) / (dish.ratesCount + 1)
+        // dish.ratesCount++
 
-        const updatedDish = this.dishesService.getDishWithID(dish._id)
-        updatedDish!.ratesCount = dish.ratesCount
-        updatedDish!.rating = dish.rating
+        // const updatedDish = this.dishesService.getDishWithID(dish._id)
+        // updatedDish!.ratesCount = dish.ratesCount
+        // updatedDish!.rating = dish.rating
 
         // this.filtersService.notifyChanges()
     }

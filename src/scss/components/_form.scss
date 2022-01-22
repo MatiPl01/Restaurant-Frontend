@@ -41,6 +41,7 @@
     }
 
     &__label {
+        white-space: nowrap;
         font-size: 1.4rem;
         padding: .5rem 3rem .5rem 1rem;
         border-radius: 10rem;
@@ -198,10 +199,10 @@
 
     &__input--sub {
         border: 2px solid transparent !important;
+    }
 
-        &.invalid {
-            border: 2px solid c.$red !important;
-        }
+    &__input.invalid {
+        border: 2px solid c.$red !important;
     }
 
     @include respond(tab-port) {
@@ -222,13 +223,20 @@
             }
         }
 
+        &__input {
+            padding: 1rem 2rem;
+        }
+
         &__label {
             border-radius: .3rem 1rem .3rem 1rem;
+            padding-right: 1rem;
+            margin-left: 1rem;
         }
 
         &__help {
             top: unset;
             bottom: -.75rem;
+            left: 2rem;
         }
 
         &__textarea,

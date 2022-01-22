@@ -2,7 +2,7 @@
 @use '../helpers/colors' as c;
 
 .content {
-    transition: margin .3s .05s ease-in;
+    transition: margin .3s ease-in;
     
     &.nav-open {
         transition: margin .35s .13s ease-in-out;

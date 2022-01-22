@@ -1,0 +1,42 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/colors' as c;
+
+.section-error {
+    width: 100vw;
+    height: 100vh;
+    @include flex-center;
+}
+
+.error {
+    max-width: 90vw;
+
+    &__heading {
+        &--primary {
+            font-size: 5rem;
+        }
+        
+        &--secondary {
+            font-family: Poppins, Arial, Helvetica, sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
+        }
+    }
+
+    &__details {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    &__status,
+    &__message {
+        font-size: 1.6rem;
+        font-family: Lato, Arial, Helvetica, sans-serif;
+        color: c.$gray-dark-2;
+
+        span:first-child {
+            margin-right: .5rem;
+        }
+    }
+}

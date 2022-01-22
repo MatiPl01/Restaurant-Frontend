@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { NavigationStart, Router } from '@angular/router'
+import { NavigationEnd, NavigationStart, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 
 import { OrderService } from 'src/app/services/order.service'
@@ -17,6 +17,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = []
   isToggleChecked: boolean = false
   isNavToggleVisible: boolean = true
+  displayAnimation: boolean = false
 
   constructor(private router: Router,
               public orderService: OrderService,
@@ -27,6 +28,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
         // Close mobile navbar menu if an url has changed
         visualizationService.notifyNavMenuToggle(false)
         this.isToggleChecked = false
+      } else if (event instanceof NavigationEnd) {
+        this.displayAnimation = this.router.url === '/'
       }
     })
   }

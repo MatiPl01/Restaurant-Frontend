@@ -225,7 +225,7 @@
                 padding: 1rem 3rem 1rem 2rem;
                 color: c.$white;
                 text-decoration: none;
-                transition: margin .4s .15s ease-in-out;
+                transition: margin .3s ease-in;
                 
                 &::before {
                     content: '';
@@ -270,6 +270,7 @@
 // FIX for open mobile nav-bar animation (content shifting to the right)
 @include respond(tab-port) {
     .content.nav-open .dish-page__button--back {
+        transition: margin .35s .13s ease-in-out;
         $translate: max(10vw, 15rem);
         margin: 0 calc(-1 * $translate) 0 $translate;
     }

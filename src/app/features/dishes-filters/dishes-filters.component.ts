@@ -73,11 +73,11 @@ export class DishesFiltersComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    if (this.dishesService.areDishesLoaded) {
-      setTimeout(() => {
-        this.initialize()
-      }, 0)
-    }
+    // if (this.dishesService.areDishesLoaded) {
+    //   setTimeout(() => {
+    //     this.initialize()
+    //   }, 0)
+    // }
   }
 
   ngOnDestroy() {

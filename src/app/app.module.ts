@@ -34,7 +34,7 @@ import { CartComponent } from './views/cart/cart.component'
 import { DishPageComponent } from './views/dish-page/dish-page.component'
 import { DishesComponent } from './views/dishes/dishes.component'
 import { HomeComponent } from './views/home/home.component'
-import { NotFoundComponent } from './views/not-found/not-found.component'
+import { ErrorPageComponent } from './views/error-page/error-page.component'
 
   // Features components
 import { CreateReviewComponent } from './features/create-review/create-review.component'
@@ -66,7 +66,10 @@ import { ResponsiveImageComponent } from './shared/components/responsive-image/r
 import { ReviewComponent } from './shared/components/review/review.component'
 import { ReviewFormComponent } from './shared/components/review-form/review-form.component'
 import { ReviewsComponent } from './shared/components/reviews/reviews.component'
-import { ScrollTopBtnComponent } from './shared/components/scroll-top-btn/scroll-top-btn.component'
+import { ScrollTopBtnComponent } from './shared/components/scroll-top-btn/scroll-top-btn.component';
+import { LoginPageComponent } from './views/login-page/login-page.component';
+import { LoginFormComponent } from './shared/components/login-form/login-form.component';
+import { RegistrationFormComponent } from './shared/components/registration-form/registration-form.component'
 
 @NgModule({
   declarations: [
@@ -89,7 +92,7 @@ import { ScrollTopBtnComponent } from './shared/components/scroll-top-btn/scroll
     DishPageComponent,
     DishesComponent,
     HomeComponent,
-    NotFoundComponent,
+    ErrorPageComponent,
     CreateReviewComponent,
     DishesFiltersComponent,
     AddDishFormComponent,
@@ -117,7 +120,10 @@ import { ScrollTopBtnComponent } from './shared/components/scroll-top-btn/scroll
     ReviewComponent,
     ReviewFormComponent,
     ReviewsComponent,
-    ScrollTopBtnComponent
+    ScrollTopBtnComponent,
+    LoginPageComponent,
+    LoginFormComponent,
+    RegistrationFormComponent
   ],
   imports: [
     // BUILT-INS

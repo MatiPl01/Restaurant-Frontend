@@ -1,6 +1,6 @@
 <input type="checkbox" class="nav-bar__checkbox" id="nav-toggle" [(ngModel)]="isToggleChecked" (change)="onToggle()">
 
-<nav class="nav-bar" [ngClass]="{'nav-bar--header': isHeaderVisible, 'nav-bar--normal': !isHeaderVisible}">
+<nav class="nav-bar" [ngClass]="{'nav-bar--header': isHeaderVisible, 'nav-bar--normal': !isHeaderVisible, 'no-anim': !displayAnimation}">
   <button class="nav-bar__toggle" [ngClass]="{'nav-bar__toggle--hidden': !isNavToggleVisible}">
     <label for="nav-toggle" class="nav-bar__label">
       <svg class="nav-bar__toggle-icon" viewBox="0 0 100 100">

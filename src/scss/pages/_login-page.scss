@@ -1,0 +1,99 @@
+@use '../helpers/sizes' as s;
+@use '../helpers/colors' as c;
+@use '../helpers/mixins' as *;
+
+.login-page {
+    position: relative;
+    display: flex;
+    
+    &__photo {
+        flex-basis: 60vw;
+        height: calc(100vh - s.$nav-bar-height);
+        position: sticky;
+        margin-top: s.$nav-bar-height;
+        top: 0;
+    }
+
+    &__content {
+        margin-top: 12rem;
+        padding: 0 4rem;
+        padding-bottom: 4rem;
+        flex-grow: 1;
+    }
+
+    &__menu {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+
+        &-text {
+            font-size: 2rem;
+            color: c.$gray-dark-3;
+        }
+
+        &-tab {
+            cursor: pointer;
+            
+            &.active {
+                border-bottom: .3rem solid c.$primary;
+                color: c.$gray-dark-1;
+
+                .login-page__menu-text {
+                    color: c.$gray-dark-1;
+                }
+            }
+        }
+    }
+
+    &__header {
+        margin-top: 2rem;
+    }
+
+    &__form {
+        margin-top: 4rem;
+
+        .form {
+            &__error {
+                margin-top: 2rem;
+                text-align: end;
+                width: 100%;
+                
+                &-message {
+                    margin-right: 2.25rem;
+                    font-size: 1.4rem;
+                    color: c.$red;
+                }
+            }
+        }
+    }
+
+    @include respond(tab-land) {
+        &__photo {
+            flex-basis: 50vw;
+        }
+    }
+
+    @include respond(tab-port) {
+        flex-direction: column;
+
+        &__photo {
+            flex-basis: 50vh;
+            margin-top: 0;
+        }
+
+        &__content {
+            padding: 4rem;
+            z-index: 1;
+            margin: 0;
+            position: relative;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background-color: c.$white;
+            }
+        }
+    }
+}

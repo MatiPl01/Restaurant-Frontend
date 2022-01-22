@@ -1,0 +1,36 @@
+<article class="login__form">
+  <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <ul class="form__list">
+      <li class="form__item">
+        <div class="form__column form__column--left">
+          <label for="email" class="form__label">Adres email</label>
+        </div>
+        <div class="form__column form__column--right">
+          <input class="form__input" type="email" name="email" id="email" 
+            placeholder="Wprowadź adres email" required ngModel #email="ngModel">
+          <p class="form__help" *ngIf="!email.valid && email.touched">
+            Podaj prawidłowy adres e-mail
+          </p>
+        </div>
+      </li>
+      <li class="form__item">
+        <div class="form__column form__column--left">
+          <label for="password" class="form__label">Hasło</label>
+        </div>
+        <div class="form__column form__column--right">
+          <input class="form__input" type="password" name="password" id="password" placeholder="Wprowadź hasło" required ngModel
+            #password="ngModel">
+        </div>
+      </li>
+    </ul>
+
+    <p class="form__error">
+      <span class="form__error-message" *ngIf="postError">Nieprawidłowy email lub hasło</span>&nbsp;
+    </p>
+  
+    <div class="form__buttons">
+      <input type="submit" class="form__button form__button--save" value="Zaloguj" [disabled]="!f.valid">
+      <input type="reset" class="form__button form__button--reset" value="Wyczyść">
+    </div>
+  </form>
+</article>

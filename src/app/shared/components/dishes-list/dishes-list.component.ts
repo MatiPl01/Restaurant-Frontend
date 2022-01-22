@@ -31,7 +31,8 @@ export class DishesListComponent implements OnInit, OnDestroy {
               public filtersService: FiltersService) {}
 
   ngOnInit(): void {
-    this.dishes = this.dishesService.getDishes()
+    // this.dishes = this.dishesService.getDishes()
+    this.dishesService.loadDishes()
     // Setup event observers
     this.subscriptions.push(
       this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
@@ -46,24 +47,24 @@ export class DishesListComponent implements OnInit, OnDestroy {
     )
   }
 
-  ngAfterViewInit() { // Try to load stored data
-    // IMPORTANT - is dishes are stored in a DishesService, they
-    // will be loaded from this service after this component is
-    // initialized. This ensures that all sub-components are
-    // loaded, thus a proper number of dishes per page and a proper
-    // page number can be displayed (subscriptions to pagesChangedEvent
-    // in these component aren't too late). We also need to setTimeout
-    // as changing DOM isn't allowed immediately after element was
-    // rendered
-    setTimeout(() => {
-      this.filtersService.loadInitialFilters()
-      if (this.dishes.length) {
-        this.paginationService.setDisplayedDishesCount(this.dishes.length, false)
-        this.paginationService.setQueryParams(this.activatedRoute.snapshot.queryParams)
-        if (!this.queryParamsSubscription) this.subscribeQueryParams()
-      }
-    }, 0)
-  }
+  // ngAfterViewInit() { // Try to load stored data
+  //   // IMPORTANT - is dishes are stored in a DishesService, they
+  //   // will be loaded from this service after this component is
+  //   // initialized. This ensures that all sub-components are
+  //   // loaded, thus a proper number of dishes per page and a proper
+  //   // page number can be displayed (subscriptions to pagesChangedEvent
+  //   // in these component aren't too late). We also need to setTimeout
+  //   // as changing DOM isn't allowed immediately after element was
+  //   // rendered
+  //   setTimeout(() => {
+  //     this.filtersService.loadInitialFilters()
+  //     if (this.dishes.length) {
+  //       this.paginationService.setDisplayedDishesCount(this.dishes.length, false)
+  //       this.paginationService.setQueryParams(this.activatedRoute.snapshot.queryParams)
+  //       if (!this.queryParamsSubscription) this.subscribeQueryParams()
+  //     }
+  //   }, 0)
+  // }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe())

@@ -1,0 +1,38 @@
+<section class="login-page">
+  <section class="login-page__photo">
+    <app-responsive-image
+        class="login-page__image"
+        [breakpoints]="[400, 600, 1000, 1400, 1920]"
+        [paths]="[
+          'https://ik.imagekit.io/MatiPl01/tr:w-400/restaurant/pexels-julie-aagaard-2097090.jpg',
+          'https://ik.imagekit.io/MatiPl01/tr:w-600/restaurant/pexels-julie-aagaard-2097090.jpg',
+          'https://ik.imagekit.io/MatiPl01/tr:w-1000/restaurant/pexels-julie-aagaard-2097090.jpg',
+          'https://ik.imagekit.io/MatiPl01/tr:w-1400/restaurant/pexels-julie-aagaard-2097090.jpg',
+          'https://ik.imagekit.io/MatiPl01/tr:w-1920/restaurant/pexels-julie-aagaard-2097090.jpg'
+        ]"
+        [sizes]="'100vw'"
+        [alt]="'Przykładowa potrawa'"
+    ></app-responsive-image>
+  </section>
+  
+  <section class="login-page__content">
+    <menu class="login-page__menu">
+      <li class="login-page__menu-tab" (click)="setOpenTab('login')" [ngClass]="{active: openTab === 'login'}">
+        <h4 class="login-page__menu-text">Logowanie</h4>
+      </li>
+      <li class="login-page__menu-tab" (click)="setOpenTab('register')" [ngClass]="{active: openTab === 'register'}">
+        <h4 class="login-page__menu-text">Rejestracja</h4>
+      </li>
+    </menu>
+
+    <header class="login-page__header">
+      <h3 class="login-page__heading heading-primary" *ngIf="openTab === 'login'">Zaloguj się</h3>
+      <h3 class="login-page__heading heading-primary" *ngIf="openTab === 'register'">Zarejestruj się</h3>
+    </header>
+
+    <section class="login-page__form">
+      <app-login-form *ngIf="openTab === 'login'"></app-login-form>
+      <app-registration-form *ngIf="openTab === 'register'"></app-registration-form>
+    </section>
+  </section>
+</section>
