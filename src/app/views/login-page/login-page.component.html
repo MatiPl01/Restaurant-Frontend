@@ -1,4 +1,4 @@
-<section class="login-page">
+<main class="login-page">
   <section class="login-page__photo">
     <app-responsive-image
         class="login-page__image"
@@ -37,4 +37,4 @@
       <app-registration-form *ngIf="openTab === 'register'" (registrationEvent)="onRegistration($event)" [errorMsg]="registrationErrorMsg"></app-registration-form>
     </section>
   </section>
-</section>
+</main>

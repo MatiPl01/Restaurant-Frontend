@@ -1,1 +1,25 @@
-<p>admin-view works!</p>
+<main class="admin-console">
+  <header class="admin-console__header">
+    <h4 class="admin-console__heading heading-primary">
+      Panel administratora
+    </h4>
+  </header>
+
+  <section class="admin-console__login">
+    <article class="login">
+      <div class="login__persistence">
+        <p class="login__persistence-text">Tryb persystencji logowania</p>
+
+        <form class="login__persistence-select btn-select">
+          <select name="persistence" class="btn-select__select" [(ngModel)]="authService.persistence"
+            (change)="persistenceChange()">
+            <option class="btn-select__option" *ngFor="let mode of authService.getPersistenceModes()"
+              [value]="mode">
+              {{ mode }}
+            </option>
+          </select>
+        </form>
+      </div>
+    </article>
+  </section>
+</main>

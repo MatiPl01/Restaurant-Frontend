@@ -2,32 +2,40 @@ import { Injectable, EventEmitter } from '@angular/core'
 import { Observable, throwError, tap, BehaviorSubject } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 import { User } from '../shared/models/db/user.model'
+import { DataStorageService } from './data-storage.service'
 import { NavigationService } from './navigation.service'
 import { WebRequestService } from './web-request.service'
+
+export enum Persistence {
+    LOCAL = 'LOCAL',
+    SESSION = 'SESSION',
+    NONE = 'NONE'
+}
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    private saveDataKey: string = 'userData'
     userLoggedInEvent = new EventEmitter<User>()
     // @ts-ignore
     private _user!: BehaviorSubject<User> = new BehaviorSubject<User>(null)
     private logoutTimeout: any
+    public persistence: Persistence = Persistence.LOCAL
 
     constructor(private webRequestService: WebRequestService,
-                private navigationService: NavigationService) {}
+                private navigationService: NavigationService,
+                private dataStorageService: DataStorageService) {}
 
     get user(): BehaviorSubject<User> {
         return this._user
     }
 
     autoLogin(): void {
-        // @ts-ignore
-        const userData = JSON.parse(localStorage.getItem('userData'))
-        // Return if there is no user data saved in a browser
-        if (!userData) return
-        // Otherwise try to log user in again
-        const loadedUser = new User(userData, userData.token)
+        // Try to load an user from the browser storage
+        const loadedUser = this.loadUser()
+        // Return if no user was found
+        if (!loadedUser) return
         // If a token is valid (hasn't expired), log in an user again
         if (loadedUser.getToken()) {
             // Set auto logout time
@@ -40,7 +48,7 @@ export class AuthService {
     }
 
     autoLogout(timeout: number): void {
-        setTimeout(() => {
+        this.logoutTimeout = setTimeout(() => {
             this.logoutUser()
         }, timeout)
     }
@@ -66,11 +74,39 @@ export class AuthService {
     logoutUser(): void {
         // @ts-ignore
         this.user.next(null)
-        localStorage.removeItem('userData')
+        localStorage.removeItem(this.saveDataKey)
         this.logoutTimeout && clearTimeout(this.logoutTimeout)
         this.logoutTimeout = null
         window.location.reload()
         this.navigationService.addCurrentRoute()
+    }
+
+    setPersistence(persistence: Persistence): void {
+        this.persistence = persistence
+        this.removeStoredUser()
+        if (persistence !== Persistence.NONE) {
+            this.user.subscribe(this.storeUser.bind(this))
+        }
+        this.dataStorageService.updateConfig({
+            login: {
+                persistenceMode: persistence
+            }
+        }).subscribe()
+    }
+
+    getPersistenceModes(): string[] {
+        const modes = []
+        for (let mode in Persistence) modes.push(mode)
+        return modes
+    }
+
+    setLoginConfig(config: any): void {
+        this.removeStoredUser()
+        // @ts-ignore
+        this.persistence = Persistence[config.persistenceMode]
+        if (this.persistence !== Persistence.NONE) {
+            this.user.subscribe(this.storeUser.bind(this))
+        }
     }
 
     private handleError(errRes: any): any {
@@ -84,7 +120,33 @@ export class AuthService {
         const user = new User(data, token)
         this._user.next(user)
         const expTime = user.getTokenExpirationTime()
+
         this.autoLogout(expTime * 1000)
-        localStorage.setItem('userData', JSON.stringify(user))
+        if (this.persistence !== Persistence.NONE) {
+            this.storeUser(user)
+        }
+    }
+
+    private storeUser(user: User): void {
+        if (this.persistence === Persistence.LOCAL) {
+            localStorage.setItem(this.saveDataKey, JSON.stringify(user))
+        } else if (this.persistence === Persistence.SESSION) {
+            sessionStorage.setItem(this.saveDataKey, JSON.stringify(user))
+        }
+    }
+
+    private removeStoredUser(): void {
+        localStorage.removeItem(this.saveDataKey)
+        sessionStorage.removeItem(this.saveDataKey)
+    }
+
+    private loadUser(): User {
+        const userData = localStorage.getItem(this.saveDataKey) || sessionStorage.getItem(this.saveDataKey)
+        // @ts-ignore
+        const dataParsed = JSON.parse(userData)
+        // @ts-ignore
+        if (!dataParsed) return null
+        const user = new User(dataParsed, dataParsed.token)
+        return user
     }
 }
