@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, Input, ElementRef, HostListener } from '@angular/core';
 
-import { ImageEntry } from '../../models/image-entry.model';
+import { ImageEntry } from '../../schemas/others/image-entry.schema';
 
 @Component({
   selector: 'app-responsive-gallery',

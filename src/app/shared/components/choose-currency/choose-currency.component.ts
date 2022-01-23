@@ -8,7 +8,7 @@ import { CurrencyService } from 'src/app/services/currency.service'
 })
 export class ChooseCurrencyComponent {
 
-  constructor(public currencyService: CurrencyService) { }
+  constructor(public currencyService: CurrencyService) {}
 
   onCurrencyChange() {
     this.currencyService.notifyCurrencyChanged()

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core'
 import { Subscription } from 'rxjs'
 
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 
 import { OrderService } from 'src/app/services/order.service'
 

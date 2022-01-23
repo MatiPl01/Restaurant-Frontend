@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { Dish } from 'src/app/shared/models/dish.model'
-import { Currencies } from '../shared/models/currencies.model';
-import { WebRequestService } from './web-request.service';
+import { Dish } from 'src/app/shared/models/db/dish.model'
+import { Currencies } from '../shared/models/db/currencies.model';
+import { DataStorageService } from './data-storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,10 +14,8 @@ export class CurrencyService {
     currentCurrency: string = 'USD'
     areCurrenciesLoaded: boolean = false
 
-    constructor(private webRequestService: WebRequestService) {
-        this.webRequestService
-            .get('currencies')
-            .subscribe((res: any) => this.loadCurrencies(res.data))
+    constructor(private dataStorageService: DataStorageService) {
+        this.dataStorageService.fetchCurrencies(this.loadCurrencies.bind(this)).subscribe()
     }
 
     getReferenceCurrency(): string {

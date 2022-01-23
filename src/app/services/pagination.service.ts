@@ -108,7 +108,8 @@ export class PaginationService {
             queryParams: {
                 page: this.pageNum,
                 limit: this.dishesPerPage   
-            }
+            },
+            replaceUrl: true
         })
     }
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'add-dish', component: AddDishComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: '**', component: ErrorPageComponent }
+  { path: 'error', component: ErrorPageComponent } // TODO - disable manual entering with canActivate
 ]
 
 @NgModule({

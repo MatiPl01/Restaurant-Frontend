@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core'
 
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 
 import { CurrencyService } from 'src/app/services/currency.service'
 

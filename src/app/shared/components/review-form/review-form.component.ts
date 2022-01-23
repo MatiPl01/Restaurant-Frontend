@@ -1,11 +1,10 @@
 import { Component } from '@angular/core'
 import { NgForm } from '@angular/forms'
-import { Location } from '@angular/common'
-import { ActivatedRoute } from '@angular/router'
-
-import { Review } from 'src/app/shared/models/review.model'
+import { Router, ActivatedRoute } from '@angular/router'
 
 import { ReviewsService } from 'src/app/services/reviews.service'
+import { User } from '../../models/db/user.model'
+import { ReviewSchema } from '../../schemas/db/review.schema'
 
 @Component({
   selector: 'app-review-form',
@@ -15,23 +14,24 @@ export class ReviewFormComponent {
   ratingValue: number = 5
   dishID: string
 
-  constructor(private location: Location,
-    private activatedRoute: ActivatedRoute,
-    private reviewsService: ReviewsService) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private reviewsService: ReviewsService) {
     // @ts-ignore
     this.dishID = this.activatedRoute.parent?.snapshot.params['id']
   }
 
   onSubmit(form: NgForm): void {
-    const review: Review = {
-      username: form.value.username,
+    const review: ReviewSchema = {
+      // @ts-ignore TODO - remove this ignore
+      user: null, // TODO - get user which is currently logged in
       title: form.value.title,
       body: form.value.body.split('\n').map((p: string) => p.trim()),
       date: form.value.date,
       rating: this.ratingValue
     }
     this.reviewsService.addReview(this.dishID, review)
-    this.location.back()
+    this.router.navigate(['..'], { relativeTo: this.activatedRoute })
   }
 
   onReset(): void {

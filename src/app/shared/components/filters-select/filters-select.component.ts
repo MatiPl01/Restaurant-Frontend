@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 
-import { DropdownSettings } from 'src/app/shared/models/dropdown-settings.model'
+import { DropdownSettings } from 'src/app/shared/schemas/others/dropdown-settings.schema'
 
 type eventObj = {filterAttr: string, value: any}
 

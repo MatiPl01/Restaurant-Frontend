@@ -1,36 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Location } from '@angular/common'
-import { UsersService } from 'src/app/services/users.service'
+import { LoginData } from '../../schemas/others/login-data.schema';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html'
 })
 export class LoginFormComponent {
-  areLoginDetailsCorrect: boolean = true
-  wereLoginDetailsChecked: boolean = false
-  // @ts-ignore
-  postError: Error = undefined
+  @Input() errorMsg!: string
+  @Output() loginEvent = new EventEmitter<LoginData>()
 
-  constructor(private location: Location,
-              private usersService: UsersService) {}
+  constructor() {}
 
   onSubmit(form: NgForm): void {
     if (form.valid) {
-
-      const userData = {
+      const userData: LoginData = {
         email: form.value.email,
         password: form.value.password
       }
 
-      this.usersService.loginUser(userData).subscribe({
-        next: () => this.location.back(),
-        error: err => {
-          this.postError = err.error
-          console.error(err.error.message)
-        }
-      })
+      this.loginEvent.emit(userData)
     }
   }
 }

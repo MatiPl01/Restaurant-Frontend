@@ -1,38 +1,31 @@
-import { Component, ViewChild } from '@angular/core'
+import { Component, Output, ViewChild, EventEmitter, Input } from '@angular/core'
 import { NgForm } from '@angular/forms'
-import { Location } from '@angular/common'
-import { UsersService } from 'src/app/services/users.service'
+import { RegisterData } from '../../schemas/others/register-data.schema'
 
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html'
 })
 export class RegistrationFormComponent {
+  @Input() errorMsg!: string
+  @Output() registrationEvent = new EventEmitter<RegisterData>()
+
   isEmailValid: boolean = false
-  // @ts-ignore
-  postError: Error = undefined
+
   @ViewChild('f') form!: NgForm
 
-  constructor(private location: Location,
-              private usersService: UsersService) {}
+  constructor() {}
 
   onSubmit(form: NgForm): void {
     if (form.valid && this.isEmailValid && form.value.password === form.value.repeatedPassword) {
-
-      const userData = {
+      const userData: RegisterData = {
         name: form.value.name,
         email: form.value.email,
         password: form.value.password,
         repeatedPassword: form.value.repeatedPassword
       }
 
-      this.usersService.registerUser(userData).subscribe({
-        next: () => this.location.back(),
-        error: err => {
-          this.postError = err.error
-          console.error(err.error.message)
-        }
-      })
+      this.registrationEvent.emit(userData)
     }
   }
 

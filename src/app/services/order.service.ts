@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core'
 import { CurrencyService } from './currency.service'
 
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 
 @Injectable({
     providedIn: 'root'

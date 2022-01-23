@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 
-import { Review } from 'src/app/shared/models/review.model'
+import { Review } from 'src/app/shared/models/db/review.model'
 
 @Component({
   selector: 'app-reviews',

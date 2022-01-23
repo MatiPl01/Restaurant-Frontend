@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { NavigationEnd, Router } from '@angular/router';
-import { ErrorMsg } from '../shared/models/error.model';
+import { ErrorMsg } from '../shared/schemas/others/error.schema';
 
 @Injectable({
     providedIn: 'root'
@@ -8,9 +8,9 @@ import { ErrorMsg } from '../shared/models/error.model';
 export class ErrorService {
     private defaultDescription: string = 'Strona, którą próbujesz odwiedzić, nie została znaleziona'
 
-    private description: string = ''
-    private status: string = ''
-    private message: string = ''
+    private description!: string
+    private statusCode!: number
+    private errMsg!: string
 
     constructor(private router: Router) {
         this.router.events.forEach((event: any) => {
@@ -20,22 +20,23 @@ export class ErrorService {
         })
     }
 
-    displayError(error: ErrorMsg, description: string = 'Coś poszło nie tak'): void {
-        this.status = error.status
-        this.message = error.message
+    displayError(statusCode: number, description: string = 'Coś poszło nie tak', errMsg: string = ''): void {
         this.description = description
+        this.statusCode = statusCode
+        this.errMsg = errMsg
         this.router.navigate(['/error'], { replaceUrl: true })
     }
 
-    getDetails(): { description: string, status: string, message: string } {
+    getDetails(): { statusCode: number, description: string, errMsg: string } {
         return {
+            statusCode: this.statusCode,
             description: this.description || this.defaultDescription,
-            status: this.status,
-            message: this.message
+            errMsg: this.errMsg
         }
     }
 
     private reset(): void {
-        this.description = this.status = this.message = ''
+        // @ts-ignore
+        this.description = this.errMsg = this.statusCode = undefined
     }
 }

@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
 import { Subscription } from 'rxjs'
 
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 
 import { DishesService } from 'src/app/services/dishes.service'
 import { CurrencyService } from 'src/app/services/currency.service'
 import { FiltersService } from 'src/app/services/filters.service'
 import { PaginationService } from 'src/app/services/pagination.service'
+import { DataStorageService } from 'src/app/services/data-storage.service'
 
 @Component({
   selector: 'app-dishes-list',
@@ -26,16 +27,17 @@ export class DishesListComponent implements OnInit, OnDestroy {
  
   constructor(private activatedRoute: ActivatedRoute,
               public paginationService: PaginationService,
+              private dataStorageService: DataStorageService,
               private currencyService: CurrencyService, 
               public dishesService: DishesService, 
               public filtersService: FiltersService) {}
 
   ngOnInit(): void {
-    // this.dishes = this.dishesService.getDishes()
     this.dishesService.loadDishes()
+
     // Setup event observers
     this.subscriptions.push(
-      this.dishesService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
+      this.dataStorageService.dishesChangedEvent.subscribe((dishes: Dish[]) => {
         this.dishes = dishes
         this.paginationService.setDisplayedDishesCount(dishes.length)
         this.recalculatePages()
@@ -46,25 +48,6 @@ export class DishesListComponent implements OnInit, OnDestroy {
       this.paginationService.pagesChangedEvent.subscribe(this.updatePages.bind(this))
     )
   }
-
-  // ngAfterViewInit() { // Try to load stored data
-  //   // IMPORTANT - is dishes are stored in a DishesService, they
-  //   // will be loaded from this service after this component is
-  //   // initialized. This ensures that all sub-components are
-  //   // loaded, thus a proper number of dishes per page and a proper
-  //   // page number can be displayed (subscriptions to pagesChangedEvent
-  //   // in these component aren't too late). We also need to setTimeout
-  //   // as changing DOM isn't allowed immediately after element was
-  //   // rendered
-  //   setTimeout(() => {
-  //     this.filtersService.loadInitialFilters()
-  //     if (this.dishes.length) {
-  //       this.paginationService.setDisplayedDishesCount(this.dishes.length, false)
-  //       this.paginationService.setQueryParams(this.activatedRoute.snapshot.queryParams)
-  //       if (!this.queryParamsSubscription) this.subscribeQueryParams()
-  //     }
-  //   }, 0)
-  // }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe())
@@ -83,10 +66,12 @@ export class DishesListComponent implements OnInit, OnDestroy {
   }
 
   private refilterDishes() {
+    console.log('refilter')
     this.filteringTrigger = (this.filteringTrigger + 1) % 2
   }
 
   private recalculatePages() {
+    console.log('repaginate')
     this.paginationTrigger = (this.paginationTrigger + 1) % 2
   }
 

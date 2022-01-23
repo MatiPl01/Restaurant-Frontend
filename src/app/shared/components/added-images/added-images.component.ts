@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { AddedImage } from 'src/app/shared/models/added-image.model';
+import { AddedImage } from 'src/app/shared/schemas/others/added-image.schema';
 
 @Component({
   selector: 'app-added-images',

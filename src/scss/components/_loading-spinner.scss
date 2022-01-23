@@ -1,0 +1,36 @@
+@use '../helpers/sizes' as s;
+@use '../helpers/colors' as c;
+@use '../helpers/mixins' as *;
+
+.loading-spinner {
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    opacity: 0;
+    z-index: 998;
+    background-color: rgba(c.$white, .85);
+    transition: opacity .5s;
+    @include flex-center;
+    
+    &__svg {
+        width: s.$loading-spinner-size;
+        height: s.$loading-spinner-size;
+        max-width: 75%;
+        max-height: 75%;
+        fill: transparent;
+        overflow: visible;
+        transform-origin: center;
+        stroke-width: 2px;
+        stroke: c.$primary;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 120;
+        filter: drop-shadow(0 0 3px rgba(c.$black, .3));
+        animation: loading-spinner-stroke 1s ease-in-out infinite alternate,
+                   loading-spinner-spin 1.5s linear infinite;
+    }
+
+    &.visible {
+        opacity: 1;
+        pointer-events: all;
+    }
+}

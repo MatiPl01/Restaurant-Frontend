@@ -1,15 +1,14 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core'
-import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
 
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 
-import { DishesService } from 'src/app/services/dishes.service'
 import { CurrencyService } from 'src/app/services/currency.service'
 import { PaginationService } from 'src/app/services/pagination.service'
 import { VisualizationService } from 'src/app/services/visualization.service'
 import { ErrorService } from 'src/app/services/error.service'
+import { DataStorageService } from 'src/app/services/data-storage.service'
 
 @Component({
   selector: 'app-dish-page',
@@ -17,24 +16,23 @@ import { ErrorService } from 'src/app/services/error.service'
 })
 export class DishPageComponent implements OnInit, OnDestroy {
   dish!: Dish
-  dishID!: string
-  subscriptions: Subscription[] = []
+  subscription!: Subscription
 
   constructor(private elRef: ElementRef,
               private activatedRoute: ActivatedRoute,
               private visualizationService: VisualizationService,
-              private dishesService: DishesService,
               private errorService: ErrorService,
               public paginationService: PaginationService,
-              public currencyService: CurrencyService) {}
+              public currencyService: CurrencyService,
+              private dataStorageService: DataStorageService) {}
 
   ngOnInit(): void {
-    this.dishID = this.activatedRoute.snapshot.params['id']
-    this.loadDishData()
-
-    this.subscriptions.push(
-      this.dishesService.dishesChangedEvent.subscribe(this.loadDishData.bind(this))
-    )
+    const dishID = this.activatedRoute.snapshot.params['id']
+    this.dataStorageService.fetchDish(dishID).subscribe()
+    this.subscription = this.dataStorageService.dishChangedEvent.subscribe((dish: Dish) => {
+      if (!dish) this.errorService.displayError(404, `Potrawa o ID: ${dishID} nie istnieje`)
+      else this.dish = dish
+    })
   }
 
   ngAfterViewInit() {
@@ -42,7 +40,7 @@ export class DishPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe())
+    this.subscription.unsubscribe()
   }
 
   onReviewsClick() {
@@ -58,20 +56,6 @@ export class DishPageComponent implements OnInit, OnDestroy {
     if (lastDigit === 0 || 5 <= lastDigit && lastDigit <= 9 || lastDigit === 1 && this.dish.ratesCount > 10 || this.dish.ratesCount >= 10 && this.dish.ratesCount <= 21) return 'ocen'
     if (lastDigit === 1) return 'ocena'
     return 'oceny'
-  }
-
-  private loadDishData(): void {
-    // this.dish = this.dishesService.getDishWithID(this.dishID)
-
-    this.dishesService.getDishWithID(this.dishID).subscribe({
-      next: (res: any) => {
-        this.dish = res.data
-      },
-      error: err => {
-        console.log(err)
-        this.errorService.displayError(err.error, 'Potrawa o wskazanym ID nie istnieje')
-      }
-    })
   }
 
   private scrollToReviews(): void {

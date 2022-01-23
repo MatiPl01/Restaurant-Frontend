@@ -1,5 +1,5 @@
 // BUILT-INS
-import { NgModule } from '@angular/core'
+import { NgModule, APP_INITIALIZER } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
@@ -70,6 +70,7 @@ import { ScrollTopBtnComponent } from './shared/components/scroll-top-btn/scroll
 import { LoginPageComponent } from './views/login-page/login-page.component';
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 import { RegistrationFormComponent } from './shared/components/registration-form/registration-form.component'
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component'
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { RegistrationFormComponent } from './shared/components/registration-form
     ScrollTopBtnComponent,
     LoginPageComponent,
     LoginFormComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     // BUILT-INS

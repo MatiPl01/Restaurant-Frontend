@@ -113,3 +113,15 @@
         visibility: hidden;
     }
 }
+
+@keyframes loading-spinner-stroke {
+    to {
+        stroke-dashoffset: 150;
+    }
+}
+
+@keyframes loading-spinner-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

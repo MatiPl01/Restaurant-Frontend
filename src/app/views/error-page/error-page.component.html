@@ -7,13 +7,13 @@
       {{ description }}
     </h3>
     <div class="error__details">
-      <p class="error__status" *ngIf="status">
+      <p class="error__status" *ngIf="statusCode">
         <span>status:</span>
-        <span>{{ status }}</span>
+        <span>{{ statusCode }}</span>
       </p>
-      <p class="error__message" *ngIf="message">
+      <p class="error__message" *ngIf="errMsg">
         <span>komunikat błędu:</span>
-        <span>{{ message }}</span>
+        <span>{{ errMsg }}</span>
       </p>
     </div>
   </article>

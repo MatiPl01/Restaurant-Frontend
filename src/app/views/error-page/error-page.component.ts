@@ -6,16 +6,16 @@ import { ErrorService } from 'src/app/services/error.service'
   templateUrl: './error-page.component.html'
 })
 export class ErrorPageComponent implements OnInit {
+  statusCode!: number
   description!: string
-  status!: string
-  message!: string
+  errMsg!: string
 
   constructor(public errorService: ErrorService) {}
 
   ngOnInit(): void {
     const errorDetails = this.errorService.getDetails()
     this.description = errorDetails.description
-    this.status = errorDetails.status
-    this.message = errorDetails.message
+    this.statusCode = errorDetails.statusCode
+    this.errMsg = errorDetails.errMsg
   }
 }

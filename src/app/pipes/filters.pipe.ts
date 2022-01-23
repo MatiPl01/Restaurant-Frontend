@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core'
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 import { FiltersService } from '../services/filters.service'
 import { PaginationService } from '../services/pagination.service'
 

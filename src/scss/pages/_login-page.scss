@@ -15,10 +15,11 @@
     }
 
     &__content {
-        margin-top: 12rem;
         padding: 0 4rem;
+        padding-top: 12rem;
         padding-bottom: 4rem;
         flex-grow: 1;
+        position: relative;
     }
 
     &__menu {

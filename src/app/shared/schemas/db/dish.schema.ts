@@ -1,7 +1,6 @@
-import { ImageEntry } from "./image-entry.model";
-import { Review } from "./review.model";
+import { ReviewSchema } from "./review.schema";
 
-export interface Dish {
+export interface DishSchema {
     _id: string,
     name: string,
     cuisine: string,
@@ -15,8 +14,8 @@ export interface Dish {
     ratesCount: number,
     description: string[],
     images: {
-        coverIdx: 0,
-        gallery: ImageEntry[]
+        coverIdx: number,
+        gallery: { breakpoints: number[], paths: string[] }[]
     },
-    reviews: Review[]
+    reviews: ReviewSchema[]
 }

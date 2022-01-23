@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 
 @Component({
   selector: 'app-dish-details',

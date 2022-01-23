@@ -16,6 +16,8 @@
   </section>
   
   <section class="login-page__content">
+    <app-loading-spinner [visible]="isLoading"></app-loading-spinner>
+
     <menu class="login-page__menu">
       <li class="login-page__menu-tab" (click)="setOpenTab('login')" [ngClass]="{active: openTab === 'login'}">
         <h4 class="login-page__menu-text">Logowanie</h4>
@@ -31,8 +33,8 @@
     </header>
 
     <section class="login-page__form">
-      <app-login-form *ngIf="openTab === 'login'"></app-login-form>
-      <app-registration-form *ngIf="openTab === 'register'"></app-registration-form>
+      <app-login-form *ngIf="openTab === 'login'" (loginEvent)="onLogin($event)" [errorMsg]="loginErrorMsg"></app-login-form>
+      <app-registration-form *ngIf="openTab === 'register'" (registrationEvent)="onRegistration($event)" [errorMsg]="registrationErrorMsg"></app-registration-form>
     </section>
   </section>
 </section>

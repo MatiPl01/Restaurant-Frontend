@@ -1,12 +1,12 @@
 import { Component, HostListener, Output, ViewChild, EventEmitter, Input } from '@angular/core'
 import { NgForm } from '@angular/forms'
 
-import { Dish } from 'src/app/shared/models/dish.model'
-import { AddedImage } from 'src/app/shared/models/added-image.model'
-import { ImageEntry } from 'src/app/shared/models/image-entry.model'
+import { AddedImage } from 'src/app/shared/schemas/others/added-image.schema'
+import { ImageEntry } from 'src/app/shared/schemas/others/image-entry.schema'
 
 import { DishesService } from 'src/app/services/dishes.service'
 import { CurrencyService } from 'src/app/services/currency.service'
+import { DishSchema } from '../../schemas/db/dish.schema'
 
 @Component({
   selector: 'app-add-dish-form',
@@ -60,7 +60,7 @@ export class AddDishFormComponent {
     }
   }
 
-  private createDishObject(form: NgForm): Dish {
+  private createDishObject(form: NgForm): DishSchema {
     // @ts-ignore
     return {
       name: form.value.name,

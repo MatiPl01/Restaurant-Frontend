@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs'
 import { DishesService } from 'src/app/services/dishes.service'
 import { FiltersService } from 'src/app/services/filters.service'
 import { CurrencyService } from 'src/app/services/currency.service'
+import { DataStorageService } from 'src/app/services/data-storage.service'
 
 type dropdownEventObj = { filterAttr: string, value: any }
 
@@ -17,12 +18,10 @@ export class DishesFiltersComponent implements OnInit, OnDestroy {
   cuisineFilterAttr: string = 'cuisine'
   priceFilterAttr: string = 'unitPrice'
   ratingFilterAttr: string = 'rating'
-  priceStep = .5
-  ratingStep = .05
   categoriesList: string[] = []
   cuisinesList: string[] = []
-  priceSteps: number = 0
-  ratingSteps: number = 0
+  priceSteps: number = 1000
+  ratingSteps: number = 500
   minPrice: number = 0
   maxPrice: number = 0
   minRating: number = 0
@@ -63,48 +62,43 @@ export class DishesFiltersComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = []
 
-  constructor(private filtersService: FiltersService, private dishesService: DishesService, private currencyService: CurrencyService) { }
+  constructor(private filtersService: FiltersService, 
+              private dishesService: DishesService, 
+              private dataStorageService: DataStorageService,
+              private currencyService: CurrencyService) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.dishesService.dishesChangedEvent.subscribe(this.initialize.bind(this)),
+      this.dataStorageService.dishesChangedEvent.subscribe(this.initialize.bind(this)),
       this.currencyService.currencyChangedEvent.subscribe(this.updatePriceSlider.bind(this))
     )
   }
 
-  ngAfterViewInit(): void {
-    // if (this.dishesService.areDishesLoaded) {
-    //   setTimeout(() => {
-    //     this.initialize()
-    //   }, 0)
-    // }
-  }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe())
   }
 
-  getDropdownList(filterAttr: string) {
+  getDropdownList(filterAttr: string): string[] {
     return [...(this.dishesService.getValuesSet(filterAttr) || [])]
   }
 
-  onItemSelected(eventObj: dropdownEventObj) {
+  onItemSelected(eventObj: dropdownEventObj): void {
     this.filtersService.addFilter(eventObj.filterAttr, eventObj.value);
   }
 
-  onItemDeSelected(eventObj: dropdownEventObj) {
+  onItemDeSelected(eventObj: dropdownEventObj): void {
     this.filtersService.removeFilter(eventObj.filterAttr, eventObj.value)
   }
 
-  onSelectedAll(eventObj: dropdownEventObj) {
+  onSelectedAll(eventObj: dropdownEventObj): void {
     this.filtersService.addAllFilters(eventObj.filterAttr, eventObj.value)
   }
 
-  onDeSelectedAll(eventObj: dropdownEventObj) {
+  onDeSelectedAll(eventObj: dropdownEventObj): void {
     this.filtersService.removeAllFilters(eventObj.filterAttr)
   }
 
-  onRangeChanged(eventObj: { filterAttr: string, min: number, max: number }) {
+  onRangeChanged(eventObj: { filterAttr: string, min: number, max: number }): void {
     let min, max
     if (eventObj.filterAttr === this.priceFilterAttr) {
       // Convert to the reference currency
@@ -125,7 +119,7 @@ export class DishesFiltersComponent implements OnInit, OnDestroy {
     this.reset()
   }
 
-  private initialize() {
+  private initialize(): void {
     this.setServiceInitialFilters()
     this.filtersService.loadInitialFilters()
     this.reset()
@@ -175,23 +169,18 @@ export class DishesFiltersComponent implements OnInit, OnDestroy {
     }
   }
 
-  private calcStepsCount(min: number, max: number, step: number): number {
-    return +Math.ceil((max - min) / step).toFixed()
-  }
-
   private stepToValue(step: number, steps: number, min: number, max: number): number {
     return min + (max - min) / steps * step
   }
 
-  private resetPriceSlider() {
+  private resetPriceSlider(): void {
     this.priceValues.min = 0
     this.priceValues.max = this.priceSteps
   }
 
-  private updatePriceSlider() {
+  private updatePriceSlider(): void {
     this.minPrice = +(this.currencyService.fromReferenceToCurrent(this.dishesService.getMinReferencePrice())).toFixed(2)
     this.maxPrice = +(this.currencyService.fromReferenceToCurrent(this.dishesService.getMaxReferencePrice())).toFixed(2)
-    this.priceSteps = this.calcStepsCount(this.minPrice, this.maxPrice, this.priceStep)
     this.updatePriceOptions()
   }
 
@@ -199,7 +188,6 @@ export class DishesFiltersComponent implements OnInit, OnDestroy {
     const ratings = this.filtersService.getInitialFilters('rating')
     this.minRating = ratings.min
     this.maxRating = ratings.max
-    this.ratingSteps = this.calcStepsCount(this.minRating, this.maxRating, this.ratingStep)
     this.ratingValues.min = 0
     this.ratingValues.max = this.ratingSteps
     this.updateRatingOptions()

@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { Dish } from 'src/app/shared/models/dish.model'
+import { Dish } from 'src/app/shared/models/db/dish.model'
 import { CurrencyService } from './currency.service'
 import { PaginationService } from './pagination.service'
 

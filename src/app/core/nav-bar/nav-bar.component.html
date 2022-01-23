@@ -44,6 +44,11 @@
           <a routerLink="/about" routerLinkActive="active" class="nav-bar__link"><span>O restauracji</span></a>
         </li>
 
+        <!-- TODO - add better styles -->
+        <li class="nav-bar__item">
+          <a routerLink="/login" routerLinkActive="active" class="nav-bar__link"><span>Logowanie</span></a>
+        </li>
+
         <li class="nav-bar__item nav-bar__item--cart">
           <a routerLink="/cart" routerLinkActive="active" class="nav-bar__link nav-bar__button nav-bar__button--cart"
             title="Pokaż potrawy dodane do koszyka" [attr.data-items-count]="this.orderService.totalQuantity"

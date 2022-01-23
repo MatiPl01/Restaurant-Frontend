@@ -1,14 +1,14 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { Review } from '../shared/models/review.model';
+import { Review } from '../shared/models/db/review.model';
 import { FiltersService } from './filters.service';
-import { Dish } from '../shared/models/dish.model';
+import { Dish } from '../shared/models/db/dish.model';
 import { WebRequestService } from './web-request.service';
 import { DishesService } from './dishes.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ReviewsService {
+export class ReviewsService { // TODO
     constructor(private dishesService: DishesService,
                 private filtersService: FiltersService,
                 private webRequestService: WebRequestService) {}
