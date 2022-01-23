@@ -1,4 +1,4 @@
-<form class="order" [ngClass]="{hidden: !dish.stock}">
+<form class="order" [ngClass]="{hidden: !dish.stock}" *ifRole="['client', 'manager', 'admin']">
   <button class="order__button order__button--minus" (click)="onDecrement($event)"
     [ngClass]="{hidden: !quantity}">
     <svg class="order__icon">

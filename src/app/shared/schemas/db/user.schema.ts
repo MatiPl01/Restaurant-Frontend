@@ -6,7 +6,7 @@ export interface UserSchema {
     _id: string,
     name: string,
     email: string,
-    role: string,
+    roles: string[],
     banned: boolean,
     orders: OrderSchema[],
     reviews: ReviewSchema[],

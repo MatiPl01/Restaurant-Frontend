@@ -64,12 +64,15 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogoutClick(): void {
     this.authService.logoutUser()
+    this.closeNavMenu()
   }
 
-  onRouteClick(htmlEl: HTMLElement): void {
-    if (htmlEl.getAttribute('routerLink') === this.router.url) {
-      this.isToggleChecked = false
-      this.visualizationService.notifyNavMenuToggle(this.isToggleChecked)
-    }
+  onRouteClick(): void {
+    this.closeNavMenu()
+  }
+
+  private closeNavMenu(): void {
+    this.isToggleChecked = false
+    this.visualizationService.notifyNavMenuToggle(this.isToggleChecked)
   }
 }

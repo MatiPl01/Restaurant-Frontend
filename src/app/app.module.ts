@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module'
 
 // DIRECTIVES
 import { ParallaxDirective } from './directives/parallax.directive'
+import { IfRoleDirective } from './directives/if-role.directive'
 
 // PIPES
 import { FiltersPipe } from './pipes/filters.pipe'
@@ -71,12 +72,15 @@ import { LoginPageComponent } from './views/login-page/login-page.component';
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 import { RegistrationFormComponent } from './shared/components/registration-form/registration-form.component'
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component'
-import { AuthInterceptorService } from './services/interceptors/auth.interceptor.service'
+import { AuthInterceptorService } from './services/interceptors/auth.interceptor.service';
+import { AdminConsoleComponent } from './views/admin-console/admin-console.component';
+import { ManagerConsoleComponent } from './views/manager-console/manager-console.component'
 
 @NgModule({
   declarations: [
     // Directives
     ParallaxDirective,
+    IfRoleDirective,
 
     // Pipes
     FiltersPipe,
@@ -126,7 +130,9 @@ import { AuthInterceptorService } from './services/interceptors/auth.interceptor
     LoginPageComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AdminConsoleComponent,
+    ManagerConsoleComponent
   ],
   imports: [
     // BUILT-INS

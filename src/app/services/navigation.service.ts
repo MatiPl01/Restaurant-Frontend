@@ -105,6 +105,11 @@ export class NavigationService {
         return res
     }
 
+    // Used only after reload when
+    addCurrentRoute(): void {
+        this.routesHist.add(this.router.url)
+    }
+
     async back() {
         this.lastRoute = this.routesHist.getLast()?.prev
 

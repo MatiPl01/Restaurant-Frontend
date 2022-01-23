@@ -33,22 +33,22 @@
     <div class="nav-bar__controls">
       <ul class="nav-bar__links">
         <li class="nav-bar__item">
-          <a class="nav-bar__link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onRouteClick(home)" #home><span>Strona główna</span></a>
+          <a class="nav-bar__link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onRouteClick()"><span>Strona główna</span></a>
         </li>
 
         <li class="nav-bar__item">
-          <a class="nav-bar__link" routerLink="/dishes" routerLinkActive="active" [queryParams]="defaultPaginationQueryParams" (click)="onRouteClick(menu)" #menu><span>Menu</span></a>
+          <a class="nav-bar__link" routerLink="/dishes" routerLinkActive="active" [queryParams]="defaultPaginationQueryParams" (click)="onRouteClick()"><span>Menu</span></a>
         </li>
       
         <li class="nav-bar__item">
-          <a routerLink="/about" routerLinkActive="active" class="nav-bar__link" (click)="onRouteClick(about)" #about><span>O restauracji</span></a>
+          <a routerLink="/about" routerLinkActive="active" class="nav-bar__link" (click)="onRouteClick()"><span>O restauracji</span></a>
         </li>
 
-        <li class="nav-bar__item nav-bar__item--cart">
+        <li *ifRole="['client', 'manager', 'admin']" class="nav-bar__item nav-bar__item--cart">
           <a routerLink="/cart" routerLinkActive="active" class="nav-bar__link nav-bar__button nav-bar__button--cart"
             title="Pokaż potrawy dodane do koszyka" [attr.data-items-count]="this.orderService.totalQuantity"
             [ngClass]="{'big-quantity': orderService.totalQuantity >= 10}"
-            (click)="onRouteClick(cart)" #cart>
+            (click)="onRouteClick()">
             <svg class="nav-bar__button-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
               role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
               <path
@@ -58,11 +58,20 @@
             <span class="nav-bar__button-text">Koszyk</span>
           </a>
         </li>
+
+        <li class="nav-bar__item nav-bar__item--admin" *ifRole="['admin']">
+          <a routerLink="/admin" routerLinkActive="active" class="nav-bar__link" (click)="onRouteClick()"><span>Panel amina</span></a>
+        </li>
+
+        <li class="nav-bar__item nav-bar__item--manager" *ifRole="['manager']">
+          <a routerLink="/manager" routerLinkActive="active" class="nav-bar__link" (click)="onRouteClick()"><span>Panel
+              managera</span></a>
+        </li>
       </ul>
       
       <ul class="nav-bar__buttons">
-        <li class="nav-bar__item nav-bar__item--add">
-          <a routerLink="/add-dish" class="nav-bar__button nav-bar__button--add" title="Dodaj nowe danie" (click)="onRouteClick(add)" #add>
+        <li *ifRole="['manager', 'admin']" class="nav-bar__item nav-bar__item--add">
+          <a routerLink="/add-dish" class="nav-bar__button nav-bar__button--add" title="Dodaj nowe danie" (click)="onRouteClick()">
             <svg class="nav-bar__button-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus"
               role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path
@@ -76,7 +85,7 @@
           <app-choose-currency title="Wybierz walutę"></app-choose-currency>
         </li>
 
-        <li class="nav-bar__item nav-bar__item--login" *ngIf="!user" (click)="onRouteClick(login)" #login>
+        <li class="nav-bar__item nav-bar__item--login" *ngIf="!user" (click)="onRouteClick()">
           <a routerLink="/login" class="nav-bar__button nav-bar__button--login" title="Zaloguj lub zarejestruj się">
             <svg class="nav-bar__button-icon">
               <use href="assets/svg/icons.svg#lock-open"></use>
@@ -89,7 +98,7 @@
           <div class="nav-bar__user">
             <span class="nav-bar__user-name">{{ user.getName() }}</span>
           </div>
-          <a class="nav-bar__button nav-bar__button--logout" title="Wyloguj się" (click)="onRouteClick(logout)" #logout>
+          <a class="nav-bar__button nav-bar__button--logout" title="Wyloguj się" (click)="onLogoutClick()">
             <span class="nav-bar__button-text">Wyloguj</span>
           </a>
         </li>

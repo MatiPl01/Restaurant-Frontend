@@ -28,11 +28,13 @@ export class DishPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const dishID = this.activatedRoute.snapshot.params['id']
-    this.dataStorageService.fetchDish(dishID).subscribe()
-    this.subscription = this.dataStorageService.dishChangedEvent.subscribe((dish: Dish) => {
-      if (!dish) this.errorService.displayError(404, `Potrawa o ID: ${dishID} nie istnieje`)
-      else this.dish = dish
+    this.subscription = this.dataStorageService.fetchDish(dishID).subscribe({
+      next: (res: any) => this.dish = res.data,
+      error: (err: any) => {
+        this.errorService.displayError(404, 'Potrawa o podanym ID została znaleziona')
+      }
     })
+
   }
 
   ngAfterViewInit() {

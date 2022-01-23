@@ -3,7 +3,7 @@
 @use '../helpers/mixins' as *;
 
 .loading-spinner {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     inset: 0;
     opacity: 0;

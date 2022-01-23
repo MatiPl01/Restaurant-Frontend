@@ -7,7 +7,7 @@ export class User {
     private _id!: string
     private name!: string
     private email!: string
-    private role!: string
+    private roles!: string[]
     private banned!: boolean
     private orders!: OrderSchema[]
     private reviews!: ReviewSchema[]
@@ -20,19 +20,22 @@ export class User {
 
     // Return null if token is not valid
     getToken(): string {
-        const { exp: expTimestamp } = this.parseToken()
-        console.log(this.parseToken())
+        const expTimestamp = this.getTokenExpirationTime()
         const currTimestamp = Math.floor((new Date).getTime() / 1000)
         // @ts-ignore
         return currTimestamp < expTimestamp ? this.token : null
+    }
+
+    getTokenExpirationTime(): number {
+        return this.parseToken().exp
     }
 
     getName(): string {
         return this.name
     }
 
-    getRole(): string {
-        return this.role
+    getRoles(): string[] {
+        return this.roles
     }
 
     private parseToken() {
