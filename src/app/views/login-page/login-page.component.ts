@@ -25,7 +25,7 @@ export class LoginPageComponent  {
     this.isLoading = true
     this.authService.loginUser(userData).subscribe({
       next: () => this.navigationService.back(),
-      error: (errorMsg: string) => this.loginErrorMsg = errorMsg
+      error: (errorMsg: any) => this.loginErrorMsg = errorMsg
     }).add(() => this.isLoading = false)
   }
   

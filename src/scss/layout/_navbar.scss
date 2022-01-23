@@ -4,6 +4,29 @@
 @use '../helpers/gradients' as g;
 @use '../helpers/mixins' as *;
 
+@mixin cart-counter {
+    &::before {
+        content: attr(data-items-count);
+        position: absolute;
+        right: -1.5rem;
+        bottom: -.5rem;
+        color: c.$white;
+        font-family: Poppins, Arial, Helvetica, sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-shadow: 0 0 .3rem rgba(c.$black, .5);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 .5rem rgba(c.$black, .3);
+        background: g.$orange;
+        pointer-events: none;
+    }
+}
+
 .nav-bar {
     position: fixed;
     width: 100%;
@@ -89,7 +112,8 @@
         box-shadow: 0 0 1rem rgba(c.$black, .2);
         position: relative;
         color: c.$gray-dark-1;
-     
+        cursor: pointer;
+
         &-icon {
             height: 2.4rem;
             width: 2.4rem;
@@ -101,25 +125,7 @@
         }
 
         &--cart {
-            &::before {
-                content: attr(data-items-count);
-                position: absolute;
-                right: -1.5rem;
-                bottom: -.5rem;
-                color: c.$white;
-                font-family: Poppins, Arial, Helvetica, sans-serif;
-                font-size: 1.6rem;
-                font-weight: 700;
-                text-shadow: 0 0 .3rem rgba(c.$black, .5);
-                width: 3rem;
-                height: 3rem;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 0 .5rem rgba(c.$black, .3);
-                background: g.$orange;
-            }
+            @include cart-counter;
         }
 
         &--add {
@@ -137,18 +143,48 @@
         }
     }
 
+    &__item {
+        &--user {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            .nav-bar {
+                &__user {
+                    font-size: 1.6rem;
+                }
+
+                &__button {
+                    background-color: transparent;
+                    box-shadow: none;
+                    padding: 0;
+
+                    &-text {
+                        display: block !important;
+                        font-size: 1.4rem;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
     &.no-anim {
         animation: none !important;
     }
 
-    // Styles for nav-par displayed in header
+    // Styles for nav-bar displayed in header
     &--header {
         position: absolute;
         background: transparent;
         height: s.$header-nav-bar-height;
+
+        .nav-bar__item--user {
+            display: none;
+        }
     }
 
-    // STyles for normal nav-bar
+    // Styles for normal nav-bar
     &--normal {
         @include respond(tab-land) {
             .nav-bar__button-text {
@@ -171,6 +207,10 @@
             .nav-bar {
                 &__item--cart {
                     order: 1;
+                }
+
+                &__toggle {
+                    @include cart-counter;
                 }
             }
         }
@@ -227,7 +267,9 @@
                         display: none;
                     }
 
-                    &--cart {
+                    &--cart,
+                    &--login,
+                    &--logout {
                         box-shadow: none;
                         background-color: transparent;
                         color: c.$white;
@@ -314,6 +356,43 @@
         justify-content: flex-end;
         pointer-events: none;
 
+        &__buttons {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: repeat(n.$mobile-nav-bar-buttons, auto);
+
+            .nav-bar {
+                &__item {
+                    &--user,
+                    &--login {
+                        grid-row: 1 / 2;
+                        grid-column: 1 / span n.$mobile-nav-bar-buttons;
+                        // flex-direction: row;
+                        // justify-content: center;
+                        // align-items: center;
+                        gap: 1rem;
+                        display: flex;
+                        justify-self: center;
+
+                        .nav-bar {
+                            &__user,
+                            &__button-text {
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+
+                    &--currency {
+                        justify-self: end;
+                    }
+
+                    &--add {
+                        justify-self: start;
+                    }
+                }
+            }
+        }
+
         &__toggle {
             display: block;
             position: absolute;
@@ -327,7 +406,17 @@
                 inset: 0;
                 border-radius: 50%;
                 z-index: -1;
+            }
+
+            &::after,
+            &::before {
                 transition: all .3s;
+            }
+
+            &::before {
+                z-index: 1;
+                right: unset;
+                left: -1.3rem
             }
         }
 
@@ -371,6 +460,8 @@
             right: 2rem;
             transition: right .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: slide-in-left .7s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+            @include cart-counter;
 
             &--hidden {
                 right: -6rem;
@@ -491,10 +582,19 @@
             }
         }
 
-        &__buttons .nav-bar__item {
-            @for $i from 0 through n.$mobile-nav-bar-buttons {
-                &:nth-child(#{$i}) {
-                    animation: fade-in-top .5s (.5 + .1 * $i) * 1s backwards;
+        &__item {
+            &--login,
+            &--user {
+                animation: fade-in-top .4s .5s backwards;
+            }
+        }
+
+        &__buttons {
+            .nav-bar__item {
+                @for $i from 0 through n.$mobile-nav-bar-buttons {
+                    &:nth-child(#{$i}) {
+                        animation: fade-in-top .5s (.5 + .1 * $i) * 1s backwards;
+                    }
                 }
             }
         }
@@ -506,7 +606,8 @@
         &__toggle {
             position: fixed;
             
-            &::after {
+            &::after,
+            &::before {
                 box-shadow: none;
                 opacity: 0;
                 transition: .5s .25s;

@@ -20,9 +20,19 @@ export class User {
 
     // Return null if token is not valid
     getToken(): string {
-        const { token, exp: expTimestamp } = this.parseToken()
+        const { exp: expTimestamp } = this.parseToken()
+        console.log(this.parseToken())
         const currTimestamp = Math.floor((new Date).getTime() / 1000)
-        return currTimestamp < expTimestamp ? token : null
+        // @ts-ignore
+        return currTimestamp < expTimestamp ? this.token : null
+    }
+
+    getName(): string {
+        return this.name
+    }
+
+    getRole(): string {
+        return this.role
     }
 
     private parseToken() {

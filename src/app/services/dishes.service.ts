@@ -32,11 +32,11 @@ export class DishesService {
     }
 
     removeDish(dish: Dish) {
-        this.dataStorageService.removeDish(dish._id).subscribe()
+        this.dataStorageService.removeDish(dish._id).subscribe(this.loadDishes.bind(this))
     }
 
     addDish(dish: Dish) {
-        this.dataStorageService.addDish(dish).subscribe(() => this.loadDishes)
+        this.dataStorageService.addDish(dish).subscribe(this.loadDishes.bind(this))
     }
 
     getMaxReferencePrice() {

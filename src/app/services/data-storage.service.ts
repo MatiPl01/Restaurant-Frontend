@@ -1,9 +1,8 @@
 import { Injectable, EventEmitter } from "@angular/core"
-import { HttpResponse } from "@angular/common/http"
+import { HttpResponse, HttpHeaders } from "@angular/common/http"
 import { Dish } from "../shared/models/db/dish.model"
-import { AuthService } from "./auth.service"
 import { WebRequestService } from "./web-request.service"
-import { Observable, tap, first, MonoTypeOperatorFunction } from "rxjs"
+import { Observable, tap, first } from "rxjs"
 import { Currencies } from "../shared/models/db/currencies.model"
 
 @Injectable({
@@ -18,8 +17,7 @@ export class DataStorageService {
     dishesChangedEvent = new EventEmitter<Dish[]>()
     currenciesChangedEvent = new EventEmitter<Currencies>()
 
-    constructor(private webRequestService: WebRequestService,
-                private authService: AuthService) {}
+    constructor(private webRequestService: WebRequestService) {}
 
     // CURRENCIES
     fetchCurrencies(callback: Function = this.defaultCallback, watch: boolean = true): Observable<any> {
@@ -49,8 +47,7 @@ export class DataStorageService {
                 .get(url)
                 .pipe(tap((res: HttpResponse<any>) => {
                     // @ts-ignore
-                    const data = callback(res.data) || res.data
-                    emitter.emit(data)
+                    if (res.data) emitter.emit(callback(res.data))
                 })
             )
         } else {
@@ -60,8 +57,7 @@ export class DataStorageService {
                     first(),
                     tap((res: HttpResponse<any>) => {
                         // @ts-ignore
-                        const data = callback(res.data) || res.data
-                        emitter.emit(data)
+                        if (res.data) emitter.emit(callback(res.data))                    
                     }
                 )
             )
@@ -72,14 +68,8 @@ export class DataStorageService {
         return this.webRequestService
             .delete(url)
             .pipe(
-                first(), 
-                tap((res: HttpResponse<any>) => {
-                    // @ts-ignore
-                    const data = callback(res.data) || res.data
-                    emitter.emit(data)
-                }
+                first()
             )
-        )
     }
 
     private makePostRequest(url: string, data: any, callback: Function, emitter: EventEmitter<any> = this.trapEvent): Observable<any> {
@@ -88,10 +78,10 @@ export class DataStorageService {
             .pipe(
                 first(),
                 tap((res: HttpResponse<any>) => {
-                // @ts-ignore
-                const data = callback(res.data) || res.data
-                emitter.emit(data)
-            })
+                    // @ts-ignore
+                    if (res.data) emitter.emit(callback(res.data))            
+                }
+            )
         )
     }
 }

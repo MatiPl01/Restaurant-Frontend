@@ -8,10 +8,9 @@
     
     &__photo {
         flex-basis: 60vw;
-        height: calc(100vh - s.$nav-bar-height);
+        height: 100vh;
         position: sticky;
-        margin-top: s.$nav-bar-height;
-        top: 0;
+        top: s.$nav-bar-height;
     }
 
     &__content {
@@ -79,7 +78,7 @@
 
         &__photo {
             flex-basis: 50vh;
-            margin-top: 0;
+            top: 0;
         }
 
         &__content {

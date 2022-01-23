@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
-const headers = {
-    headers: new HttpHeaders({
-        'Content-type': 'application/json',
-    })
-}
+const defaultHeaders = new HttpHeaders({
+    'Content-type': 'application/json',
+})
 
 @Injectable({
     providedIn: 'root'
@@ -16,19 +14,19 @@ export class WebRequestService {
 
     constructor(private http: HttpClient) {}
 
-    get(url: string): Observable<any> {
-        return this.http.get(`${this.API_URL}/${url}`)
+    get(url: string, headers: HttpHeaders = defaultHeaders): Observable<any> {
+        return this.http.get(`${this.API_URL}/${url}`, { headers })
     }
 
-    post(url: string, obj: Object): Observable<any> {
-        return this.http.post(`${this.API_URL}/${url}`, obj, headers)
+    post(url: string, obj: Object, headers: HttpHeaders = defaultHeaders): Observable<any> {
+        return this.http.post(`${this.API_URL}/${url}`, obj, { headers })
     }
 
-    patch(url: string, obj: Object): Observable<any> {
-        return this.http.patch(`${this.API_URL}/${url}`, obj, headers)
+    patch(url: string, obj: Object, headers: HttpHeaders = defaultHeaders): Observable<any> {
+        return this.http.patch(`${this.API_URL}/${url}`, obj, { headers })
     }
 
-    delete(url: string): Observable<any> {
-        return this.http.delete(`${this.API_URL}/${url}`)
+    delete(url: string, headers: HttpHeaders = defaultHeaders): Observable<any> {
+        return this.http.delete(`${this.API_URL}/${url}`, { headers })
     }
 }

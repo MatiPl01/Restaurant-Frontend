@@ -1,7 +1,7 @@
 <input type="checkbox" class="nav-bar__checkbox" id="nav-toggle" [(ngModel)]="isToggleChecked" (change)="onToggle()">
 
 <nav class="nav-bar" [ngClass]="{'nav-bar--header': isHeaderVisible, 'nav-bar--normal': !isHeaderVisible, 'no-anim': !displayAnimation}">
-  <button class="nav-bar__toggle" [ngClass]="{'nav-bar__toggle--hidden': !isNavToggleVisible}">
+  <button class="nav-bar__toggle" [ngClass]="{'nav-bar__toggle--hidden': !isNavToggleVisible}" [attr.data-items-count]="this.orderService.totalQuantity">
     <label for="nav-toggle" class="nav-bar__label">
       <svg class="nav-bar__toggle-icon" viewBox="0 0 100 100">
         <path class="nav-bar__toggle-line nav-bar__toggle-line--1"
@@ -33,26 +33,22 @@
     <div class="nav-bar__controls">
       <ul class="nav-bar__links">
         <li class="nav-bar__item">
-          <a class="nav-bar__link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span>Strona główna</span></a>
+          <a class="nav-bar__link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onRouteClick(home)" #home><span>Strona główna</span></a>
         </li>
 
         <li class="nav-bar__item">
-          <a class="nav-bar__link" routerLink="/dishes" routerLinkActive="active" [queryParams]="defaultPaginationQueryParams"><span>Menu</span></a>
+          <a class="nav-bar__link" routerLink="/dishes" routerLinkActive="active" [queryParams]="defaultPaginationQueryParams" (click)="onRouteClick(menu)" #menu><span>Menu</span></a>
         </li>
       
         <li class="nav-bar__item">
-          <a routerLink="/about" routerLinkActive="active" class="nav-bar__link"><span>O restauracji</span></a>
-        </li>
-
-        <!-- TODO - add better styles -->
-        <li class="nav-bar__item">
-          <a routerLink="/login" routerLinkActive="active" class="nav-bar__link"><span>Logowanie</span></a>
+          <a routerLink="/about" routerLinkActive="active" class="nav-bar__link" (click)="onRouteClick(about)" #about><span>O restauracji</span></a>
         </li>
 
         <li class="nav-bar__item nav-bar__item--cart">
           <a routerLink="/cart" routerLinkActive="active" class="nav-bar__link nav-bar__button nav-bar__button--cart"
             title="Pokaż potrawy dodane do koszyka" [attr.data-items-count]="this.orderService.totalQuantity"
-            [ngClass]="{'big-quantity': orderService.totalQuantity >= 10}">
+            [ngClass]="{'big-quantity': orderService.totalQuantity >= 10}"
+            (click)="onRouteClick(cart)" #cart>
             <svg class="nav-bar__button-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
               role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
               <path
@@ -66,7 +62,7 @@
       
       <ul class="nav-bar__buttons">
         <li class="nav-bar__item nav-bar__item--add">
-          <a routerLink="/add-dish" class="nav-bar__button nav-bar__button--add" title="Dodaj nowe danie">
+          <a routerLink="/add-dish" class="nav-bar__button nav-bar__button--add" title="Dodaj nowe danie" (click)="onRouteClick(add)" #add>
             <svg class="nav-bar__button-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus"
               role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path
@@ -78,6 +74,24 @@
       
         <li class="nav-bar__item nav-bar__item--currency">
           <app-choose-currency title="Wybierz walutę"></app-choose-currency>
+        </li>
+
+        <li class="nav-bar__item nav-bar__item--login" *ngIf="!user" (click)="onRouteClick(login)" #login>
+          <a routerLink="/login" class="nav-bar__button nav-bar__button--login" title="Zaloguj lub zarejestruj się">
+            <svg class="nav-bar__button-icon">
+              <use href="assets/svg/icons.svg#lock-open"></use>
+            </svg>
+            <span class="nav-bar__button-text">Zaloguj</span>
+          </a>
+        </li>
+        
+        <li class="nav-bar__item nav-bar__item--user" *ngIf="user">
+          <div class="nav-bar__user">
+            <span class="nav-bar__user-name">{{ user.getName() }}</span>
+          </div>
+          <a class="nav-bar__button nav-bar__button--logout" title="Wyloguj się" (click)="onRouteClick(logout)" #logout>
+            <span class="nav-bar__button-text">Wyloguj</span>
+          </a>
         </li>
       </ul>
     </div>

@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { NavigationEnd, NavigationStart, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
+import { AuthService } from 'src/app/services/auth.service'
 
 import { OrderService } from 'src/app/services/order.service'
 import { PaginationService } from 'src/app/services/pagination.service'
 import { VisualizationService } from 'src/app/services/visualization.service'
+import { User } from 'src/app/shared/models/db/user.model'
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,6 +15,8 @@ import { VisualizationService } from 'src/app/services/visualization.service'
 export class NavBarComponent implements OnInit, OnDestroy {
   defaultPaginationQueryParams: Object = {}
   isHeaderVisible: boolean = false
+  // @ts-ignore
+  user: User = null
 
   subscriptions: Subscription[] = []
   isToggleChecked: boolean = false
@@ -22,7 +26,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
               public orderService: OrderService,
               public paginationService: PaginationService,
-              private visualizationService: VisualizationService) {
+              private visualizationService: VisualizationService,
+              private authService: AuthService) {
     this.router.events.forEach((event: any) => {
       if (event instanceof NavigationStart) {
         // Close mobile navbar menu if an url has changed
@@ -42,6 +47,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
       }),
       this.visualizationService.popupDisplayChangedEvent.subscribe((isDisplayed: boolean) => {
         this.isNavToggleVisible = !isDisplayed
+      }),
+      this.authService.user.subscribe((user: User) => {
+        this.user = user
       })
     )
   }
@@ -52,5 +60,16 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onToggle(): void {
     this.visualizationService.notifyNavMenuToggle(this.isToggleChecked)
+  }
+
+  onLogoutClick(): void {
+    this.authService.logoutUser()
+  }
+
+  onRouteClick(htmlEl: HTMLElement): void {
+    if (htmlEl.getAttribute('routerLink') === this.router.url) {
+      this.isToggleChecked = false
+      this.visualizationService.notifyNavMenuToggle(this.isToggleChecked)
+    }
   }
 }
