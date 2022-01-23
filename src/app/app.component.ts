@@ -1,9 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core'
+import { Observable, Subscription } from 'rxjs'
 import { AuthService } from './services/auth.service'
 import { DataStorageService } from './services/data-storage.service'
+import { OrderService } from './services/order.service'
 import { VisualizationService } from './services/visualization.service'
 import { Config } from './shared/models/db/config.model'
+import { User } from './shared/models/db/user.model'
+import { Cart } from './shared/schemas/others/cart.schema'
 
 @Component({
   selector: 'app-root',
@@ -16,7 +19,8 @@ export class AppComponent implements OnDestroy, OnInit {
 
   constructor(private visualizationService: VisualizationService,
               private authService: AuthService,
-              private dataStorageService: DataStorageService) {
+              private dataStorageService: DataStorageService,
+              private orderService: OrderService) {
     this.subscriptions.push(
       this.visualizationService.menuToggleEvent.subscribe((isOpen: boolean) => {
         this.isMobileNavOpen = isOpen
@@ -25,6 +29,9 @@ export class AppComponent implements OnDestroy, OnInit {
       this.dataStorageService.fetchConfig().subscribe(),
       this.dataStorageService.configChangedEvent.subscribe((config: Config) => {
         this.authService.setLoginConfig(config.login)
+      }),
+      this.authService.user.subscribe((user: User) => {
+        if (user) this.orderService.loadUserCart()
       })
     )
   }

@@ -5,6 +5,8 @@ import { WebRequestService } from "./web-request.service"
 import { Observable, tap, first } from "rxjs"
 import { Currencies } from "../shared/models/db/currencies.model"
 import { Config } from "../shared/models/db/config.model"
+import { Cart } from "../shared/schemas/others/cart.schema"
+import { Order } from "../shared/models/db/order.model"
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +20,7 @@ export class DataStorageService {
     dishChangedEvent = new EventEmitter<Dish>()
     dishesChangedEvent = new EventEmitter<Dish[]>()
     currenciesChangedEvent = new EventEmitter<Currencies>()
+    cartChangedEvent = new EventEmitter<Cart>()
 
     constructor(private webRequestService: WebRequestService) {}
 
@@ -74,7 +77,7 @@ export class DataStorageService {
         )
     }
 
-    removeDish(id: string, callback: Function = this.defaultCallback): Observable<any> {
+    removeDish(id: string): Observable<any> {
         return this.makeDeleteRequest(
             `dishes/${id}`
         )
@@ -89,6 +92,44 @@ export class DataStorageService {
         )
     }
 
+    // ORDERS
+    fetchCart(callback: Function = this.defaultCallback): Observable<any> {
+        return this.makeGetRequest(
+            'users/cart',
+            (data: any) => data,
+            callback,
+            this.cartChangedEvent
+        )
+    }
+
+    updateCart(cart: Cart, callback: Function = this.defaultCallback): Observable<any> {
+        return this.makePatchRequest(
+            'users/cart',
+            (data: any) => data,
+            cart,
+            callback,
+            this.cartChangedEvent
+        )
+    }
+
+    clearCart(callback: Function = this.defaultCallback): Observable<any> {
+        return this.makePostRequest(
+            'users/cart',
+            [],
+            callback,
+            this.cartChangedEvent
+        )
+    }
+
+    addOrder(order: Order, callback: Function = this.defaultCallback): Observable<any> {
+        return this.makePostRequest(
+            'orders',
+            order,
+            callback
+        )
+    }
+
+    // HELPER METHODS
     private makeGetRequest(url: string, constructor: any, callback: Function, emitter: EventEmitter<any> = this.trapEvent, watch: boolean = true): Observable<any> {
         if (watch) {
             return this.webRequestService

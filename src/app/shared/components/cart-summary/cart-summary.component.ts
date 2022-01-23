@@ -18,6 +18,8 @@ export class CartSummaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions = []
+    this.totalPrice = this.orderService.totalPrice
+    this.totalQuantity = this.orderService.totalQuantity
 
     this.subscriptions.push(
       this.orderService.updateTotalPriceEvent.subscribe((price: number) => this.totalPrice = price), 
@@ -27,5 +29,9 @@ export class CartSummaryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe())
+  }
+
+  onOrderBtnClick(): void {
+    this.orderService.placeOrder()
   }
 }

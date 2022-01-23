@@ -38,6 +38,14 @@ export class User {
         return this.roles
     }
 
+    getCart(): { dish: DishSchema, quantity: number }[] {
+        return this.cart
+    }
+
+    getID(): string {
+        return this._id
+    }
+
     private parseToken() {
         return JSON.parse(atob(this.token.split('.')[1]))
     }

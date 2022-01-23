@@ -35,8 +35,8 @@
       </span>
     </section>
     
-    <button class="cart-summary__button">
-      Do kasy
+    <button class="cart-summary__button" (click)="onOrderBtnClick()" [disabled]="totalPrice === 0" [ngClass]="{disabled: totalPrice === 0}">
+      Złóż zamówienie
     </button>
   </section>
 </article>

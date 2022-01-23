@@ -86,6 +86,11 @@
         background-color: c.$white;
         border-radius: 10rem;
         box-shadow: 0 0 .2rem rgba(c.$black, .3);
+
+        &.disabled {
+            color: c.$gray-light-4;
+            cursor: not-allowed;
+        }
     }
 
     @include respond(tab-land) {

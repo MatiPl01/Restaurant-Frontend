@@ -20,6 +20,7 @@ export class AuthService {
     userLoggedInEvent = new EventEmitter<User>()
     // @ts-ignore
     private _user!: BehaviorSubject<User> = new BehaviorSubject<User>(null)
+    private _isUserLoggedIn: boolean = false
     private logoutTimeout: any
     public persistence: Persistence = Persistence.LOCAL
 
@@ -29,6 +30,10 @@ export class AuthService {
 
     get user(): BehaviorSubject<User> {
         return this._user
+    }
+
+    get isUserLoggedIn(): boolean {
+        return this.isUserLoggedIn
     }
 
     autoLogin(): void {
@@ -72,6 +77,7 @@ export class AuthService {
     }
 
     logoutUser(): void {
+        this._isUserLoggedIn = false
         // @ts-ignore
         this.user.next(null)
         localStorage.removeItem(this.saveDataKey)
@@ -105,7 +111,9 @@ export class AuthService {
         // @ts-ignore
         this.persistence = Persistence[config.persistenceMode]
         if (this.persistence !== Persistence.NONE) {
-            this.user.subscribe(this.storeUser.bind(this))
+            this.user.subscribe((user: User) => {
+                if (user) this.storeUser(user)
+            })
         }
     }
 
@@ -120,6 +128,7 @@ export class AuthService {
         const user = new User(data, token)
         this._user.next(user)
         const expTime = user.getTokenExpirationTime()
+        this._isUserLoggedIn = true
 
         this.autoLogout(expTime * 1000)
         if (this.persistence !== Persistence.NONE) {
